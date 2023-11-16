@@ -10,6 +10,7 @@
 #define E5 659
 #define F5 698
 #define G5 784
+#define A5 880
 #define none 0
 // 定義頻率, 方便寫音樂
 int song[] = {none, none, none,
@@ -39,6 +40,8 @@ int score = 0; //分數
 unsigned long prevtime = 0; // 硬體中斷當中用於debouncing 的變數
 unsigned long prevtimeB = 0;
 volatile int rightPlace = 0; // 檢查音符是否在打擊點的變數
+int SongSize = sizeof(song) / sizeof(int);
+int move = 0;
 int centers[sizeof(song) / sizeof(int)] = {}; // 紀錄音符位置的陣列
 bool appears[sizeof(song) / sizeof(int)] = {}; // 判斷是否顯示音符的陣列
 bool colors[sizeof(song) / sizeof(int)] = {}; // 紀錄音符顏色的陣列
@@ -62,7 +65,7 @@ void setup()
   TCCR1B = 0; // reset
   TCCR1B |= B00000100; //將 Prescalar 設定為 256
   TIMSK1 |= B00000010; // 啟動 A 的比對模式
-  OCR1A = 50000; // 50000 個週期, 代表 800 ms (Prescalar = 256)
+  OCR1A = 10000; // 50000 個週期, 代表 800 ms (Prescalar = 256)
   sei();
 }
 void HitPlace() // 打擊點渲染
@@ -75,8 +78,9 @@ void reset() // 重置
 {
   HitPlace(); // 打擊點渲染
   index = 0; // 初始顯示位置為index
+  move = 0;
   int temp = 20; // 第一個音符的初始位置
-  for(int i = 0; i < sizeof(song) / sizeof(int); i++) // 將三個陣列的內容產生出來 (centers appears colors)
+  for(int i = 0; i < SongSize; i++) // 將三個陣列的內容產生出來 (centers appears colors)
   {
     centers[i] = temp; 
     temp += 40; // 每個音符的間距都為 40
@@ -153,31 +157,14 @@ ISR(TIMER1_COMPA_vect) // 音符左移 / 控制分數 / 音符產生
   {
     tft.fillCircle(i, 120, 10, ILI9341_BLACK);
   }
-  for(int i = index; i < sizeof(song) / sizeof(int); i++) // 顯示音符, index 為起始值, 減少執行次數, 非必要
+  for(int i = index; i < min(SongSize, index + 8); i++) // 顯示音符, index 為起始值, 只顯示八個音, 減少執行次數, 非必要
   {
-    if(centers[i] != 0 && centers[i] <= tft.width()) // 在範圍內就"可以"顯示音符
-    {
-      if(appears[i]) // 非 none(用於停頓) 就要畫出來
-      {
-        drawBeat(centers[i], colors[i]);
-      }
-      if(centers[i] == 20) // 若出現在打擊點上
-      {
-        tone(buzzer, song[beat++], 125); // 播放音樂 (包含 none)
-        if(appears[i]) // 若播放的內容不是 none(停頓)
-        {
-          rightPlace = colors[i] ? 1:2;
-          // rightPlace = true; // 表示在正確的位置上, 可以打擊
-        }
-      }
-    }
-    if(centers[i] > 20) // 打擊點以後內容都向左移動一個單位 (40 pixel)
-    {
-      centers[i] -= 40;
-    }
-    else centers[i] = 0; // 打擊點以前的centers[]設定為 0
+      if(appears[i]) drawBeat(centers[i] + move, colors[i]); // 顯示音符
+      rightPlace = colors[i] ? 1:2; // 根據顏色判斷哪個按鍵是對的
   }
+  tone(buzzer, song[beat++]); // 播放音樂 (包含 none)
+  move -= 40; // 偏移量更新
   index++; // 每一步後起始值必定 + 1, "一定一定"要放在下行的前面, 避免循環時出錯
-  beat %= sizeof(song) / sizeof(int); // 用於循環播放
+  beat %= SongSize; // 用於循環播放
   if(beat == 0) reset(); // 當循環一圈之後重置
 }
