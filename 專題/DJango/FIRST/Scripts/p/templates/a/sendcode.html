@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h3>Forget password</h3>
+        <form action="/sendcode" method="post">
+        <!--表單填寫完使用POST方式送給網站-->
+        {% csrf_token %}<!--防止受到攻擊的東西, 用於確認是使用者做的操作而不是機器人-->
+            
+        <label for=""> Gmail </label>
+        <input type = "gmail" id = "gmail" name = "gmail" placeholder = "@gmail.com" Required>   
+        <br>
+        
+        <label for=""> PhoneNumber </label>
+        <input type="text" id="phone" name="phone" placeholder="phone" required/>
+        <br/>
+        <!--輸入, 文本, CSS/HTML看見的變數名稱, Django看到的變數名稱, 顯示提示字, 必須填寫-->
+        
+        <button type="submit">Send</button>
+        </form>
+
+        <script src="" async defer></script>
+    </body>
+</html>
