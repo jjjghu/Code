@@ -34,3 +34,4 @@ class UserInformations(models.Model):#使用UserSet 將兩個物件關聯起來
     fcm_id = models.CharField(max_length = 20)
     address = models.CharField(max_length = 50)
     weight = models.CharField(max_length = 20)
+    
