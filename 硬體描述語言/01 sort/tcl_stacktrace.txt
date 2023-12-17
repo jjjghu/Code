@@ -1,7 +1,0 @@
-Thu Dec 14 13:28:24 CST 2023
-Trace back: can't read "map(?)": no such element in array
-    while executing
-"quit"
-    (command for "WM_DELETE_WINDOW" window manager protocol)
-  <2:C:/intelFPGA/20.1/modelsim_ase/win32aloem/tk8.6/bgerror.tcl:106: ::tkerror {can't read "map(?)": no such element in array}
-  <1:eval:1: ::tk::dialog::error::bgerror {can't read "map(?)": no such element in array}

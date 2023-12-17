@@ -7,10 +7,10 @@
 # invokeStk1 Layout::Clairvoyance
 # CALL
 # GUIMAIN
-# vsim -gui C:\Users\lenovo\Desktop\Code\ç¡¬é«æè¿°èªè¨\01 sort\sort2.v 
-# Start time: 20:05:27 on Dec 14,2023
+# vsim -gui C:\Users\lenovo\Desktop\Code\ç¡¬é«æè¿°èªè¨\02 alu\alu.v 
+# Start time: 12:44:42 on Dec 17,2023
 # ** Error (suppressible): (vsim-19) Failed to access library 'work' at "work".
 # No such file or directory. (errno = ENOENT)
 # Error loading design
-# End time: 20:05:28 on Dec 14,2023, Elapsed time: 0:00:01
+# End time: 12:44:42 on Dec 17,2023, Elapsed time: 0:00:00
 # Errors: 1, Warnings: 0
