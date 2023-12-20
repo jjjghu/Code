@@ -1,3 +1,12 @@
+module reg8bit(input clk, rst, reg [7:0] enter, output reg[7:0] box);
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin // reset all reg
+		box <= 0;
+        end else begin // sort item
+		box <= enter;
+        end
+    end
+endmodule
 module sort4_pipe(input clk, input rst, input [7:0] x0, x1, x2, x3, output [7:0] y0, y1, y2, y3);
     task sort2; // using task since always can't use named module
         input [7:0] A, B;
