@@ -3,7 +3,8 @@
 int ChooseSize; // 選單大小
 int choose; // 當前選擇
 int state = 0; // 場景切換變數
-int BuildIndex = 0; // 啟動的場景
+int PressedTime = 0; // 按下的次數 / 用於選擇顏色
+int BuildIndex = 0; // 初始啟動的場景
 const int buttom = 2; // 硬體中斷
 const int buttomB = 3; // 硬體中斷B
 unsigned long long prevtime = 0; // 按鈕更新時間
@@ -13,14 +14,34 @@ String Command = "none"; // 指令預設為無
 int BridgeSize = 0; // 橋梁長度
 int cx = 20; // 位置 x
 int cy = 130; // 位置 y
-#define TFT_CS 4
-#define TFT_RST 7
-#define TFT_DC 8
+#define TFT_CS -1
+#define TFT_RST 8
+#define TFT_DC 9 
 #define TFT_MOSI 11
-#define TFT_CLK 12
+#define TFT_CLK 13
 #define TFT_MISO 13
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
-// Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST); # 顯示加速
+//Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST); //顯示加速
+const String list[2] = {"      PLAY     ", "      QUIT     "}; // 場景 0
+const String chosenlist[2] = {"     [PLAY]    ", "     [QUIT]    "}; // 場景 0
+
+const int Build1x[] = {30, 90, 150, 210, 270}; // 場景 2
+const int Build1y[] = {160, 160, 160, 160, 160};// 場景 2
+const uint16_t BACKGROUND[] = {ILI9341_WHITE, 0x07ff, 0xfc1f, 0xffef, 0x87f0}; // 顏色選單
+const uint16_t colors[] = {ILI9341_BLACK, ILI9341_RED, ILI9341_DARKGREEN, ILI9341_NAVY, ILI9341_PURPLE}; // 顏色選單
+uint16_t backgroundColor = ILI9341_WHITE; // 玩家選擇的顏色
+uint16_t characterColor = ILI9341_BLACK; 
+const uint16_t renderColor = 0x21ee; // 渲染場景時的背景顏色
+
+const int Build2x[] = {3, 63, 123, 183}; // 場景 2
+const int Build2y[] = {187, 187, 187, 187};// 場景 2
+const String text[] = {"BLD", "GO!", "RST", "ESC"}; // 按鈕文字
+
+int score = 0; //分數
+const int mnSize = 15; // 橋梁最小的長度
+int lastspace = cx; // 一開始的產生起點, 角色的腳下一開始一定要有可以踩的地點
+bool Map[320] = {false}; // 產生地圖
+int MapSize = 320; // 地圖大小
 void setup()
 {
   Serial.begin(9600); // 溝通頻率
@@ -58,16 +79,33 @@ void flashB() // 確認按鈕的硬體中斷
       duration = 5000; // 避免場景轉換未完成誤觸
       startUI(); // 渲染新場景
     }
-    else if(BuildIndex == 1) // 場景一 遊戲內容 state = 0
+    else if(BuildIndex == 1) // 場景1 顏色選擇
+    { // 場景1
+      PressedTime += 1;
+      for(int j = 0; j < 3; j++)
+      {
+        tft.drawRoundRect(Build1x[choose]-(20-j),Build1y[choose]-(21-j), 26-j, 26-j, 3, colors[choose]);
+      }
+      if(PressedTime == 2) // 按下兩次表示確認
+      {
+        BuildIndex += 1; // 更新BuildIndex
+        backgroundColor = BACKGROUND[choose];
+        characterColor = colors[choose];
+        startUI(); // 啟動下一個頁面
+      }
+    }
+    else if(BuildIndex == 2) // 場景二 遊戲內容 state = 0
     {
       if(Command == "Build")
       {
         BridgeSize = min(BridgeSize+5, cy); // 蓋橋的最大值
-        tft.drawLine(cx+5, cy+5, cx+5, cy+5-BridgeSize, ILI9341_BLACK);
+        tft.drawLine(cx+5, cy+5, cx+5, cy+5-BridgeSize, characterColor);
       }
       else if(Command == "GO")
       {
         DrawAnimation(cx, cy); // 橋落下 + 角色 + 地圖的動畫
+        choose = 0; // 選擇改回　BUILD
+        UpdateUI(); // 更新選單顯示
       }
       else if(Command == "RST") // 重置當前畫面
       {
@@ -76,24 +114,9 @@ void flashB() // 確認按鈕的硬體中斷
     }
   }
 }
-const String list[2] = {"      PLAY     ", "      QUIT     "}; // 場景 1
-const String chosenlist[2] = {"     [PLAY]    ", "     [QUIT]    "}; // 場景1
-
-const int Build1x[] = {3, 63, 123, 183}; // 場景 2
-const int Build1y[] = {187, 187, 187, 187};// 場景 2
-const String text[] = {"GO!", "BLD", "RST", "ESC"}; // 按鈕文字
-
-const int mnSize = 5; // 橋梁最小的長度
-int lastspace = cx; // 一開始的產生起點, 角色的腳下一開始一定要有可以踩的地點
-bool Map[320] = {false}; // 產生地圖
-int MapSize = 320; // 地圖大小
 void GenerateMap() // 產生地圖
 {
   int begin;
-  for(int i = 0; i < cx+5; ++i) // 角色最初站立的位置必定有平台
-  {
-    Map[i] = true; // 設定為有平台
-  }
   for(int i = 0; i < MapSize; ++i) // 從上次紀錄的最後位置(最後一個平台的尾端)開始產生後續地圖
   {
     if(Map[i]) // 如果地圖是可以走的
@@ -105,8 +128,8 @@ void GenerateMap() // 產生地圖
   bool b = false; // 平台和空格交錯排列
   while(leftSpace > mnSize) // 若剩下的位置可以產生地板
   {
-    int curSize = 5 * random(1, (min(cy, leftSpace) + 1)/5); // 產生隨機長度的地板
-    for(int i = 0; i < curSize; ++i) // 將地板狀態更新
+    int curSize = 5 * random(3, (min(cy, leftSpace) + 1)/5); // 產生隨機長度的地板
+    for(int i = 1; i <= curSize; ++i) // 將地板狀態更新
     {
       Map[begin + i] = b; // 更新
     }
@@ -114,7 +137,17 @@ void GenerateMap() // 產生地圖
     leftSpace -= curSize; // 剩下的位置被用掉
     begin += curSize; // 起點更新
   }
-  printMap(ILI9341_BLACK, ILI9341_WHITE); // 將地圖顯示出來
+  printMap(characterColor, backgroundColor); // 將地圖顯示出來
+}
+void WalkAnimation(int &cx, int &cy, int &BridgeSize) // 變數都是全域
+{
+  while(BridgeSize > 0)
+  {
+    DrawCharacter(cx++, cy, backgroundColor); // 清掉上一步
+    DrawCharacter(cx, cy, characterColor); // 畫出下一步
+    delay(50);
+    BridgeSize--;
+  }    
 }
 void printMap(uint16_t color, uint16_t emptycolor)
 { // 可設定顏色
@@ -134,58 +167,104 @@ void printMap(uint16_t color, uint16_t emptycolor)
 }
 void MapAnimation(int &cx, int &cy, uint16_t color, uint16_t emptycolor)
 { // 地圖轉移動畫, 使用三變數的宣告應較好, 還未試過
-  for(int i = 0; i < cx - 20; i++) // 目標是將角色移動到 20
+  //cx += 11;
+  for(int i=1;cx > 20;i++) // 目標是將角色移動到 20
   {
     printMap(emptycolor, emptycolor); // 清掉上一步
     DrawCharacter(cx--, cy, emptycolor); // 清掉上一步, 更新角色位置
-    for(int j = 0; j < MapSize - i; ++j) // 更新地圖陣列一步
+    for(int j = 0; j < MapSize - i ; ++j) // 更新地圖陣列一步
+    {
+      Map[j] = Map[j+1];
+    }
+    if(i==1)
+    {//避免尾端的true延續
+      Map[319] = false;
+      i--;
+    }
+    printMap(color, emptycolor); // 顯示下一步
+    DrawCharacter(cx, cy, characterColor); // 顯示下一步
+  }
+  for(int i=1;Map[25];i++) // 目標是將角色移動到邊緣(角色不動)
+  {
+    printMap(emptycolor, emptycolor); // 清掉上一步
+    for(int j = 0; j < MapSize - i ; ++j) // 更新地圖陣列一步
     {
       Map[j] = Map[j+1];
     }
     printMap(color, emptycolor); // 顯示下一步
-    DrawCharacter(cx, cy, ILI9341_BLACK); // 顯示下一步
   }
   GenerateMap(); // 動畫結束之後, 產生新地圖
 }
+bool flag = false;
 void DrawCharacter(int x, int y, uint16_t color) // 使用 utit8_t 承接 ILI9341_color會出現顏色錯誤的問題
 { // 之後看要不要改成 rgb 自選顏色
-  tft.fillRect(x,y,5,5,color);
+   x=x-11;
+   tft.fillRect(x,y-5,6,5,color);
+   tft.fillRect(x-2,y-5,2,4,color);
+   tft.fillRect(x-4,y-6,2,4,color);
+   tft.fillRect(x-5,y-10,1,6,color);
+   tft.fillRect(x+1,y-7,3,2,color);
+   tft.fillRect(x+4,y-9,2,4,color);
+   tft.fillRect(x+6,y-4,2,2,color);
+   tft.fillRect(x+6,y-10,3,6,color);
+   tft.fillRect(x+5,y-17,10,7,color);
+   tft.fillRect(x+9,y-7,3,1,color);
+   tft.fillRect(x+12,y-6,1,1,color);
+   flag?tft.fillRect(x+7,y-15,2,1,ILI9341_WHITE):tft.fillRect(x+7,y-15,1,1,ILI9341_WHITE); // 眼睛永白, 閉眼? 
+   tft.fillRect(x,y,1,4,color);
+   tft.fillRect(x+5,y,1,4,color);
+   flag = !flag;
+   //x-=5;
+   //y-=5;
+  //tft.fillRect(x,y,10, 10, color);
 }
 void DrawAnimation(int &cx, int &cy) // 橋梁動畫, 為了要讓角色座標在這裡的修改也有用, 使用指標
 {
   cx += 5, cy += 5; // 取得角色右下角的位置
   int r = BridgeSize; // 化緣(:D) 的半徑
-  if(Map[cx+BridgeSize]) // 地圖當中的那個位置有地方採 => 成功踏上橋
+  for(int angle = 270; angle <= 360; angle++) // 使用三角函數更新橋落下的動畫過程
   {
-    for(int angle = 270; angle <= 360; angle++) // 使用三角函數更新橋落下的動畫過程
-    {
-      tft.drawLine(cx, cy, cx+r*cos((angle-1)*DEG_TO_RAD), cy+r*sin((angle-1)*DEG_TO_RAD), ILI9341_WHITE); // 清掉舊的
-      tft.drawLine(cx, cy, cx+r*cos(angle*DEG_TO_RAD), cy+r*sin(angle*DEG_TO_RAD), ILI9341_BLACK); // 畫出新的
-      delay(50);
-    }
-    cx-=5, cy-=5; // 變回角色左上角的座標
-    DrawCharacter(cx,cy,ILI9341_WHITE); // 原本角色清除
-    cx += BridgeSize; // 角色位置更新
-    BridgeSize = 0; // 橋梁長度 reset
-    DrawCharacter(cx,cy,ILI9341_BLACK); // 畫上新的角色
-    MapAnimation(cx,cy,ILI9341_BLACK, ILI9341_WHITE); // 地圖更新動畫, 傳入角色的位置, 顏色
+    tft.drawLine(cx, cy, cx+r*cos((angle-1)*DEG_TO_RAD), cy+r*sin((angle-1)*DEG_TO_RAD), backgroundColor); // 清掉舊的
+    tft.drawLine(cx, cy, cx+r*cos(angle*DEG_TO_RAD), cy+r*sin(angle*DEG_TO_RAD), characterColor); // 畫出新的
+  }
+  if(Map[cx+BridgeSize]||Map[cx+BridgeSize-1]) // 地圖當中的那個位置有地方採 => 成功踏上橋
+  {
+    cx-=5, cy-=5; // 變回角色左上角的座標  
+    if(!Map[cx+BridgeSize+4]) BridgeSize += 11; //避免角色看起來懸空
+    if(!Map[cx+BridgeSize-1]) BridgeSize += 6;
+    showScore(ILI9341_RED, backgroundColor);
+    WalkAnimation(cx, cy, BridgeSize); // 走動動畫
+    MapAnimation(cx,cy,characterColor, backgroundColor); // 地圖更新動畫, 傳入角色的位置, 顏色
   }
   else // 失敗
   {
-    for(int angle = 270; angle <= 450; angle++)
-    {
-      tft.drawLine(cx, cy, cx+r*cos((angle-1)*DEG_TO_RAD), min(169,cy+r*sin((angle-1)*DEG_TO_RAD)), ILI9341_WHITE); // 清掉舊的
-      tft.drawLine(cx, cy, cx+r*cos(angle*DEG_TO_RAD), min(169, cy+r*sin((angle)*DEG_TO_RAD)), ILI9341_BLACK); // 畫出新的, 不可以覆蓋掉下面的按鈕介面, 因此要使用min
-      delay(50); // 更新頻率
-    }
-    cx -= 5, cy -=5;
-    BridgeSize = 0; //可略
-    // Serial.println("D") // 通知播音樂的Arduino播放死亡音效
-    // 記得要死掉喔!
+    deathAnimation();    
+    delay(100000);
+    startUI();
   }
+}
+void showScore(uint16_t color, uint16_t emptycolor)
+{  //顯示分數
+    if(BridgeSize==0) score--;
+    score++;
+    tft.fillRect(190,0,100,20,emptycolor);
+    tft.setCursor(190,0);
+    tft.setTextColor(color, emptycolor);
+    tft.print(score);
+}
+void deathAnimation()
+{ //死亡動畫
+    DrawCharacter(cx+BridgeSize,cy+29,characterColor); // 畫上新的角色
+    cx -= 5, cy -=5;
+    DrawCharacter(cx,cy,backgroundColor); // 原本角色清除
+    tft.setCursor(100,50);
+    tft.setTextColor(ILI9341_RED);
+    tft.setTextSize(2);
+    tft.println(F("You failed."));
 }
 void startUI() // 啟動 UI 介面
 {
+  PressedTime = 0; // 重置按下狀態
   choose = 0; // 預設選擇為第一個, 不可以放到 UpdateUI 當中, 因為硬體中斷的時候會觸發
   if(BuildIndex == 0)
   { // 場景 0
@@ -195,20 +274,38 @@ void startUI() // 啟動 UI 介面
     tft.setTextSize(3); // 設定文字大小
     UpdateUI(); // 時時更新的介面
   }
-  else if(BuildIndex == 1)
-  { // 場景 1
+  else if(BuildIndex == 1) // 場景1 顏色選擇
+  {
+    ChooseSize = sizeof(colors) / sizeof(uint16_t); // 更新選單大小
+    tft.fillScreen(0x21ee); // 螢幕背景畫面
+    for(int i = 0; i < ChooseSize; ++i) // 顯示角色
+    {
+      DrawCharacter(Build1x[i], Build1y[i], colors[i]);
+    }
+    UpdateUI();
+  }
+  else if(BuildIndex == 2)
+  { // 場景 2
     BridgeSize = 0; // 橋的大小預設值
     cx = 20;
     // cy = 130 角色永遠都在預設的高度, 除非落下
     Command = "none"; // 避免出錯, 大概率可略
+    score = 0;
 
-    ChooseSize = sizeof(Build1x) / sizeof(int); // 更新當前場景的選擇數
+    ChooseSize = sizeof(Build2x) / sizeof(int); // 更新當前場景的選擇數
     //Serial.println(ChooseSize);
-    tft.fillScreen(ILI9341_WHITE); // 清空畫面
-    DrawCharacter(cx, cy, ILI9341_BLACK); //角色初始位置
-    tft.drawFastHLine(0,170,tft.width(),ILI9341_BLACK); // 下邊界
+    tft.fillScreen(backgroundColor); // 清空畫面
+    DrawCharacter(cx, cy, characterColor); //角色初始位置
+    tft.drawFastHLine(0,170,tft.width(),characterColor); // 下邊界
     for(int i =0; i < MapSize; ++i) Map[i] = false; // 重新設定地圖
+    for(int i = 0; i < cx+5; ++i) // 角色最初站立的位置必定有平台
+        Map[i] = true; // 設定為有平台
     GenerateMap(); // 產生地圖
+    tft.setCursor(120,0);
+    tft.setTextColor(ILI9341_RED, backgroundColor);
+    tft.setTextSize(2);
+    tft.print(F("Score:"));
+    showScore(ILI9341_RED, backgroundColor);
     UpdateUI(); // 時時更新的UI 
   }
 }
@@ -221,7 +318,7 @@ void UpdateUI() // 更新 UI
     tft.setCursor(0,100); // 屬標位置
     for(int i = 0; i < ChooseSize; i++)
     {
-      if(i == choose) // 如果是被選重的選項
+      if(i == choose) // 如果是被選中的選項
       {
         tft.setTextColor(ILI9341_YELLOW, ILI9341_BLACK); // 文字顏色
         tft.println(chosenlist[i]);
@@ -234,8 +331,30 @@ void UpdateUI() // 更新 UI
       }
     }
   }
-  else if(BuildIndex == 1) 
-  { // 場景 1
+  else if(BuildIndex == 1) // 場景 2 顏色選擇
+  {
+    PressedTime = 0; // 更換選擇角色才會進入, 因此要歸零
+    state = 0;
+    for(int i = 0; i < ChooseSize; ++i)
+    {
+      if(i == choose)
+      {
+        tft.fillRoundRect(Build1x[i]-18,Build1y[i]-19, 23, 23, 3, ILI9341_WHITE);
+        DrawCharacter(Build1x[i], Build1y[i], colors[i]);
+      }
+      else
+      {
+        tft.fillRoundRect(Build1x[i]-18,Build1y[i]-19, 23, 23, 3, 0x21ee);
+        DrawCharacter(Build1x[i], Build1y[i], colors[i]);
+        for(int j = 0; j < 3; j++)
+        {
+          tft.drawRoundRect(Build1x[i]-(20-j),Build1y[i]-(21-j), 26-j, 26-j, 3, 0x21ee);
+        }
+      }
+    }
+  }
+  else if(BuildIndex == 2) 
+  { // 場景 2
     state = 0;
     tft.setTextSize(2);
     for(int i = 0; i < ChooseSize; i++)
@@ -244,8 +363,8 @@ void UpdateUI() // 更新 UI
       {
         for(int j = 0; j < 3; j++) // 渲染按鈕
         {
-          tft.drawRoundRect(Build1x[i]+j,Build1y[i]+j,50-j,50-j,3,ILI9341_BLUE); // 按鈕外框, 顏色藍
-          tft.setCursor(Build1x[i]+10, Build1y[i]+20); // 指標位置 
+          tft.drawRoundRect(Build2x[i]+j,Build2y[i]+j,50-j,50-j,3,ILI9341_BLUE); // 按鈕外框, 顏色藍
+          tft.setCursor(Build2x[i]+10, Build2y[i]+20); // 指標位置 
           tft.setTextColor(ILI9341_BLUE); // 文字顏色
           tft.print(text[i]); // 顯示內容
         }
@@ -253,10 +372,10 @@ void UpdateUI() // 更新 UI
         state = 0; // 場景轉換預設為 0 
         switch(i)
         {
-          case 0: Command = "GO";break;// 選擇 GO
-          case 1: Command = "Build";break; // 選擇BLD
-          case 2: Command = "RST";break;
-          case 3: state = -1; break; // 選擇 ESC
+          case 0: Command = "Build";break;// 選擇 GO
+          case 1: Command = "GO";;break; // 選擇BLD
+          case 2: Command = "RST";break; // RESET
+          case 3: state = -2; break; // 選擇 ESC
           default: Command = "none"; // 例外處理,大概率用不到
         }
       }
@@ -264,8 +383,8 @@ void UpdateUI() // 更新 UI
       {
         for(int j = 0; j < 3; j++) // 渲染按鈕
         {
-          tft.drawRoundRect(Build1x[i]+j,Build1y[i]+j,50-j,50-j,3,ILI9341_BLACK); // 按鈕外框
-          tft.setCursor(Build1x[i]+10, Build1y[i]+20); // 指標位置
+          tft.drawRoundRect(Build2x[i]+j,Build2y[i]+j,50-j,50-j,3,ILI9341_BLACK); // 按鈕外框
+          tft.setCursor(Build2x[i]+10, Build2y[i]+20); // 指標位置
           tft.setTextColor(ILI9341_BLACK); // 文字顏色
           tft.print(text[i]); // 印出內容
         }
@@ -274,14 +393,3 @@ void UpdateUI() // 更新 UI
   }
   //Serial.println(String("State: ") + state); // 顯示狀態
 }
-/*
-代辦事項
-角色設計動畫: 不關我的事, 我不需要做這個, 對吧? ...對吧!
-死亡及背景音效: 會使用Serial發出訊號通知另一台Arduino要做的事情
-
-地圖產生
-角色每走一步, 地圖就要更新一遍, 並且產生新的平台 (不只有一個), (2023/12/8 已完成), 地圖動畫還有一些小瑕疵
-新的平台要有一個最小的數值, 如果空閒區域沒有最小值那樣長, 停止產生
-
-角色的更新: 角色如果從頭到尾都訂在一個位置可以減少動畫移動角色花費的效能
-*/
