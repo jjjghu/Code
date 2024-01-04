@@ -1,10 +1,10 @@
 #include <stdio.h>
 int main(void)
 {
-	int people,cost,i,j,k,l;//¨®ªº¼Æ¶q
+	int people,cost,i,j,k,l;//è»Šçš„æ•¸é‡
 	int best[5] = {0};
 	bool first = true;
-	printf("½Ğ¿é¤J­¼«ÈÁ`¤H¼Æ:");
+	printf("è«‹è¼¸å…¥ä¹˜å®¢ç¸½äººæ•¸:");
 	scanf("%d",&people);
 	for(i=0;i<=people/4+1;i++)
 	{
@@ -35,11 +35,11 @@ int main(void)
 			}
 		}
 	}
-	printf("³Ì¤Ö»İ­n%d¤¸\n",best[0]);
-	printf("¥|ªù©Ğ¨®%d¥x\n",best[1]);
-	printf("°Ó°È¥ğ®È¨®%d¥x\n",best[2]);
-	printf("¤p«¬¤Ú¤h%d¥x\n",best[3]);
-	printf("¤¤«¬¤Ú¤h%d¥x\n",best[4]);
+	printf("æœ€å°‘éœ€è¦%då…ƒ\n",best[0]);
+	printf("å››é–€æˆ¿è»Š%då°\n",best[1]);
+	printf("å•†å‹™ä¼‘æ—…è»Š%då°\n",best[2]);
+	printf("å°å‹å·´å£«%då°\n",best[3]);
+	printf("ä¸­å‹å·´å£«%då°\n",best[4]);
 	
 }
  

@@ -5,11 +5,11 @@ int main(void){
 	char input[17];
 	int n,num[17],a,sum;
 	while(1){
-		printf("½Ğ¿é¤J¥d¸¹:");
+		printf("è«‹è¼¸å…¥å¡è™Ÿ:");
 		scanf("%s",input);
 		n=strlen(input);
 		if(!(n==15||n==16)){
-			printf("Error! «D15©Î16¥d¸¹¼Æ¦r!");
+			printf("Error! é15æˆ–16å¡è™Ÿæ•¸å­—!");
 			break;
 		}
 		for(a=0;a<n;a++){
@@ -20,7 +20,7 @@ int main(void){
 			if(num[a]<0||num[a]>9) check=1;
 		}
 		if(check==1){
-			printf("Error! «D15©Î16¥d¸¹¼Æ¦r!");
+			printf("Error! é15æˆ–16å¡è™Ÿæ•¸å­—!");
 			break;
 		}
 		if(n==15){
@@ -33,12 +33,12 @@ int main(void){
 			}
 			sum=sum%10;
 			if(sum==0&&sum==num[14]){
-				printf("¥d¸¹¥¿½T!!\n");
+				printf("å¡è™Ÿæ­£ç¢º!!\n");
 				continue;
 			}
 			else sum=10-sum;
-			if(sum==num[14]) printf("¥d¸¹¥¿½T!!");
-			else printf("¥d¸¹¿ù»~!!");
+			if(sum==num[14]) printf("å¡è™Ÿæ­£ç¢º!!");
+			else printf("å¡è™ŸéŒ¯èª¤!!");
 			
 		}
 		else if(n==16){
@@ -51,12 +51,12 @@ int main(void){
 			}
 			sum=sum%10;
 			if(sum==0&&sum==num[15]){
-				printf("¥d¸¹¥¿½T!!\n");
+				printf("å¡è™Ÿæ­£ç¢º!!\n");
 				continue;
 			}
 			else sum=10-sum;
-			if(sum==num[15]) printf("¥d¸¹¥¿½T!!");
-			else printf("¥d¸¹¿ù»~!!");
+			if(sum==num[15]) printf("å¡è™Ÿæ­£ç¢º!!");
+			else printf("å¡è™ŸéŒ¯èª¤!!");
 			
 		}
 		printf("\n");

@@ -5,7 +5,7 @@ int main(void){
 	char a[100];
 	bool t[100][2],check=false,find=false;
 	int x,y,n,ns,time,z,xs,ys,c1,c2,count=0,i,dot=0;
-	printf("½Ð¿é¤J¤@­Ó¦r¦ê:");
+	printf("è«‹è¼¸å…¥ä¸€å€‹å­—ä¸²:");
 	scanf("%s",a);
 		n=strlen(a);
 		ns=n;
@@ -31,12 +31,12 @@ int main(void){
 				//	printf("a[%d] vs a[%d] = %c vs %c\n",x,y,a[x],a[y]);
 					if(check) count++;
 					if(count==ns){
-						t[y][0]=true;//°_ÂI 
-						t[x][1]=true;//²×ÂI
+						t[y][0]=true;//èµ·é»ž 
+						t[x][1]=true;//çµ‚é»ž
 						dot++;
 						/*printf("\ncount = %d OH YES\n",count);
-						printf("°_ÂIt[%d][0]==%d\n",y,t[y][0]);
-						printf("²×ÂIt[%d][1]==%d\n",x,t[x][1]);*/
+						printf("èµ·é»žt[%d][0]==%d\n",y,t[y][0]);
+						printf("çµ‚é»žt[%d][1]==%d\n",x,t[x][1]);*/
 						
 					}
 				//	printf("count = %d\n",count);
@@ -53,7 +53,7 @@ int main(void){
 				}
 				if(find){
 					//printf("I found it!!!\n");
-					printf("³Ìªø°j¤å¬°:");
+					printf("æœ€é•·è¿´æ–‡ç‚º:");
 					for(c1=0,c2=0;c1<=99;c1++){
 						if(t[c1][0]==true){
 							for(i=0;i<ns;i++){
