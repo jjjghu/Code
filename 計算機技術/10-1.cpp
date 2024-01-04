@@ -16,19 +16,19 @@ void sort(int *enter,int n)
 int main(void)
 {
 	int n,i;
-	printf("½Ð¿é¤J¾ã¼Æªº­Ó¼Æ:");
+	printf("è«‹è¼¸å…¥æ•´æ•¸çš„å€‹æ•¸:");
 	scanf("%d",&n);
 	int enter[n];
 	for(i=0;i<n;i++)
 	{
-		printf("½Ð¿é¤J²Ä%d­Ó¼Æ:",i+1);
+		printf("è«‹è¼¸å…¥ç¬¬%då€‹æ•¸:",i+1);
 		scanf("%d",&enter[i]);
 	}
 	for(i=0;i<n;i++)
 	{
 		sort(enter,n);
 	}
-		printf("±Æ§Çµ²ªG:");
+		printf("æŽ’åºçµæžœ:");
 		for(i=0;i<n;i++)
 		{
 			printf("%d ",enter[i]);

@@ -1,21 +1,27 @@
-#include<stdlib.h>
-#include<stdio.h>
-int f(int x ,int y){
-	while(x%y!=0&&y%x!=0){
-		if(x>=y) x=x%y;
-		else if(x<y) y=y%x;
+#include <stdlib.h>
+#include <stdio.h>
+int f(int x, int y)
+{
+	while (x % y != 0 && y % x != 0)
+	{
+		if (x >= y)
+			x = x % y;
+		else if (x < y)
+			y = y % x;
 	}
-	if(x>y) return y;
-	if(x<=y) return x;
+	if (x > y)
+		return y;
+	if (x <= y)
+		return x;
 }
 
-
-int main(void){
-	int x,y,n;
-	printf("½Ð¿é¤Jªø¤è§Îªºªø(¤½¤À)¬°...");
-	scanf("%d",&x);
-	printf("½Ð¿é¤Jªø¤è§Îªº¼e(¤½¤À)¬°...");
-	scanf("%d",&y);
-	n=f(x,y);
-	printf("³Ì¤Ö»Ý­n%d­Ó¬Û¦Pªº¥¿¤è§Î¡A±Æ¦¨Ãäªø¬°%d¤½¤Àªº¥¿¤è§Î",(x*y)/(n*n),x*y/n);
+int main(void)
+{
+	int x, y, n;
+	printf("è«‹è¼¸å…¥é•·æ–¹å½¢çš„é•·(å…¬åˆ†)ç‚º...");
+	scanf("%d", &x);
+	printf("è«‹è¼¸å…¥é•·æ–¹å½¢çš„å¯¬(å…¬åˆ†)ç‚º...");
+	scanf("%d", &y);
+	n = f(x, y);
+	printf("æœ€å°‘éœ€è¦%då€‹ç›¸åŒçš„æ­£æ–¹å½¢ï¼ŒæŽ’æˆé‚Šé•·ç‚º%då…¬åˆ†çš„æ­£æ–¹å½¢", (x * y) / (n * n), x * y / n);
 }

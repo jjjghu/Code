@@ -20,9 +20,9 @@ int main(void)
 	int ey,em,ed;
 	int result = 0;
 	int r1=0,r2=0;
-	printf("½Ğ¿é¤J¦è¤¸¶}©l¤é´Á(yyyy/mm/dd)¬°...");
+	printf("è«‹è¼¸å…¥è¥¿å…ƒé–‹å§‹æ—¥æœŸ(yyyy/mm/dd)ç‚º...");
 	scanf("%d/%d/%d",&y,&m,&d);
-	printf("½Ğ¿é¤J¦è¤¸µ²§ô¤é´Á(yyyy/mm/dd)¬°...");
+	printf("è«‹è¼¸å…¥è¥¿å…ƒçµæŸæ—¥æœŸ(yyyy/mm/dd)ç‚º...");
 	scanf("%d/%d/%d",&ey,&em,&ed);
 	result = years(y,ey);
 	if(y%400==0) add = true;
@@ -42,6 +42,6 @@ int main(void)
 	{
 		if(em<=2&&ed<=28)	result--;
 	}
-	printf("¦¹´Á¶¡ªº2¤ë29¤é¦@¦³%d¦¸",result);
+	printf("æ­¤æœŸé–“çš„2æœˆ29æ—¥å…±æœ‰%dæ¬¡",result);
 	
 }
