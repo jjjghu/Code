@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.util.*;
 import java.io.*;
 
-public class S1154041 {
-    public static void main(String args[]) {
+public class S1154041
+{
+    public static void main(String args[])
+    {
         JFrame frm = new JFrame("個人資料登入");
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setLayout(new BoxLayout(frm.getContentPane(), BoxLayout.Y_AXIS));
@@ -55,35 +57,43 @@ public class S1154041 {
         JTextArea text = new JTextArea(10, 10);
         JScrollPane scrollPane = new JScrollPane(text);
 
-        save.addActionListener(new ActionListener() {
+        save.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 String schoolNumber = schoolNum.getText();
                 String studentName = name.getText();
                 String gen = male.isSelected() ? "男生" : "女生";
                 String addr = (String) address.getSelectedItem();
                 String output = schoolNumber + "," + studentName + "," + gen + "," + addr + "\n";
-                try {
+                try{
                     BufferedWriter bfw = new BufferedWriter(new FileWriter("output.txt", true));
                     bfw.write(output);
                     bfw.close();
                 }
-                catch (IOException ex) {
+                catch (IOException ex)
+                {
                     ex.printStackTrace();
                 }
             }
         });
-        show.addActionListener(new ActionListener() {
+        show.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 StringBuilder content = new StringBuilder();
-                try (BufferedReader bfr = new BufferedReader(new FileReader("output.txt"))) {
+                try (BufferedReader bfr = new BufferedReader(new FileReader("output.txt")))
+                {
                     String line;
-                    while ((line = bfr.readLine()) != null) {
+                    while ((line = bfr.readLine()) != null)
+                    {
                         content.append(line).append("\n");
                     }
                 }
-                catch (IOException ex) {
+                catch (IOException ex)
+                {
                     ex.printStackTrace();
                 }
                 text.setText(content.toString());
