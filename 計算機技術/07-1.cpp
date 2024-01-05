@@ -7,13 +7,13 @@ int main(void){
 	char b[30000];
 	printf("Please input a decimal number:");
 	scanf("%d",&a);
-	c=a;//¼È¦sc¥Î¨Óºâ°}¦C­nªº¤j¤pcount 
+	c=a;//æš«å­˜cç”¨ä¾†ç®—é™£åˆ—è¦çš„å¤§å°count 
 	while(c!=0){
 		c=c/2;
 		count++;
 	}
 	i=count;
-	int d[count];//«Å§i°}¦C¤j¤p
+	int d[count];//å®£å‘Šé™£åˆ—å¤§å°
 	for(count=i-1;count>=0;count--){
 		d[count]=a%2;
 		a=a/2;

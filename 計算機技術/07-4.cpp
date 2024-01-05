@@ -8,10 +8,10 @@ int main(void){
 	int n,s,i,check=1;
 	memset(c, 0, 26); memset(d, 0 ,26);
 	printf("Please input string #1:");
-		gets(a);//¦r¦ê¿é¤J¨ìa·í¤¤ 
+		gets(a);//å­—ä¸²è¼¸å…¥åˆ°aç•¶ä¸­ 
 		for(i=0;i<strlen(a);i++){
-			a[i]=toupper(a[i]);//¦r¦ê¤º®e¥þ§ï¤j¼g 
-			if(isalpha(a[i])&&isupper(a[i])) c[a[i]-'A']++;	//a[i]¥Nªí§A¿é¤Jªº¦r¤¸,¦r¤¸´î¼Ð·ÇA=§âA­q¬°­ìÂI 
+			a[i]=toupper(a[i]);//å­—ä¸²å…§å®¹å…¨æ”¹å¤§å¯« 
+			if(isalpha(a[i])&&isupper(a[i])) c[a[i]-'A']++;	//a[i]ä»£è¡¨ä½ è¼¸å…¥çš„å­—å…ƒ,å­—å…ƒæ¸›æ¨™æº–A=æŠŠAè¨‚ç‚ºåŽŸé»ž 
 		}
 	//	for(i=0;i<26;i++) printf("%d",c[i]);
 	printf("Please input string #2:");

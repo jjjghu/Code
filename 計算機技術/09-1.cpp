@@ -20,8 +20,8 @@ void towers(int n,char from, char aux, char to)
 int main(void)
 {
 	
-	printf("½Ð¿é¤JA¬W·í¤¤ªºÀô­Ó¼Æ");
+	printf("è«‹è¼¸å…¥AæŸ±ç•¶ä¸­çš„ç’°å€‹æ•¸");
 	scanf("%d",&n);
 	towers(n,'A','B','C');
-	printf("¦@»Ý%d­Ó¨BÆJ",count);
+	printf("å…±éœ€%då€‹æ­¥é©Ÿ",count);
 }
