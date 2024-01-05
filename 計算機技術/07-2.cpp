@@ -2,9 +2,9 @@
 #include<stdlib.h>
 int main(void){
 	int a,b,n[10]{0},i,s;
-	printf("½Ğ¿é¤JA:B.....");
+	printf("è«‹è¼¸å…¥A:B.....");
 	scanf("%d:%d",&a,&b);
-	printf("0~9ªº¥X²{¦¸¼Æ¬°.....");
+	printf("0~9çš„å‡ºç¾æ¬¡æ•¸ç‚º.....");
 	for(;a<=b;a++){
 		i=a;
 		while(i!=0){
