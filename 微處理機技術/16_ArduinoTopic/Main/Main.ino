@@ -14,23 +14,25 @@ String Command = "none"; // 指令預設為無
 int BridgeSize = 0; // 橋梁長度
 int cx = 20; // 位置 x
 int cy = 130; // 位置 y
+#define buzzer 5
 #define TFT_CS -1
 #define TFT_RST 8
 #define TFT_DC 9 
 #define TFT_MOSI 11
 #define TFT_CLK 13
 #define TFT_MISO 13
+int widthCell; // 定位座標
+int heightCell; // 定位座標, 用於畫場景
 //Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST); //顯示加速
-const String list[2] = {"      PLAY     ", "      QUIT     "}; // 場景 0
-const String chosenlist[2] = {"     [PLAY]    ", "     [QUIT]    "}; // 場景 0
+const String list[2] = {"       PLAY     ", "       QUIT     "}; // 場景 0
 
-const int Build1x[] = {30, 90, 150, 210, 270}; // 場景 2
-const int Build1y[] = {160, 160, 160, 160, 160};// 場景 2
-const uint16_t BACKGROUND[] = {ILI9341_WHITE, 0x07ff, 0xfc1f, 0xffef, 0x87f0}; // 顏色選單
-const uint16_t colors[] = {ILI9341_BLACK, ILI9341_RED, ILI9341_DARKGREEN, ILI9341_NAVY, ILI9341_PURPLE}; // 顏色選單
+int Build1x[5] = {0}; // 場景 2
+int Build1y[5] = {0};// 場景 2
+const uint16_t BACKGROUND[] = {ILI9341_WHITE, 0x07ff, 0xf60f, 0xffef, 0x87f0}; // 顏色選單
+const uint16_t colors[] = {ILI9341_BLACK, 0xc165, 0x5c67, 0x23b9, 0x8336}; // 顏色選單
 uint16_t backgroundColor = ILI9341_WHITE; // 玩家選擇的顏色
-uint16_t characterColor = ILI9341_BLACK; 
+uint16_t characterColor = ILI9341_BLACK;
 const uint16_t renderColor = 0x21ee; // 渲染場景時的背景顏色
 
 const int Build2x[] = {3, 63, 123, 183}; // 場景 2
@@ -42,8 +44,15 @@ const int mnSize = 15; // 橋梁最小的長度
 int lastspace = cx; // 一開始的產生起點, 角色的腳下一開始一定要有可以踩的地點
 bool Map[320] = {false}; // 產生地圖
 int MapSize = 320; // 地圖大小
+
 void setup()
 {
+  // 設定溝通pin腳
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
+
   Serial.begin(9600); // 溝通頻率
   pinMode(buttom, INPUT_PULLUP); // 上拉電阻
   pinMode(buttomB, INPUT_PULLUP); // 上拉電阻
@@ -52,6 +61,14 @@ void setup()
   tft.begin(); // 啟動
   tft.setRotation(3); // 角度旋轉
   randomSeed(analogRead(0));
+  widthCell = tft.width() / 10;
+  heightCell = tft.height() / 10;
+  int r = heightCell * 3;
+  for(int i = 270, count = 0; i < 270+360; i+=360/5, ++count)
+  {
+    Build1x[count] = widthCell*5+r*cos(i*DEG_TO_RAD) + 5;
+    Build1y[count] = heightCell*5+r*sin(i*DEG_TO_RAD) + 5;
+  }
   startUI(); // 啟動UI 
 }
 void loop() // 沒用的東西
@@ -61,22 +78,26 @@ void flash() // 選擇按鈕的硬體中斷
 {
   if(millis() - prevtime > duration) // 硬體中斷
   {
+    tone(buzzer, 442, 100);
     prevtime = millis();
     choose = (choose+1) % ChooseSize; // 根據當前選單的大小進行切換
     // Serial.println(String("choose: ") + choose);
     UpdateUI(); // 更新顯示 UI
+
   }
 }
 void flashB() // 確認按鈕的硬體中斷
 {
   if(millis() - prevtimeB > duration) // 距離上次按下的時間超過duration
   {
+    tone(buzzer, 587, 100);
     prevtimeB = millis();
     if(state) // -1 0 1
     {
       BuildIndex += state; // 跟據 state 切換場景
       state = 0; // 重置
       duration = 5000; // 避免場景轉換未完成誤觸
+      // TODO: send msg.
       startUI(); // 渲染新場景
     }
     else if(BuildIndex == 1) // 場景1 顏色選擇
@@ -104,7 +125,7 @@ void flashB() // 確認按鈕的硬體中斷
       else if(Command == "GO")
       {
         DrawAnimation(cx, cy); // 橋落下 + 角色 + 地圖的動畫
-        choose = 0; // 選擇改回　BUILD
+        choose = 0; // 選擇改回BUILD
         UpdateUI(); // 更新選單顯示
       }
       else if(Command == "RST") // 重置當前畫面
@@ -145,6 +166,7 @@ void WalkAnimation(int &cx, int &cy, int &BridgeSize) // 變數都是全域
   {
     DrawCharacter(cx++, cy, backgroundColor); // 清掉上一步
     DrawCharacter(cx, cy, characterColor); // 畫出下一步
+    showScore(ILI9341_RED, backgroundColor);
     delay(50);
     BridgeSize--;
   }    
@@ -195,6 +217,15 @@ void MapAnimation(int &cx, int &cy, uint16_t color, uint16_t emptycolor)
   }
   GenerateMap(); // 動畫結束之後, 產生新地圖
 }
+void DrawBackGround()
+{
+  tft.fillScreen(0x39a7);
+  tft.fillRoundRect(widthCell, heightCell, widthCell*8, heightCell*8, 5, 0x4f39);
+  for(int i = 0; i < 3; i++)
+  {
+    tft.drawRoundRect(widthCell-i, heightCell-i, widthCell*8+2*i, heightCell*8+2*i, 5, 0xd4eb);
+  }
+}
 bool flag = false;
 void DrawCharacter(int x, int y, uint16_t color) // 使用 utit8_t 承接 ILI9341_color會出現顏色錯誤的問題
 { // 之後看要不要改成 rgb 自選顏色
@@ -213,7 +244,6 @@ void DrawCharacter(int x, int y, uint16_t color) // 使用 utit8_t 承接 ILI934
    flag?tft.fillRect(x+7,y-15,2,1,ILI9341_WHITE):tft.fillRect(x+7,y-15,1,1,ILI9341_WHITE); // 眼睛永白, 閉眼? 
    tft.fillRect(x,y,1,4,color);
    tft.fillRect(x+5,y,1,4,color);
-   flag = !flag;
    //x-=5;
    //y-=5;
   //tft.fillRect(x,y,10, 10, color);
@@ -247,20 +277,27 @@ void showScore(uint16_t color, uint16_t emptycolor)
 {  //顯示分數
     if(BridgeSize==0) score--;
     score++;
-    tft.fillRect(190,0,100,20,emptycolor);
-    tft.setCursor(190,0);
+    tft.setCursor(190,10);
     tft.setTextColor(color, emptycolor);
     tft.print(score);
 }
 void deathAnimation()
 { //死亡動畫
+    flag = true;// 眼睛改變
     DrawCharacter(cx+BridgeSize,cy+29,characterColor); // 畫上新的角色
+    flag = false;
     cx -= 5, cy -=5;
     DrawCharacter(cx,cy,backgroundColor); // 原本角色清除
     tft.setCursor(100,50);
     tft.setTextColor(ILI9341_RED);
     tft.setTextSize(2);
     tft.println(F("You failed."));
+    
+    // 傳送播放死亡音樂之訊號
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    // 等待死亡音樂播放,此參數經精心校調
+    delay(6*90000);
 }
 void startUI() // 啟動 UI 介面
 {
@@ -268,16 +305,29 @@ void startUI() // 啟動 UI 介面
   choose = 0; // 預設選擇為第一個, 不可以放到 UpdateUI 當中, 因為硬體中斷的時候會觸發
   if(BuildIndex == 0)
   { // 場景 0
+    // 送播放開始畫面音樂的訊號
+    // Serial.write(SONG_0, 2);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, LOW);
     ChooseSize = sizeof(list) / sizeof(String); // 更新當前場景的選擇數
-    tft.fillScreen(ILI9341_BLACK); // 清空畫面
+    DrawBackGround(); // 顯示畫面
     tft.setTextColor(ILI9341_WHITE, ILI9341_BLACK); // 設定該場景的顯示顏色
     tft.setTextSize(3); // 設定文字大小
     UpdateUI(); // 時時更新的介面
   }
   else if(BuildIndex == 1) // 場景1 顏色選擇
   {
+    // 送播音樂的訊號
+    // Serial.write(SONG_0, 2);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, LOW);
     ChooseSize = sizeof(colors) / sizeof(uint16_t); // 更新選單大小
-    tft.fillScreen(0x21ee); // 螢幕背景畫面
+    // tft.fillScreen(renderColor); // 螢幕背景畫面
+    tft.fillRoundRect(widthCell, heightCell, widthCell*8, heightCell*8, 5, 0x07fa);
+    for(int r = -1; r <= 1; ++r)
+    {
+      tft.drawCircle(widthCell*5, heightCell*5, heightCell*3 + r, 0xee18);
+    }
     for(int i = 0; i < ChooseSize; ++i) // 顯示角色
     {
       DrawCharacter(Build1x[i], Build1y[i], colors[i]);
@@ -286,6 +336,10 @@ void startUI() // 啟動 UI 介面
   }
   else if(BuildIndex == 2)
   { // 場景 2
+    // 送播音樂的訊號
+    // Serial.write(SONG_1, 2);
+    digitalWrite(6, LOW);
+    digitalWrite(7, HIGH);
     BridgeSize = 0; // 橋的大小預設值
     cx = 20;
     // cy = 130 角色永遠都在預設的高度, 除非落下
@@ -301,7 +355,7 @@ void startUI() // 啟動 UI 介面
     for(int i = 0; i < cx+5; ++i) // 角色最初站立的位置必定有平台
         Map[i] = true; // 設定為有平台
     GenerateMap(); // 產生地圖
-    tft.setCursor(120,0);
+    tft.setCursor(120,10);
     tft.setTextColor(ILI9341_RED, backgroundColor);
     tft.setTextSize(2);
     tft.print(F("Score:"));
@@ -320,13 +374,13 @@ void UpdateUI() // 更新 UI
     {
       if(i == choose) // 如果是被選中的選項
       {
-        tft.setTextColor(ILI9341_YELLOW, ILI9341_BLACK); // 文字顏色
-        tft.println(chosenlist[i]);
+        tft.setTextColor(ILI9341_YELLOW); // 文字顏色
+        tft.println(list[i]);
         if(i == 0) state = 1; // 切換場景的準備工作
       }
       else // 沒有被選中的選項
       {
-        tft.setTextColor(ILI9341_WHITE, ILI9341_BLACK); // 文字顏色設定
+        tft.setTextColor(ILI9341_WHITE); // 文字顏色設定
         tft.println(list[i]); // 印出選項
       }
     }
@@ -344,11 +398,11 @@ void UpdateUI() // 更新 UI
       }
       else
       {
-        tft.fillRoundRect(Build1x[i]-18,Build1y[i]-19, 23, 23, 3, 0x21ee);
+        tft.fillRoundRect(Build1x[i]-18,Build1y[i]-19, 23, 23, 3, renderColor);
         DrawCharacter(Build1x[i], Build1y[i], colors[i]);
         for(int j = 0; j < 3; j++)
         {
-          tft.drawRoundRect(Build1x[i]-(20-j),Build1y[i]-(21-j), 26-j, 26-j, 3, 0x21ee);
+          tft.drawRoundRect(Build1x[i]-(20-j),Build1y[i]-(21-j), 26-j, 26-j, 3, renderColor);
         }
       }
     }
