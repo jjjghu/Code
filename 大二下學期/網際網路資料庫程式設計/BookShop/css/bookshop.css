@@ -1,0 +1,102 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+/* header 開始 */
+header
+{
+    background-color: rgb(57, 62, 70);
+    height: 80px;
+    width: 100%;
+}
+.title
+{
+    text-decoration: none;
+    color: rgb(238, 238, 238);
+}
+header h1
+{
+    position: absolute;
+    background-image: url(../images/book.png);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    left: 50px;
+    line-height: 80px;
+    padding-left: 65px;
+}
+/* header 結束 */
+/* nav 開始 */
+nav ul
+{
+    position: absolute;
+    right: 5vw;
+    top: 0px;
+    line-height: 80px;
+}
+nav li
+{
+    display: inline;
+    margin-left: 4vw;
+}
+nav a
+{
+    position: relative;
+    text-decoration: none;
+    color: rgb(238, 238, 238);
+    font-size: 20px;
+    padding:5px;
+}
+nav a::before
+{
+    content: " ";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: rgb(0, 173, 181);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s ease;
+}
+nav a:hover::before
+{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+/* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+nav a
+{
+  position: relative;
+  z-index: 1;
+}
+nav a::before
+{
+  content: " "; 
+  display: block;
+  position: absolute;
+  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+  background: rgb(0, 173, 181);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform .3s ease; 
+}
+nav a:hover::before
+{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+/* 淡入淡出效果結尾 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+/* nav 結束 */
+
+/* 輪播開始*/
+/* 輪播結束 */
+
+/*
+color palette
+rgb(34, 40, 49)
+rgb(57, 62, 70)
+rgb(0, 173, 181)
+rgb(238, 238, 238)
+*/

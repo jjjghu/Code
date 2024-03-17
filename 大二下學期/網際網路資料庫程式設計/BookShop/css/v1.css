@@ -1,0 +1,132 @@
+*
+{
+    margin:0;
+    padding:0;
+}
+header
+{
+    background-color: rgb(34, 40, 49); 
+    height: 80px;
+    width: 100%;
+}
+header 
+{
+    padding-left: 4vw;
+}
+header ul
+{
+    position:absolute;
+    right:5vw;
+    top:0;
+    line-height: 80px;
+}
+header li
+{   
+    display: inline; /*將內物件橫向排列*/
+    margin-right:4vw;
+}
+header a
+{
+    color:rgb(238, 238, 238);
+    text-decoration:none;
+}
+header a:hover
+{
+    /*被選取顯示底線*/
+    text-decoration:underline;
+}
+ul.ads
+{
+    position:relative;
+    width: 600px;
+    height: 280px;
+    list-style:none;
+    background-color:lightgray;
+    overflow:hidden;
+}
+li.ad
+{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Helvetica;
+    font-size: 120px;
+    transition:.5s transform ease-in-out;
+}
+.ad:nth-of-type(1)
+{
+    background-color: rgb(97, 147, 241);
+}
+.ad:nth-of-type(2)
+{
+    background-color: orange;
+    left:100%;
+}
+.ad:nth-of-type(3)
+{
+    background-color: navy;
+    left: 200%;
+}
+input[type="radio"]
+{
+    position:relative;
+    display:none;
+}
+.controlVisible
+{
+    position:absolute;
+    width: 100%;
+    bottom:12px;
+    text-align:center;
+}
+.controlVisible label
+{
+    display:inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin:0 3px;
+    border:2px solid #fff;
+}
+.ads input[type="radio"]:nth-of-type(1):checked ~ .controlVisible label:nth-of-type(1)
+{
+  background-color: #333;
+}
+.ads input[type="radio"]:nth-of-type(2):checked ~ .controlVisible label:nth-of-type(2)
+{
+  background-color: #333;
+}
+.ads input[type="radio"]:nth-of-type(3):checked ~ .controlVisible label:nth-of-type(3)
+{
+  background-color: #333;
+}
+.ads input[type="radio"]:nth-of-type(1):checked ~ .ad{
+  transform: translatex(0%);
+}
+.ads input[type="radio"]:nth-of-type(2):checked ~ .ad
+{
+    transform:translatex(-100%);
+}
+.ads input[type="radio"]:nth-of-type(3):checked ~ .ad
+{
+    transform:translatex(-200%);
+}
+/*
+color palette
+rgb(34, 40, 49)
+rgb(57, 62, 70)
+rgb(0, 173, 181)
+rgb(238, 238, 238)
+header ul
+{
+    display: flex;
+    justify-content: flex-end;
+    font-size:1.2rem;
+}
+*/
