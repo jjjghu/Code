@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>書店Demo</title>
-  <link rel="stylesheet" href="../css/bookshop.css" />
+  <!-- 圖標include, boxIcon -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/bookshop.css" />
 </head>
 
 <body>
@@ -19,15 +21,17 @@
         <li><a href="#">註冊</a></li>
         <li><a href="#">會員中心</a></li>
         <li><a href="#">我的訂單</a></li>
-        <li><a href="#">購物車</a></li>
+        <li><a href="#">購物車<span>0</span></a></li>
         <li><a href="#">電子書櫃</a></li>
       </ul>
     </nav>
   </header>
   <main>
     <section class="container">
+      <!-- 廣告輪播區域 -->
       <div class="slider-wrapper">
         <div class="slider">
+          <!-- 三張廣告圖片 -->
           <img id="slide-1"
             src="https://images.unsplash.com/photo-1682686581498-5e85c7228119?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="slider 1">
@@ -38,19 +42,21 @@
             src="https://images.unsplash.com/photo-1654859869130-fd0a2aa5539b?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="slider 3">
         </div>
+        <!-- 廣告輪播按鈕 -->
         <div class="slider-nav">
-          <!-- 利用 href 連接, 按下之後就會跳轉 -->
+          <!-- 利用 href 連接, 按下之後就會跳轉到那個地方 -->
           <a href="#slide-1"></a>
           <a href="#slide-2"></a>
           <a href="#slide-3"></a>
         </div>
       </div>
+      <!-- 購物列表 -->
+      <div class="listProduct">
+        
+      </div>
     </section>
   </main>
-  <footer>
-
-  </footer>
-
 </body>
-<script src = "js/bookshop.js"></script>
+<script src="js/bookshop.js"></script>
+
 </html>
