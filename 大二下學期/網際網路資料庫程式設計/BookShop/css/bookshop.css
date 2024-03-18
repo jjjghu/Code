@@ -3,33 +3,37 @@
     margin: 0;
     padding: 0;
 }
+/* body
+{
+    font-family: Microsoft Yahei, serif;
+} 
+*/
 /* header 開始 */
 header
 {
     display:flex;
+    justify-content: space-between;
     background-color: rgb(57, 62, 70);
     height:7vh;
     width:100%;
-    /* height: 80px; */
-    /* width: 100%; */
 }
-.title
+header .title
 {
+    position: relative;
     text-decoration: none;
     color: rgb(238, 238, 238);
-    position: absolute;
     background-image: url(../images/book.png);
     background-size: 6vh;
     background-repeat: no-repeat;
     left: 3vw;
     line-height: 7vh;
-    padding-left: 65px;
+    padding-left: 3.5vw;
 }
 /* header 結束 */
 /* nav 開始 */
 nav ul
 {
-    position: absolute;
+    position: relative;
     /* 靠右邊 */
     right: 0vw;
     /* 文字大小 */
@@ -37,9 +41,9 @@ nav ul
 }
 nav li
 {
-    display: inline;
+    display: inline-block;
     /* 每一項之間的距離 */
-    margin-left: 0.5vw;
+    margin: 0vw 0.5vw;
 }
 nav a
 {
@@ -47,7 +51,7 @@ nav a
     text-decoration: none;
     color: rgb(238, 238, 238);
     font-size: 1.2rem;
-    padding:1rem;
+    padding: 0.5rem 0.3rem;
 }
 nav a::before
 {
@@ -66,6 +70,21 @@ nav a:hover::before
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+/* 購物車圖示開始 */
+nav li a span
+{
+    position: absolute;
+    width:20px;
+    height:20px;
+    top:13px;
+    text-align:center;
+    line-height:20px;
+    background-color:red;
+    border-radius:50%;
+}
+
+/* 購物車圖示結束 */
+
 /* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 nav a
 {
@@ -77,7 +96,8 @@ nav a::before
   content: " "; 
   display: block;
   position: absolute;
-  inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+  inset: 0;
+  /*  top: 0; right: 0; bottom: 0; left: 0; */
   background: rgb(0, 173, 181);
   z-index: -1;
   transform: scaleX(0);
@@ -93,7 +113,7 @@ nav a:hover::before
 /* nav 結束 */
 
 /* 輪播開始*/
-.Adcontainer
+.container
 {
     padding:2rem;
 }
@@ -146,7 +166,7 @@ nav a:hover::before
     display:flex;
     /* 每個子物件之間的距離 */
     column-gap:1rem;
-    /* 位置繼承為 relative, 雖然上面寫absolute */
+    /* 位置繼承為 relative, 雖然上面寫absolute (相對於父元素的絕對位置)*/
     position: absolute;
     bottom:1.25rem;
     /* 置中對齊 */
@@ -175,7 +195,7 @@ nav a:hover::before
     opacity:1;
 }
 /* 輪播結束 */
-
+/* 購物區域開始 */
 /*
 color palette
 rgb(34, 40, 49)

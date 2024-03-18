@@ -46,14 +46,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 stopAutoPlay();
             }
         });
-    }, { threshold: 0.5 }); // 至少有50%的元素在視窗中
+    }, { threshold: 1.0 }); // 至少有100%的元素在視窗中
 
     // 觀察輪播的容器
     observer.observe(document.querySelector('.slider-wrapper'));
 
     // 啟動自動播放
     startAutoPlay();
-    
+
     // 設定觸發間隔
     // setInterval(goToNextSlide, 3000); // 3000ms = 3 second
 });
