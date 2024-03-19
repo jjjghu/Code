@@ -1,132 +1,213 @@
 *
 {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+body
+{
+    font-family: Microsoft Yahei, serif;
+    background-color: #EEEEEE;
+    color:#744313;
+} 
+/* header 開始 */
 header
 {
-    background-color: rgb(34, 40, 49); 
-    height: 80px;
-    width: 100%;
+    /* 固定顯示標題 */
+    position:fixed;
+    display:flex;
+    justify-content: space-between;
+    background-color: #222831;
+    height:7vh;
+    width:100%;
+    z-index: 100;
 }
-header 
+header .title
 {
-    padding-left: 4vw;
+    position: relative;
+    text-decoration: none;
+    color:#EEEEEE;
+    background-image: url(../images/book.png);
+    background-size: 6vh;
+    font-size:3vh;
+    background-repeat: no-repeat;
+    left: 3vw;
+    padding:0.2em 0 0 3.5vw;
 }
-header ul
+/* header 結束 */
+/* nav 開始 */
+nav ul
 {
-    position:absolute;
-    right:5vw;
-    top:0;
-    line-height: 80px;
+    position: relative;
+    /* 靠右邊 */
+    right: 0vw;
+    /* 文字大小 */
+    line-height: 7vh;
 }
-header li
-{   
-    display: inline; /*將內物件橫向排列*/
-    margin-right:4vw;
-}
-header a
+nav li
 {
-    color:rgb(238, 238, 238);
-    text-decoration:none;
+    display: inline-block;
+    /* 每一項之間的距離 */
+    margin: 0vw 0.5vw;
 }
-header a:hover
+nav a
 {
-    /*被選取顯示底線*/
-    text-decoration:underline;
+    position: relative;
+    text-decoration: none;
+    color: #704214;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.3rem;
 }
-ul.ads
+nav a::before
 {
-    position:relative;
-    width: 600px;
-    height: 280px;
-    list-style:none;
-    background-color:lightgray;
-    overflow:hidden;
-}
-li.ad
-{
-    width: inherit;
-    height: inherit;
+    content: " ";
+    display: block;
     position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Helvetica;
-    font-size: 120px;
-    transition:.5s transform ease-in-out;
+    inset: 0;
+    background: rgb(0, 173, 181);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s ease;
 }
-.ad:nth-of-type(1)
+nav a:hover::before
 {
-    background-color: rgb(97, 147, 241);
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
-.ad:nth-of-type(2)
+/* 購物車圖示開始 */
+nav li a span
 {
-    background-color: orange;
-    left:100%;
+    position: absolute;
+    width:20px;
+    height:20px;
+    top:13px;
+    text-align:center;
+    line-height:20px;
+    background-color:red;
+    border-radius:50%;
 }
-.ad:nth-of-type(3)
+/* 購物車圖示結束 */
+
+/* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+nav a
 {
-    background-color: navy;
-    left: 200%;
+  position: relative;
+  z-index: 1;
 }
-input[type="radio"]
+nav a::before
 {
+  content: " "; 
+  display: block;
+  position: absolute;
+  inset: 0;
+  /*  top: 0; right: 0; bottom: 0; left: 0; */
+  background: #FFD700;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform .3s ease; 
+}
+nav a:hover::before
+{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+/* 淡入淡出效果結尾 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+/* nav 結束 */
+
+/* 輪播開始*/
+.container
+{
+    padding:2rem;
+}
+.slider-wrapper
+{
+    /* 設定相對位置 */
     position:relative;
+    /* 設定最大寬度 */
+    max-width:48rem;
+    /* 置中對齊, 上方空出空位 */
+    margin:7vh auto 0 auto;
+}
+.slider
+{
+    display:flex;
+    /* 圖片長寬比例 */
+    aspect-ratio:16 / 9;
+    /*  判斷是否要顯示滾動條, 如果有溢出就顯示滾動條 */
+    overflow-x:auto;
+    /* x 軸拉動, mandatory proximity(精確 / 大約) */
+    scroll-snap-type: x mandatory;
+    /* 按下按鈕拖動時smooth */
+    scroll-behavior:smooth;
+    /* 輪播圖的陰影 , x, y, blur, spread, color hsla(hue, saturation, lightness, alpha)*/
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* 圓弧外框 */
+    border-radius: 0.5rem; 
+    /* IE / Edge 不顯示滾動條 */
+    -ms-overflow-style: none;
+    /* FireFox 不顯示滾動條 */
+    scrollbar-width:none;
+}
+.slider::-webkit-scrollbar
+{
+    /* 滾動條設定為不顯示, 其實只要這個就好了 */
     display:none;
 }
-.controlVisible
+.slider img
 {
-    position:absolute;
-    width: 100%;
-    bottom:12px;
-    text-align:center;
+    /* flex grow flex strength, flex basis */
+    /* 圖片放大比例, 圖片縮小比例(設定為 0 避免失真), 占滿整個container(100%)*/
+    flex :1 0 100%;
+    /* 再到起始位置的時候對齊*/
+    /* start, center, end, nearest */
+    scroll-snap-align:start;
+
 }
-.controlVisible label
+.slider img.active
 {
-    display:inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    margin:0 3px;
-    border:2px solid #fff;
+    /* 如果是當前顯示的, 透明度重置 */
+    opacity: 1; 
 }
-.ads input[type="radio"]:nth-of-type(1):checked ~ .controlVisible label:nth-of-type(1)
+.slider-nav
 {
-  background-color: #333;
+    /* 彈性顯示 */
+    display:flex;
+    /* 每個子物件之間的距離 */
+    column-gap:1rem;
+    /* 位置繼承為 relative, 雖然上面寫absolute (相對於父元素的絕對位置)*/
+    position: absolute;
+    bottom:1.25rem;
+    /* 置中對齊 */
+    left: 50%; 
+    transform: translate(-50%);
+    /* 顯示在上層 */
+    z-index:1;
 }
-.ads input[type="radio"]:nth-of-type(2):checked ~ .controlVisible label:nth-of-type(2)
+.slider-nav a
 {
-  background-color: #333;
+    /* 按鈕大小 */
+    width:0.5rem;
+    height:0.5rem;
+    /* 按鈕圓弧 */
+    border-radius:50%;
+    /* 按鈕顏色 */
+    background-color:#FFF;
+    /* 透明度設定為 0.75 */
+    opacity:0.75;
+    /* 轉換為Hover時的動畫表現 */
+    transition:opacity ease 250ms;
 }
-.ads input[type="radio"]:nth-of-type(3):checked ~ .controlVisible label:nth-of-type(3)
+.slider-nav a:hover
 {
-  background-color: #333;
+    /* 被選重時顯示高亮 */
+    opacity:1;
 }
-.ads input[type="radio"]:nth-of-type(1):checked ~ .ad{
-  transform: translatex(0%);
-}
-.ads input[type="radio"]:nth-of-type(2):checked ~ .ad
-{
-    transform:translatex(-100%);
-}
-.ads input[type="radio"]:nth-of-type(3):checked ~ .ad
-{
-    transform:translatex(-200%);
-}
+/* 輪播結束 */
 /*
 color palette
 rgb(34, 40, 49)
 rgb(57, 62, 70)
 rgb(0, 173, 181)
 rgb(238, 238, 238)
-header ul
-{
-    display: flex;
-    justify-content: flex-end;
-    font-size:1.2rem;
-}
 */

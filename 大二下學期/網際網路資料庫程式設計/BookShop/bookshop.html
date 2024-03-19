@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>書店Demo</title>
-  <!-- 圖標include, boxIcon -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/bookshop.css" />
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- 自定義 CSS -->
+  <link href="css/bookshop.css" rel="stylesheet" />
 </head>
 
 <body>
-  <header>
-    <a href="bookshop.html" class="title">
-      <h1>電子書店</h1>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="#">登入</a></li>
-        <li><a href="#">註冊</a></li>
-        <li><a href="#">會員中心</a></li>
-        <li><a href="#">我的訂單</a></li>
-        <li><a href="#">購物車<span>0</span></a></li>
-        <li><a href="#">電子書櫃</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <!--標題頁面 -->
+      <a class="navbar-brand fs-2" href="#">
+        <img src="images/book.png" alt="" class="d-inline-block align-text-top">
+        電子書店
+      </a>
+      <!-- 切換按鈕 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 向外的連結, 向右排列 -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <!-- me-3 代表增加間隔 -->
+          <!-- fs-3 代表增大字體  -->
+          <li class="nav-item me-3 fs-5 ">
+            <a class="nav-link active" aria-current="page" href="#">首頁</a>
+          </li>
+          <li class="nav-item me-3 fs-5">
+            <a class="nav-link" href="#">登入</a>
+          </li>
+          <li class="nav-item me-3 fs-5">
+            <a class="nav-link" href="#">註冊</a>
+          </li>
+          <li class="nav-item me-3 fs-5">
+            <a class="nav-link" href="#">會員中心</a>
+          </li>
+          <li class="nav-item me-3 fs-5">
+            <a class="nav-link" href="#">購物車</a>
+          </li>
+          <li class="nav-item me-3 fs-5">
+            <a class="nav-link" href="#">電子書櫃</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <main>
     <section class="container">
       <!-- 廣告輪播區域 -->
@@ -45,18 +70,111 @@
         <!-- 廣告輪播按鈕 -->
         <div class="slider-nav">
           <!-- 利用 href 連接, 按下之後就會跳轉到那個地方 -->
-          <a href="#slide-1"></a>
+          <!-- <a href="#slide-1"></a>
           <a href="#slide-2"></a>
-          <a href="#slide-3"></a>
+          <a href="#slide-3"></a> -->
+          <a data-index="0"></a>
+          <a data-index="1"></a>
+          <a data-index="2"></a>
         </div>
+
+
       </div>
       <!-- 購物列表 -->
-      <div class="listProduct">
-        
-      </div>
-    </section>
-  </main>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 1</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$9.99</p>
+                <button class="btn btn-primary custom-btn">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 2</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$19.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 3</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$29.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 4</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$39.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 4</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$39.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 4</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$39.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 4</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$39.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-3">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Product 4</h5>
+                <p class="card-text">Product description goes here.</p>
+                <p class="card-text">$39.99</p>
+                <button class="btn btn-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bootstrap js連結 -->
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bookshop.js"></script>
 </body>
-<script src="js/bookshop.js"></script>
 
 </html>
