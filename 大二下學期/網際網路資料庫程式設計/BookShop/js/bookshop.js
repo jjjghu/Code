@@ -1,67 +1,4 @@
-// 輪播圖版本 1 , 只需負責每過一陣子按下按鈕
-// 缺點: 會沒有辦法顯示標題
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     // 剛開始為0
-//     let currentIndex = 0;
-//     // 獲取所有按鈕連結
-//     const nav = document.querySelectorAll('.slider-nav a');
-//     // 紀錄下總共有多少頁面
-//     const totalSlides = nav.length;
-//     let autoPlayInterval = null;
-
-//     // 跳轉到下一個圖片
-//     function goToNextSlide() {
-
-//         // 更新位置
-//         currentIndex = (currentIndex + 1) % totalSlides;
-//         // 按下按鈕
-//         nav[currentIndex].click();
-//     }
-//     function startAutoPlay() {
-//         if (!autoPlayInterval) {
-//             autoPlayInterval = setInterval(goToNextSlide, 3000);
-//         }
-//     }
-//     function stopAutoPlay() {
-//         if (autoPlayInterval) {
-//             clearInterval(autoPlayInterval);
-//             autoPlayInterval = null;
-//         }
-//     }
-
-//     // nav.forEach((link, value, array));
-
-//     // 每一個nav都要監聽事件 (當前元素, 當前元素的index)
-//     nav.forEach((link, index) => {
-//         link.addEventListener('click', (event) => {
-//             // 按下的時候滑動到最上面
-//             window.scrollTo(0, 0);
-//             // 被按下的時候更新currentIndex
-//             currentIndex = index;
-//         });
-//     });
-
-//     let observer = new IntersectionObserver((entries, observer) => {
-//         entries.forEach(entry => {
-//             // 當元素進入視窗時entry.isIntersecting為true，否則為false
-//             if (entry.isIntersecting) {
-//                 startAutoPlay();
-//             } else {
-//                 stopAutoPlay();
-//             }
-//         });
-//     }, { threshold: 1.0 }); // 至少有100%的元素在視窗中
-
-//     // 觀察輪播的容器
-//     observer.observe(document.querySelector('.slider-wrapper'));
-
-//     // 啟動自動播放
-//     startAutoPlay();
-
-//     // 設定觸發間隔
-//     // setInterval(goToNextSlide, 3000); // 3000ms = 3 second
-// });
-// 輪播圖版本 2, 不會在轉換時跳轉到該位置, 失去了平滑動畫切換
+// 主頁面輪播圖版本 
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slider img');
     const navLinks = document.querySelectorAll('.slider-nav a');
@@ -69,15 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoPlayInterval = null;
 
     function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.style.display = i === index ? 'block' : 'none';
-        });
+        let slideWidth = slides[index].clientWidth;
+        document.querySelector('.slider').scrollLeft = slideWidth * index;
         updateNav(index);
     }
 
     function updateNav(index) {
         navLinks.forEach((link, i) => {
-            link.style.opacity = i === index ? '1' : '0.75';
+            if (i === index) {
+                link.style.border = '0.1rem solid rgb(0, 173, 181)';
+                link.style.opacity = '1';
+            }
+            else {
+                link.style.opacity = '0.75';
+                // set border to none
+                link.style.border = 'none';
+            }
+
         });
     }
 
@@ -113,3 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
     sliderWrapper.addEventListener('mouseenter', stopAutoPlay);
     sliderWrapper.addEventListener('mouseleave', startAutoPlay);
 });
+
+window.onload = function () {
+    // 獲取所有的 .slider.product img 元素
+    var images = document.querySelectorAll('.slider.product img');
+
+    // 獲取所有的 .slider-nav.product a 元素
+    var navs = document.querySelectorAll('.slider-nav.product a');
+
+    // 確保 images 和 navs 的數量相同
+    if (images.length === navs.length) {
+        // 為每個 .slider-nav.product a 元素設定背景圖片
+        navs.forEach(function (nav, index) {
+            // 獲取對應的 .slider.product img 元素的圖片 URL
+            var imageUrl = images[index].src;
+
+            // 將 .slider-nav.product a 元素的背景圖片設定為對應的圖片 URL
+            nav.style.backgroundImage = 'url(' + imageUrl + ')';
+            nav.style.backgroundSize = 'cover';
+        });
+    }
+};

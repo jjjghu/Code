@@ -3,6 +3,15 @@
     margin:0;
     padding:0;
 }
+:root {
+    /* 色彩設定 */
+    --jjjghu-black:rgb(34, 40, 49);
+    --jjjghu-black_2:rgb(57, 62, 70);
+    --jjjghu-blue:rgb(0, 173, 181);
+    --jjjghu-white:rgb(238, 238, 238);
+    --jjjghu-brown:rgb(185, 148, 112);
+}
+
 /* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 .nav-item
 {
@@ -39,11 +48,16 @@
 }
 .slider
 {
+    /* 彈性顯示 */
     display:flex;
+    /* 顯示內容不換行 */
+    overflow: hidden;
+    /* 設定寬度 */
+    width: 100%;
     /* 圖片長寬比例 */
     aspect-ratio:16 / 9;
     /*  判斷是否要顯示滾動條, 如果有溢出就顯示滾動條 */
-    overflow-x:auto;
+    /* overflow-x:auto; */
     /* x 軸拉動, mandatory proximity(精確 / 大約) */
     scroll-snap-type: x mandatory;
     /* 按下按鈕拖動時smooth */
@@ -70,12 +84,10 @@
     /* 再到起始位置的時候對齊*/
     /* start, center, end, nearest */
     scroll-snap-align:start;
-
-}
-.slider img.active
-{
-    /* 如果是當前顯示的, 透明度重置 */
-    opacity: 1; 
+    /* 設定圖最最小大小*/
+    min-width: 100%;
+    /* 動畫切換 */
+    transition: transform 1s ease-in-out;
 }
 .slider-nav
 {
@@ -91,18 +103,20 @@
     transform: translate(-50%);
     /* 顯示在上層 */
     z-index:1;
+    /* 鼠標圖樣 */
+    cursor:pointer;
 }
 .slider-nav a
 {
     /* 按鈕大小 */
-    width:0.5rem;
-    height:0.5rem;
+    width:0.8rem;
+    height:0.8rem;
     /* 按鈕圓弧 */
     border-radius:50%;
     /* 按鈕顏色 */
-    background-color:#FFF;
+    background-color:var(--jjjghu-white);
     /* 透明度設定為 0.75 */
-    opacity:0.75;
+    opacity:0.5;
     /* 轉換為Hover時的動畫表現 */
     transition:opacity ease 250ms;
 }
@@ -112,3 +126,120 @@
     opacity:1;
 }
 /* 輪播結束 */
+/* 商品的輪播設定, 靠左, 縮小 */
+.slider-wrapper.product {
+    /* 相對漁父元素的絕對定位 */
+    position: absolute; 
+    /* 放置在左上位置 */
+    top: 7vh; /* 將此元素放在父元素的頂部 */
+    left: 7vw; /* 將此元素放在父元素的左側 */
+    /* 縮放大小 */
+    transform:scale(0.8);
+    /* 變更縮放點, 避免縮放過後多出不必要的空隙 */
+    transform-origin: top left;
+}
+/* 加入偽元素到後面, 漸變的顯示效果 */
+.slider-wrapper.product::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* 佔據底部兩成的區域 */
+    height:20%; 
+     /* 從黑色漸變到透明 */
+    background: linear-gradient(to top, rgb(150, 150, 150), rgba(50, 50, 50, 0));
+}
+.slider.product
+{
+    /* 更改比例為直立1:1 */
+    aspect-ratio: 1.5 / 1;
+}
+/* .slider.product img
+{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+} */
+.slider-nav.product
+{
+    /* 彈性顯示 */
+    display:flex;
+    /* 每個子物件之間的距離 */
+    column-gap:1rem;
+    /* 位置繼承為 relative, 雖然上面寫absolute (相對於父元素的絕對位置)*/
+    position: absolute;
+    /* 和底部之間的距離 */
+    bottom:0.5rem;
+    /* 置中對齊 */
+    left: 50%; 
+    transform: translate(-50%);
+    /* 顯示在上層 */
+    z-index:1;
+    /* 鼠標圖樣 */
+    cursor:pointer;
+}
+.slider-nav.product a
+{
+    /* 按鈕大小, 相對父物件的大小 */
+    width:5rem;
+    height:5rem;
+    /* 按鈕圓弧 */
+    border-radius:0%;
+    /* 按鈕顏色 */
+    background-color:var(--jjjghu-black);
+    /* 透明度設定為 0.75 */
+    opacity:0.75;
+    /* 轉換為Hover時的動畫表現 */
+    transition:opacity ease 250ms;
+}
+/* 商品輪播設定結束 */
+/* 購物車圖標開始 */
+.card:hover .cart {
+    /* 滑鼠移入時顯示 */
+    display: block;
+}
+/* 購物車圖標的顯示設定 */
+.btn.cart {
+    /* 减小padding 上下 左右 */
+    padding: 0.25rem 0.5rem; 
+    /* 設定字體大小 */
+    font-size: 0.875rem; 
+    /* 相對於父物件的絕對位置 */
+    position: absolute;
+    /* 設定靠上右 */
+    top: 6px;
+    right: 6px;
+    /* 預設為不顯示 */
+    display: none;
+    /* 半透明黑色背景 */
+    background-color: rgba(34, 40, 49,0.5);
+    color:white;
+}
+.btn.cart:hover
+{
+    /*設定購物車圖標hover的時候顯示的樣貌*/
+    background-color: var(--jjjghu-brown);
+    color:white;
+}
+/* 購物車圖標結束 */
+/* 文本效果, 強制套用 */
+.text-brown
+{
+    color:var(--jjjghu-brown) !important;
+}
+/* 選取卡片的淡出顯示效果*/
+.card
+{
+    /* 動畫切換時間 */
+    transition: all 0.3s;
+}
+.card:hover
+{
+    /* 陰影效果 */
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* 旋轉效果 */
+    transform: translateY(-0.5rem);
+    /* 邊框顏色 */
+    border: 1px solid var(--jjjghu-brown);
+}
