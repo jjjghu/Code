@@ -37,7 +37,10 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 13, 110, 253;
+ 
+  /* 更改主色調 */
+  --bs-primary-rgb: 34, 40, 49;
+  /* --bs-primary-rgb: 13, 110, 253; */
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -103,6 +106,7 @@
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
+  /* card border - color 卡片外框顏色*/
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
   --bs-border-radius: 0.375rem;
   --bs-border-radius-sm: 0.25rem;
@@ -3013,15 +3017,15 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #D2B48C;
-  --bs-btn-border-color: #D2B48C;
+  --bs-btn-bg: #393E46;
+  --bs-btn-border-color: #393E46;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: rgb(208, 72, 72);
-  --bs-btn-hover-border-color: rgb(208, 72, 72);
-  --bs-btn-focus-shadow-rgb: rgb(208, 72, 72);
+  --bs-btn-hover-bg: #00ADB5;
+  --bs-btn-hover-border-color: #00ADB5;
+  --bs-btn-focus-shadow-rgb: #00ADB5;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: rgb(170, 55, 55);
-  --bs-btn-active-border-color: rgb(170, 55, 55);
+  --bs-btn-active-bg: #00ADB5;
+  --bs-btn-active-border-color: #00ADB5;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #0d6efd;

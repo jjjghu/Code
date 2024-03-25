@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://webcourse.ncue.edu.tw/Web/JavaScript/jquery_practice.html -->
+<html class=" idc0_343 qlsilggs">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>電子公告</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            // 按下出現, 取消隱藏
+            // id: table1 -> tbody -> 第三個 tr -> td.col-md-10 -> 第一個 span -> input
+            $("#table1 > tbody > tr:nth-child(3) > td.col-md-10 > span:nth-child(1) > input").change(() => { $('#div_dept').toggle(); });
+            // 所有class = d1 的通通更新為 select_all_1的狀態
+            $("#select_all_1").change(() => { $(".d1").each((i, e) => { e.checked = $("#select_all_1")[0].checked }) });
+            // 所有class = d2 的通通更新為 select_all_2的狀態
+            $("#select_all_2").change(() => { $(".d2").each((i, e) => { e.checked = $("#select_all_2")[0].checked }) });
+            // 新增 / 移除檔案, 按下的時候新增
+            $("#btn_append").click(() => { $("#div_upload").append('<div><button type="button" class="btn btn-danger btn-xs"data-placement="right" title="移除"><i class="fa fa-times"aria-hidden="true"></i></button><input type="file" name="doc_upload[]" style="display: inline-block"></div>') });
+            // 按下叉叉的時候關掉自身
+            $("#div_upload").on("click", "button.btn-danger", function () { $(this).closest("div").remove(); });
+            // 按下按鈕更改字體大小
+            $("#btn_css").click(() => {
+                // 獲取當前文字大小
+                let fontSize = $("body")[0].style.fontSize;
+                // 沒有數值 -> 給預設數值
+                if (fontSize == "") fontSize = "14px";
+                // 判斷當前大小並更新
+                if (fontSize == "14px")
+                    $("body")[0].style.fontSize = "18px";
+                else
+                    $("body")[0].style.fontSize = "14px";
+            });
+            // 可顯示表單內容
+            $("#btn_show").click(() => {
+                // 顯示表單
+                $("#table2").show();
+                // 將doc_from_s的內容 設定為#doc_from的內容
+                $("#doc_from_s").html($("#doc_from").html());
+                // 將 doc_username_s的內容 設定為#doc_username 被選擇的內容, 必須要:selected, 不可以空格
+                $("#doc_username_s").html($("#doc_username :selected").html());
+                // 獲取 該input被選重的 span 父物件的文字內容
+                $("#doc_type_s").html($("input[name='doc_type']:checked").parent("span").text());
+                // 將所有被勾選的doc_to, dept選項當中的文字推入vals當中
+                let vals = [];
+                $('input[name="doc_to[]"]:checked').each(function (index, item) { vals.push($(item).closest("span").text() + "<br>"); });
+                // 顯示公告對象
+                $("#doc_to_s").html(vals);
+                // 校內單位
+                vals = [];
+                $('input[name="dept[]"]:checked').each(function (index, item) { vals.push($(this).val().substr(3) + "<br>"); });
+                $("#doc_dept_s").html(vals);
+                // 獲取 doc_title 當中的文字, 顯示在 doc_title_s 上面
+                $("#doc_title_s").html($("#doc_title").val());
+                // 將換行符號取代為br, 顯示doc_detail
+                $("#doc_detail_s").html($("#doc_detail").val().replace(/\n/, "<br>"));
+                // 附加檔案
+                vals = [];
+                $("input[type=file]").each(function () { vals.push($(this).val().split('\\').pop() + "<br>"); });
+                $("#doc_upload_s").html(vals);
+            });
+        });
+
+
+
+
+    </script>
+    <style>
+        .td1 {
+            font-weight: bold;
+            background-color: #ecf9ff;
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1059.0" data-gr-ext-installed="">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading" style="text-align:left">
+                <b>電子公告張貼</b>
+            </div>
+            <div class="panel-body panel-height">
+                <form class="form-horizontal form-inline" name="form1" id="form1" method="post"
+                    enctype="multipart/form-data">
+                    <input type="hidden" id="op_mode" name="op_mode" value="create">
+                    <table class="table table-bordered" id="table1">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告單位</td>
+                                <td class="col-md-4 text-center">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12" id="doc_from">
+                                                資訊工程學系
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-md-2 td1 text-center">聯絡人及分機</td>
+                                <td class="col-md-4 text-center">
+                                    <select id="doc_username" name="doc_username" class="form-control">
+                                        <option value="">請選擇</option>
+                                        <option value="8411">徐美麗 #8411</option>
+                                        <option value="8412">王小明 #8412</option>
+                                        <option value="8413">陳大同 #8413</option>
+                                        <option value="8414">李愛眉 #8414</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告類型</td>
+                                <td class="col-md-10 div_texbox" colspan="3">
+                                    <span><input type="radio" name="doc_type" value="1">
+                                        演講</span>
+                                    <span><input type="radio" value="2" name="doc_type">
+                                        研討會</span>
+                                    <span><input type="radio" value="3" name="doc_type">
+                                        徵才</span>
+                                    <span><input type="radio" value="4" name="doc_type">
+                                        招生相關資訊</span>
+                                    <span><input type="radio" value="5" name="doc_type">
+                                        獎助學金</span>
+                                    <span><input type="radio" value="9" name="doc_type">
+                                        其他</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告對象</td>
+                                <td class="col-md-10" colspan="3">
+                                    <span><input type="checkbox" name="doc_to[]" value="1" class="checkbox-inline">
+                                        本校教職員
+                                    </span>
+                                    <span><input type="checkbox" name="doc_to[]" value="2" class="checkbox-inline"> 學校首頁
+                                    </span>
+                                    <span><input type="checkbox" name="doc_to[]" value="6" class="checkbox-inline"> 學生專區
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告標題</td>
+                                <td class="col-md-10" colspan="3">
+                                    <input class="form-control" type="text" size="50" name="doc_title" id="doc_title">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告內容</td>
+                                <td class="col-md-10" colspan="3">
+                                    <textarea style="font-size: 10pt" name="doc_detail" id="doc_detail" rows="7"
+                                        cols="75" class="form-control"></textarea>
+                                </td>
+                            </tr>
+                            <tr id="div_dept" style="display:none">
+                                <td class="col-md-2 td1 text-center">請選擇校內單位<br>
+                                </td>
+                                <td class="col-md-10" colspan="3">
+                                    <div class="bg-success"> <input type="checkbox" id="select_all_1" value="">
+                                        <b>行政單位</b>
+                                    </div> <input type="checkbox" name="dept[]" class="d1" value="M00校長室">
+                                    校長室 <input type="checkbox" name="dept[]" class="d1" value="M10副校長室"> 副校長室 <input
+                                        type="checkbox" name="dept[]" class="d1" value="M20教務處"> 教務處 <input
+                                        type="checkbox" name="dept[]" class="d1" value="M30學生事務處"> 學生事務處 <input
+                                        type="checkbox" name="dept[]" class="d1" value="M40總務處"> 總務處 <input
+                                        type="checkbox" name="dept[]" class="d1" value="N10研究發展處"> 研究發展處 <br> <input
+                                        type="checkbox" name="dept[]" class="d1" value="MJ0進修學院">
+                                    進修學院 <input type="checkbox" name="dept[]" class="d1" value="MQ0圖書與資訊處">
+                                    圖書與資訊處 <input type="checkbox" name="dept[]" class="d1" value="M70秘書室"> 秘書室 <input
+                                        type="checkbox" name="dept[]" class="d1" value="M80人事室"> 人事室 <input
+                                        type="checkbox" name="dept[]" class="d1" value="M90主計室"> 主計室
+                                    <div class="bg-warning"> <input type="checkbox" id="select_all_2" value="">
+                                        <b>學術單位</b>
+                                    </div><input type="checkbox" name="dept[]" class="d2" value="400文學院"> 文學院 <input
+                                        type="checkbox" name="dept[]" class="d2" value="410英語學系"> 英語學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="420國文學系"> 國文學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="430地理學系"> 地理學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="440">
+                                    美術學系 <br> <input type="checkbox" name="dept[]" class="d2" value="500"> 工學院 <input
+                                        type="checkbox" name="dept[]" class="d2" value="510機電工程學系"> 機電工程學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="520電機工程學系"> 電機工程學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="530電子工程學系"> 電子工程學系 <input
+                                        type="checkbox" name="dept[]" class="d2" value="540資訊工程學系"> 資訊工程學系
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">附檔</td>
+                                <td class="col-md-10" colspan="3">
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="div_upload">
+                                            <div><button type="button" class="btn btn-danger btn-xs"
+                                                    data-placement="right" title="移除"><i class="fa fa-times"
+                                                        aria-hidden="true"></i></button><input type="file"
+                                                    name="doc_upload[]" style="display: inline-block"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-12 text-center" colspan="4">
+                                    <button type="button" class="btn btn-success" name="btn_append" id="btn_append"><i
+                                            class="fa fa-plus"></i> 新增附檔
+                                    </button>
+                                    <button type="button" class="btn btn-success" name="btn_css" id="btn_css"><i
+                                            class="fa fa-pencil-alt"></i> 變更字體大小
+                                    </button>
+                                    <button type="button" class="btn btn-primary" name="btn_show" id="btn_show"><i
+                                            class="fa fa-eye"></i> 顯示表單內容
+                                    </button>
+
+                                    <button type="reset" class="btn btn-warning" name="btn_reset" id="btn_reset"><i
+                                            class="fa fa-trash-restore"></i> 清除重填
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-bordered" id="table2" style="display:none">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告單位</td>
+                                <td class="col-md-4 text-center">
+                                    <div id="doc_from_s"></div>
+                                </td>
+                                <td class="col-md-2 td1 text-center">聯絡人及分機</td>
+                                <td class="col-md-4 text-center">
+                                    <div id="doc_username_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告類型</td>
+                                <td class="col-md-10 div_texbox" colspan="3">
+                                    <div id="doc_type_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告對象</td>
+                                <td class="col-md-10" colspan="3">
+                                    <div id="doc_to_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告標題</td>
+                                <td class="col-md-10" colspan="3">
+                                    <div id="doc_title_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">公告內容</td>
+                                <td class="col-md-10" colspan="3">
+                                    <div id="doc_detail_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">請選擇校內單位<br>
+                                </td>
+                                <td class="col-md-10" colspan="3">
+                                    <div id="doc_dept_s"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2 td1 text-center">附檔</td>
+                                <td class="col-md-10" colspan="3">
+                                    <div class="col-md-12">
+                                        <div id="doc_upload_s"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open">
+        <style>
+            div.grammarly-desktop-integration {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            div.grammarly-desktop-integration:before {
+                content: attr(data-content);
+            }
+        </style>
+        <div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration"
+            data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}">
+        </div>
+    </template></grammarly-desktop-integration>
+
+</html>

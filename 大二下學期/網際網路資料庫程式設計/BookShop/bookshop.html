@@ -7,6 +7,8 @@
   <title>書店Demo</title>
   <!-- Bootstrap CSS -->
   <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- Bootstrap 圖標 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <!-- 自定義 CSS -->
   <link href="css/bookshop.css" rel="stylesheet" />
 </head>
@@ -29,9 +31,6 @@
         <ul class="navbar-nav">
           <!-- me-3 代表增加間隔 -->
           <!-- fs-3 代表增大字體  -->
-          <li class="nav-item me-3 fs-5 ">
-            <a class="nav-link active" aria-current="page" href="#">首頁</a>
-          </li>
           <li class="nav-item me-3 fs-5">
             <a class="nav-link" href="#">登入</a>
           </li>
@@ -69,34 +68,48 @@
         </div>
         <!-- 廣告輪播按鈕 -->
         <div class="slider-nav">
-          <!-- 利用 href 連接, 按下之後就會跳轉到那個地方 -->
-          <!-- <a href="#slide-1"></a>
-          <a href="#slide-2"></a>
-          <a href="#slide-3"></a> -->
           <a data-index="0"></a>
           <a data-index="1"></a>
           <a data-index="2"></a>
         </div>
-
-
       </div>
+    </section>
       <!-- 購物列表 -->
       <div class="container mt-5">
         <div class="row">
+
+          <div class="col-md-3">
+            <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
+            <a href="#" class="card-link text-decoration-none text-primary">
+              <div class="card mb-3">
+                <!-- 加入購物車的+號圖示 -->
+                <button class="btn cart"><i class="bi bi-cart"></i></button>
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
+                <div class="card-body">
+                  <h5 class="card-title">Product 4</h5>
+                  <p class="card-text">Product description goes here.</p>
+                  <p class="card-text fw-bold text-brown">$39.99</p>
+                  <!-- 移除 'Add to Cart' 按鈕 -->
+                </div>
+              </div>
+            </a>
+          </div>
+
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 1</h5>
                 <p class="card-text">Product description goes here.</p>
                 <p class="card-text">$9.99</p>
-                <button class="btn btn-primary custom-btn">Add to Cart</button>
+                <button class="btn btn-primary">Add to Cart</button>
               </div>
             </div>
           </div>
+
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 2</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -107,7 +120,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 3</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -118,7 +131,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 4</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -129,7 +142,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 4</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -140,7 +153,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 4</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -151,7 +164,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 4</h5>
                 <p class="card-text">Product description goes here.</p>
@@ -162,7 +175,7 @@
           </div>
           <div class="col-md-3">
             <div class="card mb-3">
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 4</h5>
                 <p class="card-text">Product description goes here.</p>
