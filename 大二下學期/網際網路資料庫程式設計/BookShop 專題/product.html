@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant-TW" class="">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>商品頁面</title>
     <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- 不一定要加入的後綴 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" -->
     <!-- Bootstrap 圖標 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <!-- 自定義 CSS -->
     <link href="css/bookshop.css" rel="stylesheet" />
+    <!-- boxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <!--標題頁面 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body class="dark-theme">
+    <!-- 固定位置的物件放在最上面 -->
+    <i class='bx bx-moon bx-rotate-270 themeIcon' id="themeIcon"></i>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand fs-2" href="bookshop.html">
-                <img src="images/book.png" alt="" class="d-inline-block align-text-top">
+            <!--標題頁面 -->
+            <a class="navbar-brand fs-2" href="index.html">
+                <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
                 電子書店
             </a>
             <!-- 切換按鈕 -->
@@ -35,7 +40,7 @@
                         <a class="nav-link" href="login.html">登入</a>
                     </li>
                     <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#">註冊</a>
+                        <a class="nav-link" href="register.html">註冊</a>
                     </li>
                     <li class="nav-item title-nav me-3 fs-5">
                         <a class="nav-link" href="#">會員中心</a>
@@ -58,11 +63,14 @@
                 <div class="slider-wrapper product mt-10vh">
                     <div class="slider product">
                         <!-- 三張廣告圖片 -->
+                        <!-- https://images.unsplash.com/photo-1682686581498-5e85c7228119?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D -->
                         <img id="slider-1"
-                            src="https://images.unsplash.com/photo-1682686581498-5e85c7228119?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://upload-os-bbs.hoyolab.com/upload/2023/09/24/7698718/29eade6b3489751ed9550e403d121cd8_8032185747461503023.jpg"
                             alt="slider 1">
+                        <!-- https://plus.unsplash.com/premium_photo-1709311394823-8b0856db0bcc?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D -->
+                        <!-- -->
                         <img id="slider-2"
-                            src="https://plus.unsplash.com/premium_photo-1709311394823-8b0856db0bcc?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://cdn.discordapp.com/attachments/692328953402359889/1221350813885136987/20240324.png?ex=661b7d15&is=66090815&hm=495c56a7cbcce3a0662bdce93b6d3a7c88ee0c2a40f830e4a82690575bb29031& "
                             alt="slider 2">
                         <img id="slider-3"
                             src="https://images.unsplash.com/photo-1654859869130-fd0a2aa5539b?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -76,9 +84,9 @@
                         <a data-index="2"></a>
                     </div>
                     <!-- 上一頁箭頭按鈕 -->
-                    <a class="prev-arrow fs-2" href="#"><i class="bi bi-arrow-left"></i></a>
+                    <a class="prev-arrow fs-2" href="#"><i class='bx bx-chevron-left'></i></a>
                     <!-- 下一頁箭頭按鈕 -->
-                    <a class="next-arrow fs-2" href="#"><i class="bi bi-arrow-right"></i></a>
+                    <a class="next-arrow fs-2" href="#"><i class='bx bx-chevron-right'></i></a>
                 </div>
             </div>
             <!-- 文字靠左, 距離頂部7vh-->
@@ -87,7 +95,7 @@
                 <p class="fs-4 text-orange"><span class="fs-3">$</span>20.33</p>
                 <!-- 按鈕靠左 -->
                 <div class="d-flex justify-content-start">
-                    <button class="btn btn-primary me-2">加入購物車</button>
+                    <button class="btn btn-primary me-2 ">加入購物車</button>
                     <button class="btn btn-success">直接購買</button>
                     <!--     作者： 貓膩
                                         出版社：人民文學出版社
@@ -105,7 +113,7 @@
             <!-- 橫向12個物件 -->
             <div class="col-md-12">
                 <!-- role: 無障礙訪問 (從bootstrap 文檔上看到的, 用不用沒有太大差別) -->
-                <ul class="nav nav-tabs  bold-hr" role="tablist">
+                <ul class="nav nav-tabs bold-hr" role="tablist">
                     <!-- nav-item, 導覽物件, nav-link 導覽連接, active 為預設選取的東西 -->
                     <li class="nav-item">
                         <a class="nav-link active text_effect" data-bs-toggle="tab" href="#content-intro">內容簡介</a>
@@ -125,7 +133,6 @@
                     <div class="tab-pane fade show active" id="content-intro">
                         <p>這是一本很棒的書</p>
                     </div>
-
                     <div class="tab-pane fade" id="content-details">
                         <ul>
                             <li>ISBN:9787020127238</li>
@@ -147,8 +154,8 @@
     </div>
 
     <div class="container mt-5">
-       
-<pre>
+
+        <pre>
 something here as;dfjlasdf
 </pre>
         <!-- 推薦書籍, 最近閱覽,　 -->
@@ -157,7 +164,9 @@ something here as;dfjlasdf
     <!-- 一個可透過按鈕選取要查看的內容, 內容簡介, 詳細資料, 作者介紹, 留言區  -->
 
     <!-- Bootstrap js連結 -->
-    <script src="js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!--integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous" -->
     <script src="js/bookshop.js"></script>
 </body>
 

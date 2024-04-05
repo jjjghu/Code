@@ -2,22 +2,27 @@
 <html lang="zh-Hant-TW">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>書店Demo</title>
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- 不一定要加入的後綴 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" -->
   <!-- Bootstrap 圖標 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <!-- 自定義 CSS -->
-  <link href="css/bookshop.css" rel="stylesheet" />
+  <link href="css/bookshop.css" rel="stylesheet">
+  <!-- boxIcons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body class="dark-theme">
+  <!-- 固定位置的物件放在最上面 -->
+  <i class='bx bx-moon bx-rotate-270 themeIcon' id="themeIcon"></i>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
       <!--標題頁面 -->
-      <a class="navbar-brand fs-2" href="bookshop.html">
+      <a class="navbar-brand fs-2" href="index.html">
         <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
         電子書店
       </a>
@@ -35,7 +40,7 @@
             <a class="nav-link" href="login.html">登入</a>
           </li>
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="#">註冊</a>
+            <a class="nav-link" href="register.html">註冊</a>
           </li>
           <li class="nav-item title-nav me-3 fs-5">
             <a class="nav-link" href="#">會員中心</a>
@@ -73,11 +78,12 @@
           <a data-index="2"></a>
         </div>
         <!-- 上一頁箭頭按鈕 -->
-        <a class="prev-arrow fs-2" href="#"><i class="bi bi-arrow-left"></i></a>
+        <a class="prev-arrow fs-2" href="#"><i class='bx bx-chevron-left'></i></a>
         <!-- 下一頁箭頭按鈕 -->
-        <a class="next-arrow fs-2" href="#"><i class="bi bi-arrow-right"></i></a>
+        <a class="next-arrow fs-2" href="#"><i class='bx bx-chevron-right'></i></a>
       </div>
     </section>
+
     <div class="container mt-5">
       <!-- 篩選區域 -->
       <div class="row mb-4">
@@ -109,7 +115,8 @@
               <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
               <div class="card-body">
                 <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
+                <!-- 去除商品描述 2024/04/04 -->
+                <!-- <p class="card-text">Product description goes here.</p> -->
                 <p class="card-text fw-bold text-orange">$28.99</p>
                 <!-- 移除 'Add to Cart' 按鈕 -->
               </div>

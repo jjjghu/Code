@@ -5,18 +5,32 @@
 }
 :root {
     /* 色彩設定 */
-    --jjjghu-black:rgb(34, 40, 49);
-    --jjjghu-grey:rgb(57, 62, 70);
-    --jjjghu-blue:rgb(0, 173, 181);
-    --jjjghu-white:rgb(238, 238, 238);
+    --jjjghu-main:rgb(34, 40, 49);
+    --jjjghu-Nmain: rgb(238, 238, 238);
+    --jjjghu-second:rgb(238, 238, 238);
+    --jjjghu-highlight:rgb(0, 173, 181);
+    --jjjghu-highlight-opacity:rgba(0,173,181,0.5);
     --jjjghu-brown:rgb(185, 148, 112);
-    --jjjghu-orange:rgb(215, 140, 66);
-    --jjjghu-red:rgba(241, 34, 34, 0.755);
-
+    --jjjghu-orange:rgb(211, 140, 70);
+    --jjjghu-white:rgb(238, 238, 238);
+    color:var(--jjjghu-main);
+}
+.dark-theme {
+    /* 色彩設定 */
+    --jjjghu-main:rgb(238, 238, 238);
+    --jjjghu-Nmain: rgb(34, 40, 49);
+    --jjjghu-second:rgb(57, 62, 70);
+    --jjjghu-highlight:rgb(0, 173, 181);
+    --jjjghu-brown:rgb(185, 148, 112);
+    --jjjghu-orange:rgb(211, 140, 70);
+    --jjjghu-white:rgb(238, 238, 238);
+    color:var(--jjjghu-white);
 }
 body
 {
-    background-color:rgb(243, 238, 234);
+    background-color:var(--jjjghu-second);
+    user-select: none;
+    color:var(--jjjghu-main);
 }
 /* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 .nav-item.title-nav
@@ -30,7 +44,7 @@ body
   display: block;
   position: absolute;
   inset: 0;
-  background-color: var(--jjjghu-blue);
+  background-color: var(--jjjghu-highlight);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: bottom right;
@@ -139,14 +153,21 @@ body
     transition: opacity 0.3s ease, visibility 0.3s;
     opacity:0;
     position: absolute;
-    top: 50%; /* 將箭頭置於垂直中央 */
-    transform: translateY(-50%); /* 確保箭頭完全居中 */
-    z-index: 2; /* 確保箭頭顯示在圖片上方 */
-    color: #fff; /* 根據需要調整顏色 */
-    font-size: 24px; /* 或者根據需要調整大小 */
+    /* 將箭頭置於垂直中央 */
+    top: 50%; 
+    /* 確保箭頭完全居中 */
+    transform: translateY(-50%); 
+     /* 確保箭頭顯示在圖片上方 */
+    z-index: 2;
+    /* 根據需要調整顏色 */
+    color: var(--jjjghu-white); 
     cursor: pointer;
     text-decoration: none;
-    background-color:rgba(0, 173, 181, 0.5)
+}
+.prev-arrow i, .next-arrow i
+{   
+    background-color:var(--jjjghu-highlight-opacity);
+    border-radius: 50%;
 }
 .slider-wrapper:hover .prev-arrow,
 .slider-wrapper:hover .next-arrow
@@ -156,11 +177,11 @@ body
 }
 .prev-arrow {
     /* 箭頭放左邊 */
-    left: 0; 
+    left: 0.3rem; 
 }
 .next-arrow {
     /* 箭頭放右邊 */
-    right: 0; 
+    right: 0.3rem; 
 }
 /* 箭頭設定結束 */
 /* 輪播結束 */
@@ -212,14 +233,51 @@ body
 } */
 
 /* 商品詳細資訊結束 */
-
-/* 將圖片以原比例置中, 很醜所以不用了*/
-/* .slider.product img
+/* 將圖片以原比例置中, 很醜, 但我也不知道要怎麼改*/
+.slider.product img
 {
     width:100%;
     height:100%;
     object-fit: contain;
-} */
+}
+/* 選取卡片的淡出顯示效果*/
+.card
+{
+    /* 動畫切換時間 */
+    transition: all 0.3s ease;
+}
+.card:hover
+{
+    /* 陰影效果 */
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* 旋轉效果 */
+    transform: translateY(-0.5rem);
+    /* 邊框顏色 */
+    border: 1px solid var(--jjjghu-brown);
+}
+/* 切換主題按鈕設定 */
+.themeIcon {
+    position: fixed; 
+    font-size:2rem;
+    right: 2vw;     
+    bottom: 5vh;
+    color:var(--jjjghu-main);
+    background-color:var(--jjjghu-Nmain);
+    /* 圖形邊框繪製 */
+    border: 2px solid var(--jjjghu-main);
+    /* 邊框設定 */
+    padding:0.5rem;
+    border-radius:50%;
+    cursor:pointer;
+}
+.themeIcon:hover
+{
+    color:var(--jjjghu-Nmain);
+    background-color:var(--jjjghu-main);
+    /* 顏色轉換時的動畫 */
+    transition: background-color 250ms ease, color 250ms ease;
+    
+}
 .slider-nav.product
 {
     /* 彈性顯示 */
@@ -246,7 +304,7 @@ body
     /* 按鈕圓弧 */
     border-radius:0%;
     /* 按鈕顏色 */
-    background-color:var(--jjjghu-black);
+    background-color:var(--jjjghu-main);
     /* 透明度設定為 0.75 */
     opacity:0.75;
     /* 轉換為Hover時的動畫表現 */
@@ -272,36 +330,40 @@ body
     /* 預設為不顯示 */
     display: none;
     /* 半透明黑色背景 */
-    background-color: rgba(34, 40, 49,0.5);
+    background-color: var(--jjjghu-black-opacity);
     color:white;
 }
 .btn.cart:hover
 {
     /*設定購物車圖標hover的時候顯示的樣貌*/
     background-color: var(--jjjghu-brown);
-    color:white;
+    color:var(--jjjghu-white);
 }
 /* 購物車圖標結束 */
-/* 文本效果, 強制套用 */
-/* 邊緣線條 */
+/* 自定義文本效果, 強制套用 */
+
+/* 邊緣線條, 用於 product 當中的詳細資料欄位 */
 .bold-hr
 {
-    border-bottom: 1px solid var(--jjjghu-black);
+    border-bottom: 1px solid var(--jjjghu-main);
 }
+
 /* 文字hover效果開始 */
 .text_effect
 {
-    color:var(--jjjghu-black);
+    color:var(--jjjghu-main);
 }
 .text_effect:hover
 {
-    color:var(--jjjghu-blue);
+    color:var(--jjjghu-highlight);
 }
 /* 文字hover效果結束 */
-.btn-nav {
+
+.btn-nav
+{
     /* 按鈕設定 */
     border: none;
-    color:black;
+    color:var(--jjjghu-main);
     background-color: transparent !important;
     text-decoration: underline;
     padding-bottom: 5px;
@@ -309,55 +371,48 @@ body
 }
 .btn-blue:hover {
     /* hover時的樣式 */
-    background-color: black;
+    background-color: var(--jjjghu-main);
     color: var(--jjjghu-white);
 }
-.mt-10vh
-{
-    margin-top: 10vh !important;
+
+/* 覆蓋 bootstrap 當中的按鈕設定 */
+.btn-primary {
+    /* 文字顏色設定 */
+  --bs-btn-color: var(--jjjghu-main);
+  --bs-btn-bg: none;
+  --bs-btn-border-color: var(--jjjghu-main);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--jjjghu-highlight);
+  --bs-btn-hover-border-color: var(--jjjghu-highlight);
+  --bs-btn-focus-shadow-rgb: var(--jjjghu-highlight);
+  --bs-btn-active-color: var(--jjjghu-white);
+  --bs-btn-active-bg: var(--jjjghu-highlight);
+  --bs-btn-active-border-color: var(--jjjghu-highlight);
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--jjjghu-white);
+  --bs-btn-disabled-bg: #0d6efd;
+  --bs-btn-disabled-border-color: #0d6efd;
 }
-.text-brown
-{
-    color:var(--jjjghu-brown) !important;
+.btn-success {
+  --bs-btn-color: var(--jjjghu-white);
+  --bs-btn-bg: var(--jjjghu-orange);
+  --bs-btn-border-color: var(--jjjghu-orange);
+  --bs-btn-hover-color: var(--jjjghu-white);
+  --bs-btn-hover-bg: #157347;
+  --bs-btn-hover-border-color: #146c43;
+  --bs-btn-focus-shadow-rgb: 60, 153, 110;
+  --bs-btn-active-color:  var(--jjjghu-white);
+  --bs-btn-active-bg: #146c43;
+  --bs-btn-active-border-color: #13653f;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: var(--jjjghu-white);
+  --bs-btn-disabled-bg: var(--jjjghu-orange);
+  --bs-btn-disabled-border-color: var(--jjjghu-orange);
 }
-.text-black
+.navbar
 {
-    color:var(--jjjghu-black) !important;
-}
-.text-black2
-{
-    color:var(--jjjghu-grey) !important;
-}
-.text-white
-{
-    color:var(--jjjghu-white) !important;
-}
-.text-blue
-{
-    color:var(--jjjghu-blue) !important;
-}
-.text-orange
-{
-    color:var(--jjjghu-orange) !important;
-}
-.text-red
-{
-    color:var(--jjjghu-red) !important;
-}
-/* 選取卡片的淡出顯示效果*/
-.card
-{
-    /* 動畫切換時間 */
-    transition: all 0.3s ease;
-}
-.card:hover
-{
-    /* 陰影效果 */
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-    /* 旋轉效果 */
-    transform: translateY(-0.5rem);
-    /* 邊框顏色 */
-    border: 1px solid var(--jjjghu-brown);
+    background-color:rgb(34, 40, 49);
+    color:rgb(238, 238, 238);
 }
 /* 登入介面開始 */
 .logincontainer
@@ -372,17 +427,10 @@ body
     min-height:100vh;
 }
 .wrapper {
-    background: rgb(34, 40, 49);
-    color: rgb(0, 173, 181);
+    background-color: rgb(34, 40, 49);
+    color: var(--jjjghu-highlight);
     padding: 30px 40px;
     border-radius: 0.5rem;
-}
-
-/* 其他樣式保持不變 */
-/* 背景顏色設定 */
-.LoginBody
-{
-    background-color:var(--jjjghu-grey);
 }
 .wrapper h1
 {
@@ -412,30 +460,54 @@ body
     /* 外框設定 */
     border:none;
     outline:none;
-    border:2px solid rgb(0, 173, 181);
+    border:2px solid var(--jjjghu-highlight);
     border-radius:40px;
     font-size:16px;
-    color:rgb(238, 238, 238);
+    color: var(--jjjghu-white);
     /* 將輸入內容對齊輸入框 */
-    padding:20px 45px 20px 20px;
+    /* 上右下左 */
+    padding:20px 45px 20px 45px;
+}
+/* 驗證輸入的框框 */
+#password-check
+{
+    /* border: 2px solid yellowgreen; */
+    border:2px solid var(--jjjghu-orange);
+}
+#check-icon
+{
+    /* color:yellowgreen; */
+    color:var(--jjjghu-orange);
 }
 .input-box input::placeholder
 {
     /* 設定輸入文字placeholder的顏色 */
+    /* 斜體灰色 */
     font-style: italic;
     color:rgb(100, 100, 100);
-    /* color:rgb(238, 238, 238); */
 }
-.input-box i
+.input-box .icon-left
 {
   position:absolute;
-  /* 相對 input box 靠右 */
+  /* 相對 input box 靠左 */
+  left:20px;
+  /* 上下置中 */
+  top:50%;
+  transform:translateY(-50%);
+  /* 字體大小 */
+  font-size:20px;
+}
+.input-box .icon-right
+{
+  position:absolute;
+  /* 相對 input box 靠左 */
   right:20px;
   /* 上下置中 */
   top:50%;
   transform:translateY(-50%);
   /* 字體大小 */
   font-size:20px;  
+  cursor:pointer;
 }
 .wrapper .remember-forgot
 {
@@ -467,25 +539,25 @@ body
 {
     width:100%;
     height:45px;
-    background:rgb(238, 238, 238);
+    background-color:rgb(238, 238, 238);
     border:none;
     outline:none;
     border-radius:40px;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     cursor:pointer;
-    color:rgb(57, 62, 70);
+    color:rgb(34, 40, 49);
     font-weight: 600;
 }
 .wrapper .register-link
 {
-    color:rgb(238, 238, 238);
+    color:var(--jjjghu-white);
     font-size:14.5px;
     text-align:center;
     margin-top:20px;
 }
 .register-link p a
 {
-    color:rgb(238, 238, 238);
+    color:var(--jjjghu-white);
     text-decoration:none;
     font-weight:600;
 }
@@ -493,4 +565,56 @@ body
 {
     text-decoration:underline;
 }
+
+/* 隱藏 Edge 的密碼顯示圖標 */
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+/* 隱藏 Chrome 的密碼顯示圖標 */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
 /* 登入介面結束 */
+/* 背景顏色設定 */
+
+.mt-10vh
+{
+    margin-top: 10vh !important;
+}
+.text-brown
+{
+    color:var(--jjjghu-brown) !important;
+}
+.text-black
+{
+    color:var(--jjjghu-main) !important;
+}
+.text-black2
+{
+    color:var(--jjjghu-second) !important;
+}
+.text-white
+{
+    color:var(--jjjghu-white) !important;
+}
+.text-blue
+{
+    color:var(--jjjghu-highlight) !important;
+}
+.text-orange
+{
+    color:var(--jjjghu-orange) !important;
+}
+.text-green
+{
+    color:greenyellow !important;
+}
+.text-red
+{
+    color:red !important;
+}
