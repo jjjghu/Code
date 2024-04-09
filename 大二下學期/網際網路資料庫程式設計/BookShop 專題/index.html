@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>書店Demo</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <!-- 不一定要加入的後綴 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <!-- Bootstrap 圖標 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <!-- 自定義 CSS -->
@@ -24,7 +23,7 @@
       <!--標題頁面 -->
       <a class="navbar-brand fs-2" href="index.html">
         <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
-        電子書店
+        閱緣書坊
       </a>
       <!-- 切換按鈕 -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -37,19 +36,23 @@
           <!-- me-3 代表增加間隔 -->
           <!-- fs-3 代表增大字體  -->
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="login.html">登入</a>
+            <div class="d-flex align-items-center">
+              <a class="nav-link" href="login.html"><i class='bx bx-user'></i>登入</a>
+              <span>|</span>
+              <a class="nav-link" href="register.html">註冊</a>
+            </div>
           </li>
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="register.html">註冊</a>
+
           </li>
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="#">會員中心</a>
+            <a class="nav-link" href="#"><i class="bx bx-home me-1"></i>會員中心</a>
           </li>
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="#">購物車</a>
+            <a class="nav-link" href="#"><i class="bx bx-cart me-1"></i>購物車</a>
           </li>
           <li class="nav-item title-nav me-3 fs-5">
-            <a class="nav-link" href="#">電子書櫃</a>
+            <a class="nav-link" href="#"><i class="bx bx-book-open me-1"></i>電子書櫃</a>
           </li>
         </ul>
       </div>
@@ -78,9 +81,9 @@
           <a data-index="2"></a>
         </div>
         <!-- 上一頁箭頭按鈕 -->
-        <a class="prev-arrow fs-2" href="#"><i class='bx bx-chevron-left'></i></a>
+        <a class="prev-arrow fs-2"><i class='bx bx-chevron-left'></i></a>
         <!-- 下一頁箭頭按鈕 -->
-        <a class="next-arrow fs-2" href="#"><i class='bx bx-chevron-right'></i></a>
+        <div class="next-arrow fs-2"><i class='bx bx-chevron-right'></i></div>
       </div>
     </section>
 
@@ -111,103 +114,52 @@
           <a href="product.html" class="card-link text-decoration-none text-primary">
             <div class="card mb-3">
               <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
+              <button class="btn cart" aria-label="購物車圖示"><i class="bi bi-cart"></i></button>
+              <!-- <div class="img-container"> -->
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product Image">
+              <!-- </div> -->
               <div class="card-body">
                 <h5 class="card-title">Product 1</h5>
-                <!-- 去除商品描述 2024/04/04 -->
-                <!-- <p class="card-text">Product description goes here.</p> -->
                 <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
               </div>
             </div>
           </a>
         </div>
         <div class="col-md-3">
-          <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
-          <a href="#" class="card-link text-decoration-none text-primary">
+          <a href="product.html" class="card-link text-decoration-none text-primary">
             <div class="card mb-3">
-              <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
+              <button class="btn cart" aria-label="購物車圖示"><i class="bi bi-cart"></i></button>
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product Image">
               <div class="card-body">
                 <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
                 <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
               </div>
             </div>
           </a>
         </div>
-        <div class="col-md-3">
-          <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
-          <a href="#" class="card-link text-decoration-none text-primary">
-            <div class="card mb-3">
-              <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
-              <div class="card-body">
-                <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
-                <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
-          <a href="#" class="card-link text-decoration-none text-primary">
-            <div class="card mb-3">
-              <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
-              <div class="card-body">
-                <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
-                <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
-          <a href="#" class="card-link text-decoration-none text-primary">
-            <div class="card mb-3">
-              <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
-              <div class="card-body">
-                <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
-                <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <!-- 整張卡片都可連接到商品頁面, 移除連結文字效果, 顏色設定為主色調 -->
-          <a href="#" class="card-link text-decoration-none text-primary">
-            <div class="card mb-3">
-              <!-- 加入購物車的+號圖示 -->
-              <button class="btn cart"><i class="bi bi-cart"></i></button>
-              <img src="https://via.placeholder.com/150" class="card-img-top" alt="NULL">
-              <div class="card-body">
-                <h5 class="card-title">Product 1</h5>
-                <p class="card-text">Product description goes here.</p>
-                <p class="card-text fw-bold text-orange">$28.99</p>
-                <!-- 移除 'Add to Cart' 按鈕 -->
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- 其他商品卡片可以按照這個結構添加 -->
       </div>
     </div>
+    <footer class="bottom d-flex justify-content-between align-items-center py-3">
+      <div class="container d-flex justify-content-between">
+        <div class="col-md-4 d-flex align-items-center ">
+          <span class="mb-3 mt-3">Copyright © 2024 閱緣書坊 All right reserved</span>
+        </div>
+        <form>
+          <div class="input-group mt-2">
+            <input type="email " class="sub form-control" placeholder="訂閱電子報">
+            <button class="btn btn-primary" type="submit">訂閱</button>
+          </div>
+        </form>
+        <ul class="nav col-md-4 justify-content-end mt-3">
+          <li class="ms-3"><a class="text-body-secondary" href="#"><i class='bx bxl-facebook-circle footerIcon'></i></a>
+          <li class="ms-3"><a class="text-body-secondary" href="#"><i class='bx bxl-instagram footerIcon'></i></a>
+          <li class="ms-3"><a class="text-body-secondary" href="#"><i class='bx bxl-youtube footerIcon'></i></a>
+        </ul>
+      </div>
+    </footer>
 </body>
-<script src="js/bootstrap.js"></script>
+<!-- Bootstrap js連結 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--自定義js連結 -->
 <script src="js/bookshop.js"></script>
-
 </html>

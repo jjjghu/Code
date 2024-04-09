@@ -73,11 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 開始自動播放, 設定微 3000ms 
     function startAutoPlay() {
+        // console.log('start auto play');
         autoPlayInterval = setInterval(goToNextSlide, 3000);
     }
 
     // 停止自動播放
     function stopAutoPlay() {
+        // console.log('stopAutoPlay');
         if (autoPlayInterval) {
             clearInterval(autoPlayInterval);
         }
@@ -140,6 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+// 判斷兩個inputBox內容是否相同的函數, 相同更改為打勾, 框線變為綠色, 不同就變為紅色
+function checkPassword(checkIcon, passwordCheck, passwordBox) {
+    if (passwordBox.value === passwordCheck.value && passwordBox.value != "") {
+        checkIcon.className = 'bx bx-check icon-left';
+        checkIcon.style.color = 'yellowgreen';
+        passwordCheck.style.border = '2px solid yellowgreen';
+    } else {
+        checkIcon.className = 'bx bx-x icon-left';
+        checkIcon.style.color = 'var(--jjjghu-orange)';
+        passwordCheck.style.border = '2px solid var(--jjjghu-orange)';
+    }
+    // 主控台輸出兩者的數值
+    // console.log(passwordBox.value, passwordCheck.value, passwordBox.value === passwordCheck.value && passwordBox.value != "");
+}
 // 抓取網頁圖片丟入 preview 當中, 在頁面載入完成之後就做
 window.onload = function () {
     // 獲取所有的 .slider.product img 元素
@@ -170,20 +186,7 @@ window.onload = function () {
         passwordCheck.addEventListener('input', () => checkPassword(checkIcon, passwordCheck, passwordBox));
     }
 };
-// 判斷兩個inputBox內容是否相同的函數, 相同更改為打勾, 框線變為綠色, 不同就變為紅色
-function checkPassword(checkIcon, passwordCheck, passwordBox) {
-    if (passwordBox.value === passwordCheck.value && passwordBox.value != "") {
-        checkIcon.className = 'bx bx-check icon-left';
-        checkIcon.style.color = 'yellowgreen';
-        passwordCheck.style.border = '2px solid yellowgreen';
-    } else {
-        checkIcon.className = 'bx bx-x icon-left';
-        checkIcon.style.color = 'var(--jjjghu-orange)';
-        passwordCheck.style.border = '2px solid var(--jjjghu-orange)';
-    }
-    // 主控台輸出兩者的數值
-    // console.log(passwordBox.value, passwordCheck.value, passwordBox.value === passwordCheck.value && passwordBox.value != "");
-}
+
 /*
 每個物件都要加入判斷存不存在, 不然就要確保物件都存在之後將 js 分開寫,
 */
