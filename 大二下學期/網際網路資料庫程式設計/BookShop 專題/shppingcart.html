@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=" UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- 不一定要加入的後綴 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" -->
+    <!-- Bootstrap 圖標 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- 自定義 CSS -->
+    <link href="css/bookshop.css" rel="stylesheet">
+    <!-- boxIcons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="dark-theme">
+    <!-- 固定位置的物件放在最上面 -->
+    <i class='bx bx-moon bx-rotate-270 themeIcon' id="themeIcon"></i>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!--標題頁面 -->
+            <a class="navbar-brand fs-2" href="index.php">
+                <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
+                閱緣書坊
+            </a>
+            <!-- 切換按鈕 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 向外的連結, 向右排列 -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <!-- me-3 代表增加間隔 -->
+                    <!-- fs-3 代表增大字體  -->
+                    <li class="nav-item title-nav me-3 fs-5">
+                        <div class="d-flex align-items-center">
+                            <a class="nav-link" href="login.html"><i class='bx bx-user'></i>登入</a>
+                            <span>|</span>
+                            <a class="nav-link" href="register.html">註冊</a>
+                        </div>
+                    </li>
+                    <li class="nav-item title-nav me-3 fs-5">
+
+                    </li>
+                    <li class="nav-item title-nav me-3 fs-5">
+                        <a class="nav-link" href="#"><i class="bx bx-home me-1"></i>會員中心</a>
+                    </li>
+                    <li class="nav-item title-nav me-3 fs-5">
+                        <a class="nav-link" href="#"><i class="bx bx-cart me-1"></i>購物車</a>
+                    </li>
+                    <li class="nav-item title-nav me-3 fs-5">
+                        <a class="nav-link" href="#"><i class="bx bx-book-open me-1"></i>電子書櫃</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+<!-- Bootstrap js連結 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--自定義js連結 -->
+<script src="js/bookshop.js"></script>
+
+</html>
