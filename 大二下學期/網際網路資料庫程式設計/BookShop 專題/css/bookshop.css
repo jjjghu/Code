@@ -636,6 +636,10 @@ footer
 
 /* 背景顏色設定 */
 
+.text-Nmain
+{
+    color:var(--jjjghu-Nmain);
+}
 .mt-10vh
 {
     margin-top: 10vh !important;
