@@ -15,55 +15,134 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
+<!-- 預設黑暗模式 body開始 -->
+
 <body class="dark-theme">
     <!-- 固定位置的物件放在最上面 -->
+    <!-- 暗黑模式切換按鈕 -->
     <i class='bx bx-moon bx-rotate-270 themeIcon' id="themeIcon"></i>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container-fluid">
-            <!--標題頁面 -->
-            <a class="navbar-brand fs-2" href="index.php">
+    <!-- 標題橫條開始 -->
+    <nav class="navbar navbar-expand-lg justify-content-between align-items-center fixed-top">
+        <div class="container-fluid d-flex justify-content-between">
+            <!--標題圖片文字開始 -->
+            <a class="text-decoration-none fs-2 text-Nmain col-md-4 d-flex align-items-center" href="index.php">
                 <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
                 閱緣書坊
             </a>
-            <!-- 切換按鈕 -->
+            <!--標題圖片文字結束 -->
+            <!-- 小視窗切換按鈕開始 -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- 向外的連結, 向右排列 -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <!-- me-3 代表增加間隔 -->
-                    <!-- fs-3 代表增大字體  -->
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <div class="d-flex align-items-center">
-                            <a class="nav-link" href="login.html"><i class='bx bx-user'></i>登入</a>
+            <!-- 小視窗切換按鈕結束 -->
+            <!-- 導覽連結開始 -->
+
+            <div class="navbar-collapse justify-content-end " id="navbarNavDropdown">
+                <ul class="navbar-nav fs-5 text-Nmain">
+                    <!-- me-3 = margin-right... why?-->
+                    <li class="nav-item title-nav me-3 ">
+                        <div class="d-flex align-items-center text-Nmain">
+                            <a class="nav-link text-Nmain" href="login.html"><i class='bx bx-user'></i>登入</a>
                             <span>|</span>
-                            <a class="nav-link" href="register.html">註冊</a>
+                            <a class="nav-link text-Nmain" href="register.html">註冊</a>
                         </div>
                     </li>
-                    <li class="nav-item title-nav me-3 fs-5">
+                    <li class="nav-item title-nav me-3">
+                        <a class="nav-link text-Nmain" href="#"><i class="bx bx-home me-1"></i>會員中心</a>
+                    </li>
+                    <li class="nav-item title-nav me-3">
+                        <a class="nav-link text-Nmain" href="#">
+                            <span class='red-dot' id='payMeMoney'>2</span>
+                            <i class="bx bx-cart me-1"></i>購物車
+                        </a>
+                        <div class="cart-items">
+                            <!-- Shopping Item -->
+                            <div class="shopping-item" id="shopping-item">
+                                <div class="dropdown-cart-header">
+                                    <span>2 項商品</span>
+                                    <a href="cart.html">前往購物車</a>
+                                </div>
+                                <ul class="shopping-list">
+                                    <link>
+                                    <div class="cart-img-head">
+                                        <a class="cart-img" href="product-details.html"><img src="images/book.png"
+                                                alt="#"></a>
+                                    </div>
 
+                                    <div class="content">
+                                        <h4><a href="product-details.html">獸靈之詩</a></h4>
+                                        <p class="quantity">1x - <span class="amount">$199</span></p>
+                                    </div>
+                                    </link>
+                                    <li>
+                                        <div class="cart-img-head">
+                                            <a class="cart-img" href="product-details.html"><img src="images/book.png"
+                                                    alt="#"></a>
+                                        </div>
+                                        <div class="content">
+                                            <h4><a href="product-details.html">玻璃彈珠都是貓的眼睛</a></h4>
+                                            <p class="quantity">1x - <span class="amount">$399</span></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="bottom">
+                                    <div class="total">
+                                        <span>Total</span>
+                                        <span class="total-amount">$598</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="checkout.html" class="btn animate">結帳</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ End Shopping Item -->
+                        </div>
                     </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-home me-1"></i>會員中心</a>
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-cart me-1"></i>購物車</a>
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-book-open me-1"></i>電子書櫃</a>
+                    <li class="nav-item title-nav ">
+                        <a class="nav-link text-Nmain" href="#"><i class="bx bx-book-open me-1"></i>電子書櫃</a>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- 導覽連結結束 -->
     </nav>
+    <!-- 標題橫條結束 -->
+    <!-- 主要頁面內容開始 -->
     <main>
-        <section class="container">
-            <!-- 廣告輪播區域 -->
+        <!-- 購物車內容開始 
+        <section class="cartTab">
+            <h1 class='fw-light p-1'>Shopping Cart</h1>
+            <div class="listCart">
+                <div class="item">
+                    <div class="image">
+
+                    </div>
+                    <div class="name">
+
+                    </div>
+                    <div class="totalPrice">
+
+                    </div>
+                    <div class="quantity">
+                        <span class='minus'></span>
+                        <span>1</span>
+                        <span class='plus'></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class='btnGroup'>
+                <button class='btn btn-success'>關閉</button>
+                <button class='btn btn-success'>結帳</button>
+            </div>
+        </section>
+        -->
+        <!-- 廣告輪播區域開始 -->
+        <section class="container ">
             <div class="slider-wrapper mt-10vh">
+                <!-- 廣告圖片開始 -->
                 <div class="slider">
-                    <!-- 廣告圖片 -->
                     <img id="slide-1"
                         src="https://images.unsplash.com/photo-1712417827761-7a68ff4a90f3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="slider 1">
@@ -74,20 +153,24 @@
                         src="https://images.unsplash.com/photo-1654859869130-fd0a2aa5539b?q=80&w=1228&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="slider 3">
                 </div>
-                <!-- 廣告輪播按鈕 -->
+                <!-- 廣告圖片結束 -->
+                <!-- 廣告輪播按鈕開始 (下方的三個點) -->
                 <div class="slider-nav">
                     <a data-index="0"></a>
                     <a data-index="1"></a>
                     <a data-index="2"></a>
                 </div>
+                <!-- 廣告輪播按鈕結束 -->
                 <!-- 上一頁箭頭按鈕 -->
                 <a class="prev-arrow fs-2"><i class='bx bx-chevron-left'></i></a>
                 <!-- 下一頁箭頭按鈕 -->
                 <div class="next-arrow fs-2"><i class='bx bx-chevron-right'></i></div>
             </div>
         </section>
-        <div class="container mt-5">
-            <!-- 篩選區域 -->
+        <!-- 廣告輪播區域結束 -->
+        <!-- 商品購買區域開始 -->
+        <section class="container mt-5">
+            <!--分類按鈕開始 -->
             <div class="row mb-4">
                 <div class="col-md-6">
                     <div class="dropdown">
@@ -109,34 +192,37 @@
             <!-- 購物列表 -->
             <div class="row" id="shopping-list">
                 <?php
-                  $products = [
+                $products = [
                     ["name" => "Product 1", "image" => "https://via.placeholder.com/150", "price" => "$1.99"],
-                      ["name" => "Product 2", "image" => "https://via.placeholder.com/150", "price" => "$2.99"],
-                      ["name" => "Product 3", "image" => "https://via.placeholder.com/150", "price" => "$33.99"],
-                      ["name" => "Product 4", "image" => "https://via.placeholder.com/150", "price" => "$44.52"],
-                      ["name" => "Product 5", "image" => "https://via.placeholder.com/150", "price" => "$52"],
-                      ["name" => "Product 6", "image" => "https://via.placeholder.com/150", "price" => "$66"],
-                      ["name" => "Product 7", "image" => "https://via.placeholder.com/150", "price" => "$77"],
-                  ];
-                  foreach ($products as $product)
-                  {
-                      echo "<div class=\"col-md-2\">
-                              <a href=\"product.html\" class=\"card-link text-decoration-none text-primary\">
-                                  <div class=\"card mb-3\">
-                                      <img src=\"{$product['image']}\" class=\"card-img-top\" alt=\"Product Image\">
-                                      <div class=\"card-body\">
-                                          <h5 class=\"card-title text-Nmain\">{$product['name']}</h5>
-                                          <p class=\"card-text fw-bold text-orange\">{$product['price']}</p>
+                    ["name" => "Product 2", "image" => "https://via.placeholder.com/150", "price" => "$2.99"],
+                    ["name" => "Product 3", "image" => "https://via.placeholder.com/150", "price" => "$33.99"],
+                    ["name" => "Product 4", "image" => "https://via.placeholder.com/150", "price" => "$44.52"],
+                    ["name" => "Product 5", "image" => "https://via.placeholder.com/150", "price" => "$52"],
+                    ["name" => "Product 6", "image" => "https://via.placeholder.com/150", "price" => "$66"],
+                    ["name" => "Product 7", "image" => "https://via.placeholder.com/150", "price" => "$77"],
+                ];
+                foreach ($products as $product) {
+                    echo "<div class='col-md-2'>
+                              <a href='product.html' class='card-link text-decoration-none text-primary'>
+                                  <div class='card mb-3'>
+                                      <img src='{$product['image']}' class='card-img-top' alt='Product Image'>
+                                      <div class='card-body'>
+                                          <h5 class='card-title text-Nmain'>{$product['name']}</h5>
+                                          <p class='card-text fw-bold text-orange'>{$product['price']}</p>
                                       </div>
                               </a>
-                              <button class=\"btn cart\" aria-label=\"購物車圖示\"><i class=\"bi bi-cart\"></i></button>
+                              <button class='btn cart' aria-label='購物車圖示'><i class='bi bi-cart'></i></button>
                             </div>
                           </div>";
-                  }
+                }
                 ?>
             </div>
-        </div>
+            </div>
+        </section>
+        <!-- 商品購買區域結束 -->
     </main>
+    <!-- 主要頁面內容開始 -->
+    <!-- footer 開始 -->
     <footer class="bottom d-flex justify-content-between align-items-center py-3">
         <div class="container d-flex justify-content-between">
             <div class="col-md-4 d-flex align-items-center ">
@@ -156,6 +242,7 @@
             </ul>
         </div>
     </footer>
+    <!-- footer結束 -->
 </body>
 <!-- Bootstrap js連結 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
