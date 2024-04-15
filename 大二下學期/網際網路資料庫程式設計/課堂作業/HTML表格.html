@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML表格</title>
+</head>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<style>
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background-color: rgb(157, 255, 255);
+        text-align: center;
+    }
+
+    tr td {
+        border: 1px solid black;
+        width: 100px;
+    }
+
+    tr:nth-child(5) {
+        background-color: rgb(255, 169, 169);
+    }
+</style>
+
+<body>
+    <table border='1'>
+        <tr>
+            <td rowspan='2' colspan='2'></td>
+            <td colspan='2' class='fw-bold'>上學期</td>
+            <td colspan='2' class='fw-bold'>下學期</td>
+        </tr>
+        <tr>
+            <td>男生</td>
+            <td>女生</td>
+            <td>男生</td>
+            <td>女生</td>
+        </tr>
+        <tr>
+            <td colspan='2'>資工系</td>
+            <td>1000</td>
+            <td>500</td>
+            <td>1100</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <td colspan='2'>資管系</td>
+            <td>800</td>
+            <td>600</td>
+            <td>900</td>
+            <td>650</td>
+        </tr>
+        <tr>
+            <td colspan='6' class='text-start'>註:以上資料僅供參考</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
