@@ -1,0 +1,16 @@
+D:\csharp\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.exe
+D:\csharp\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.deps.json
+D:\csharp\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.runtimeconfig.json
+D:\csharp\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.dll
+D:\csharp\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.pdb
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.Form1.resources
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.csproj.GenerateResource.cache
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.AssemblyInfoInputs.cache
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.AssemblyInfo.cs
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.csproj.CoreCompileInputs.cache
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.dll
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\refint\物件導向基礎知識.dll
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.pdb
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.genruntimeconfig.cache
+D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\ref\物件導向基礎知識.dll
