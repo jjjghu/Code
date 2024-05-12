@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\csharp\\物件導向基礎知識\\物件導向基礎知識.csproj",
+      "projectUniqueName": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
       "projectName": "物件導向基礎知識",
-      "projectPath": "D:\\csharp\\物件導向基礎知識\\物件導向基礎知識.csproj",
+      "projectPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
       "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\csharp\\物件導向基礎知識\\obj\\",
+      "outputPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
