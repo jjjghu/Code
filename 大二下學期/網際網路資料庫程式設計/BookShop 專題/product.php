@@ -5,60 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>商品頁面</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <!-- 不一定要加入的後綴 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" -->
-    <!-- Bootstrap 圖標 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <!-- 自定義 CSS -->
-    <link href="css/bookshop.css" rel="stylesheet" />
-    <!-- boxIcons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <?php include '.Style.php' ?>
 </head>
 
-<body class="dark-theme">
-    <!-- 固定位置的物件放在最上面 -->
-    <i class='bx bx-moon bx-rotate-270 themeIcon' id="themeIcon"></i>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container-fluid">
-            <!--標題頁面 -->
-            <a class="navbar-brand fs-2" href="index.php">
-                <img src="images/book.png" alt="" class="d-inline-block  align-text-top">
-                閱緣書坊
-            </a>
-            <!-- 切換按鈕 -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- 向外的連結, 向右排列 -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <!-- me-3 代表增加間隔 -->
-                    <!-- fs-3 代表增大字體  -->
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <div class="d-flex align-items-center">
-                            <a class="nav-link" href="login.html"><i class='bx bx-user'></i>登入</a>
-                            <span>|</span>
-                            <a class="nav-link" href="register.html">註冊</a>
-                        </div>
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-home me-1"></i>會員中心</a>
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-cart me-1"></i>購物車</a>
-                    </li>
-                    <li class="nav-item title-nav me-3 fs-5">
-                        <a class="nav-link" href="#"><i class="bx bx-book-open me-1"></i>電子書櫃</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php include '.Theme.php'; ?>
+    <!-- 標題橫條 + 切換按鈕 -->
+    <?php include '.Header.php'; ?>
     <!-- 廣告輪播區域 -->
     <div class="container text-center">
         <div class="row">
@@ -99,7 +51,7 @@
                 <div id="publisher">出版社</div>
                 <!-- 按鈕靠左 -->
                 <div class="d-flex justify-content-start mt-3">
-                    <button class="btn btn-primary me-2 "><i class="bx bx-cart-add me-1"></i>加入購物車</button>
+                    <button class="btn btn-primary me-2" id='add-to-cart'><i class="bx bx-cart-add me-1"></i>加入購物車</button>
                     <button class="btn btn-success">直接購買</button>
                 </div>
             </div>
@@ -162,31 +114,10 @@
     </div>
 
     <!-- 一個可透過按鈕選取要查看的內容, 內容簡介, 詳細資料, 作者介紹, 留言區  -->
-    <footer class="bottom d-flex justify-content-between align-items-center py-3">
-        <div class="container d-flex justify-content-between">
-            <div class="col-md-4 d-flex align-items-center ">
-                <span class="mb-3 mt-3">Copyright © 2024 閱緣書坊 All right reserved</span>
-            </div>
-            <form>
-                <div class="input-group mt-2">
-                    <input type="email " class="sub form-control" placeholder="訂閱電子報">
-                    <button class="btn btn-primary" type="submit">訂閱</button>
-                </div>
-            </form>
-            <ul class="nav col-md-4 justify-content-end mt-3">
-                <li class="ms-3"><a class="text-body-secondary" href="#"><i
-                            class='bx bxl-facebook-circle footerIcon'></i></a>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><i class='bx bxl-instagram footerIcon'></i></a>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><i class='bx bxl-youtube footerIcon'></i></a>
-            </ul>
-        </div>
-    </footer>
+    <!-- footer 開始 -->
+    <?php include '.Footer.php'; ?>
+    <!-- footer結束 -->
 </body>
-<!-- Bootstrap js連結 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-<!--integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous" -->
-<script src="js/bookshop.js"></script>
 
 </html>
 
@@ -208,10 +139,7 @@ ISBN：9787020127238
 購物說明
 Footer
  -->
-<!-- Bootstrap js連結 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!--自定義js連結 -->
-<script src="js/bookshop.js"></script>
 </body>
+<?php include '.Script.php' ?>
 
 </html>

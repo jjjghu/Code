@@ -139,6 +139,35 @@ document.addEventListener('DOMContentLoaded', () => {
             themeIcon.classList.toggle('bx-moon');
         }
     }
+    var toggleCart = document.getElementById('toggleCart');
+    if (toggleCart) {
+        toggleCart.onclick = function () {
+            var cart = document.getElementById('cart-preview');
+            // 將 cart-preview 當中的 display 設定為 block
+            if (cart) {
+                // 
+                cart.style.display = cart.style.display === 'flex' ? 'none' : 'flex';
+            }
+
+        }
+    }
+
+    document.querySelectorAll('.decrement').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var input = this.parentNode.querySelector('input[type=number]');
+            input.stepDown();
+            if (input.value == 0) {
+                // 如果數量為 0，則移除該商品
+                this.closest('.preview-product').remove();
+            }
+        });
+    });
+
+    document.querySelectorAll('.increment').forEach(function (button) {
+        button.addEventListener('click', function () {
+            this.parentNode.querySelector('input[type=number]').stepUp();
+        });
+    });
 
 });
 // 判斷兩個inputBox內容是否相同的函數, 相同更改為打勾, 框線變為綠色, 不同就變為紅色, 之後密碼驗證會將其完整
@@ -185,31 +214,6 @@ window.onload = function () {
         passwordCheck.addEventListener('input', () => checkPassword(checkIcon, passwordCheck, passwordBox));
     }
 };
-// 初始化所有提示框
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-if (popoverTriggerList) {
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
-    })
-}
-var productCardHTML = `
-<div class='card mb-3' style="width: 18rem;">
-    <img src='your-image-path.jpg' class='card-img-top' alt='Product Image'>
-    <div class='card-body'>
-        <h5 class='card-title text-Nmain'>商品名稱</h5>
-        <p class='card-text fw-bold text-orange'>價格</p>
-    </div>
-</div>
-`;
-document.addEventListener("DOMContentLoaded", function () {
-    var popover = new bootstrap.Popover(document.getElementById('cartPopover'), {
-        content: function () {
-            return productCardHTML;  // 返回商品卡片的 HTML
-        },
-        trigger: 'hover focus',
-        html: true
-    });
-});
 /*
 每個物件都要加入判斷存不存在, 不然就要確保物件都存在之後將 js 分開寫,
 */

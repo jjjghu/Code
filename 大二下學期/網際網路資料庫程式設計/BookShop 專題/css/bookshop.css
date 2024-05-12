@@ -5,7 +5,7 @@
 
 a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
     cursor: pointer;
 }
 
@@ -45,6 +45,13 @@ body {
     color: var(--jjjghu-Nmain);
 }
 
+/* 隱藏數字輸入框的上下調整箭頭 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 .nav-item.title-nav {
     position: relative;
@@ -80,45 +87,12 @@ body {
 }
 
 /* 淡入淡出效果結尾 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
-/* 購物車內容開始 */
-/*
-.cartTab
-{
-    width:400px;
-    background-color:var(--jjjghu-main);
-    color:var(--jjjghu-Nmain);
-    position:fixed;
-    inset: 5vh 0 0 auto;
-    display:grid;
-    grid-template-rows: 70px 1fr 70px;
-}
-.cartTab .btnGroup
-{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.cartTab .btnGroup button
-{
-    border-radius:0;
-    border:none;
-}
-.cartTab .listCart. .item img
-{
-    width:100%;
-}
-.cartTab .listCart .item
-{
-    display:grid;
-    grid-template-columns: 70px 150px;
-}*/
-
-/* 購物車內容結束 */
 /* 輪播開始*/
 .slider-wrapper {
     /* 設定相對位置 */
     position: relative;
     /* 設定最大寬度 */
-    max-width: 48rem;
+    max-width: 50rem;
     /* 置中對齊, 上方空出空位 */
     /* 更改為定義marginTop: mt-7vh */
     margin: 0 auto 0 auto;
@@ -305,21 +279,6 @@ body {
     object-fit: contain;
 }
 
-/* 商品詳細資訊開始 */
-/* 將容器設置為 flex */
-/* .container-fluid {
-    
-    display: flex; 
-} */
-/* 詳細資訊也佔據一半空間 */
-/* .product-details {
-    
-    flex: 1; 
-    position:relative;
-    top: 7vh;
-    left: 7vw;
-
-} */
 .red-dot {
     position: absolute;
     right: -10px;
@@ -331,23 +290,51 @@ body {
     font-size: 12px;
     text-align: center;
     border-radius: 50%;
+    display: none;
 }
 
-#shopping-item {
+/* 購物車詳細內容開始 */
+#cart-preview {
+    /* font-size: 1.1rem; */
     position: absolute;
+    /* 設定最大上限, 避免超出頁面 */
+    max-height: 60vh;
+    /* 往下拓展 */
+    flex-direction: column;
     top: 6vh;
     right: -6vw;
     /* using vw is a bad idea, I tried */
     width: 330px;
     background: var(--jjjghu-main);
-    padding: 2.5rem;
+    padding: 1.5rem;
     /* -webkit-transition: all 0.3s ease 0s; */
     transition: all 0.3s ease 0s;
+    /* A 很大 */
     z-index: 'A';
     border-radius: 0.2rem;
     /* -webkit-box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25); */
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-    opacity: 1;
+    /* display : flex / none 切換, 使用 javascript 控制 */
+    display: none;
+}
+
+#product-list {
+    /* 填滿所有區域 */
+    flex-grow: 1;
+    /* 超出 y 軸顯示滑動條 */
+    overflow-y: auto;
+    /* 邊緣半透明白色漸層 */
+
+}
+
+.preview-image {
+    width: 20%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.quantity {
+    width: 50px;
 }
 
 /* 商品詳細資訊結束 */
@@ -401,6 +388,7 @@ body {
 }
 
 /* 購物車圖標結束 */
+
 /* 切換主題按鈕設定 */
 .themeIcon {
     position: fixed;
@@ -688,6 +676,19 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     position: absolute;
     right: 0;
 }
+
+/* 第一個form-step顯示為 block */
+/* .form-step :nth-child(1) {
+    display: block;
+}
+
+.form-step :nth-child(2) {
+    display: none;
+}
+
+.form-step :nth-child(3) {
+    display: none;
+} */
 
 /* 登入介面結束 */
 /* footer 設定 */
