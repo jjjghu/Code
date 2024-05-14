@@ -1,0 +1,762 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+:root {
+    /* 色彩設定 */
+    --jjjghu-main: rgb(238, 238, 238);
+    --jjjghu-main-opacity: rgba(238, 238, 238, 0.5);
+    --jjjghu-Nmain: rgb(34, 40, 49);
+    --jjjghu-second: rgb(222, 221, 214);
+    --jjjghu-highlight: rgb(0, 173, 181);
+    --jjjghu-highlight-opacity: rgba(0, 173, 181, 0.5);
+    --jjjghu-brown: rgb(185, 148, 112);
+    --jjjghu-orange: rgb(211, 140, 70);
+    --jjjghu-orange-opacity: rgba(211, 140, 70, 0.8);
+    --jjjghu-white: rgb(238, 238, 238);
+    --jjjghu-black: rgb(34, 40, 49);
+    --jjjghu-black-opacity: rgba(34, 40, 49, 0.5);
+}
+
+.dark-theme {
+    /* 色彩設定 */
+    --jjjghu-main: rgb(34, 40, 49);
+    --jjjghu-main-opacity: rgba(34, 40, 49, 0.5);
+    --jjjghu-Nmain: rgb(238, 238, 238);
+    --jjjghu-second: rgb(57, 62, 70);
+    --jjjghu-highlight: rgb(0, 173, 181);
+    --jjjghu-brown: rgb(185, 148, 112);
+    --jjjghu-orange: rgb(211, 140, 70);
+    --jjjghu-white: rgb(238, 238, 238);
+    --jjjghu-black: rgb(34, 40, 49);
+    --jjjghu-black-opacity: rgba(34, 40, 49, 0.5);
+}
+
+body {
+    background-color: var(--jjjghu-second);
+    user-select: none;
+    color: var(--jjjghu-Nmain);
+}
+
+/* 隱藏數字輸入框的上下調整箭頭 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+.nav-item.title-nav {
+    position: relative;
+    z-index: 9999;
+}
+
+.nav-item.title-nav::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: var(--jjjghu-highlight-opacity);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .3s ease;
+    border-radius: 0.4rem;
+}
+
+.nav-item.title-nav:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* 覆蓋bootstrap的設定 */
+.title-nav .nav-link {
+    margin: 0.2rem 0;
+    padding: 0;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: var(--jjjghu-Nmain);
+}
+
+/* 淡入淡出效果結尾 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+/* 輪播開始*/
+.slider-wrapper {
+    /* 設定相對位置 */
+    position: relative;
+    /* 設定最大寬度 */
+    max-width: 50rem;
+    /* 置中對齊, 上方空出空位 */
+    /* 更改為定義marginTop: mt-7vh */
+    margin: 0 auto 0 auto;
+}
+
+.slider {
+    /* 彈性顯示 */
+    display: flex;
+    /* 顯示內容不換行 */
+    overflow: hidden;
+    /* 設定寬度 */
+    width: 100%;
+    /* 圖片長寬比例 */
+    aspect-ratio: 16 / 9;
+    /*  判斷是否要顯示滾動條, 如果有溢出就顯示滾動條 */
+    /* overflow-x:auto; */
+    /* x 軸拉動, mandatory proximity(精確 / 大約) */
+    scroll-snap-type: x mandatory;
+    /* 按下按鈕拖動時smooth */
+    scroll-behavior: smooth;
+    /* 輪播圖的陰影 , x, y, blur, spread, color hsla(hue, saturation, lightness, alpha)*/
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* 圓弧外框 */
+    border-radius: 0.5rem;
+    /* IE / Edge 不顯示滾動條 */
+    -ms-overflow-style: none;
+    /* FireFox 不顯示滾動條 */
+    scrollbar-width: none;
+}
+
+.slider::-webkit-scrollbar {
+    /* 滾動條設定為不顯示, 其實只要這個就好了 */
+    display: none;
+}
+
+.slider img {
+    /* flex grow flex strength, flex basis */
+    /* 圖片放大比例, 圖片縮小比例(設定為 0 避免失真), 占滿整個container(100%)*/
+    flex: 1 0 100%;
+    /* 再到起始位置的時候對齊*/
+    /* start, center, end, nearest */
+    scroll-snap-align: start;
+    /* 設定圖最最小大小*/
+    min-width: 100%;
+    /* 動畫切換 */
+    transition: transform 1s ease-in-out;
+}
+
+.slider-nav {
+    /* 彈性顯示 */
+    display: flex;
+    /* 每個子物件之間的距離 */
+    column-gap: 1rem;
+    /* 位置繼承為 relative, 雖然上面寫absolute (相對於父元素的絕對位置)*/
+    position: absolute;
+    bottom: 1.25rem;
+    /* 置中對齊 */
+    left: 50%;
+    transform: translate(-50%);
+    /* 顯示在上層 */
+    z-index: 1;
+    /* 鼠標圖樣 */
+    cursor: pointer;
+}
+
+.slider-nav a {
+    /* 按鈕大小 */
+    width: 0.8rem;
+    height: 0.8rem;
+    /* 按鈕圓弧 */
+    border-radius: 50%;
+    /* 按鈕顏色 */
+    background-color: var(--jjjghu-white);
+    /* 透明度設定為 0.75 */
+    opacity: 0.5;
+    /* 轉換為Hover時的動畫表現 */
+    transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+    /* 被選重時顯示高亮 */
+    opacity: 1;
+}
+
+/* 箭頭設定開始 */
+.prev-arrow, .next-arrow {
+    /* 沒hover不顯示 */
+    transition: opacity 0.3s ease, visibility 0.3s;
+    opacity: 0;
+    position: absolute;
+    /* 將箭頭置於垂直中央 */
+    top: 50%;
+    /* 確保箭頭完全居中 */
+    transform: translateY(-50%);
+    /* 確保箭頭顯示在圖片上方 */
+    z-index: 2;
+    /* 根據需要調整顏色 */
+    color: var(--jjjghu-white);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.prev-arrow i, .next-arrow i {
+    background-color: var(--jjjghu-highlight);
+    border-radius: 50%;
+}
+
+.slider-wrapper:hover .prev-arrow,
+.slider-wrapper:hover .next-arrow {
+    /* 被hover就顯示 */
+    opacity: 1;
+}
+
+.prev-arrow {
+    /* 箭頭放左邊 */
+    left: 0.3rem;
+}
+
+.next-arrow {
+    /* 箭頭放右邊 */
+    right: 0.3rem;
+}
+
+/* 箭頭設定結束 */
+/* 輪播結束 */
+/* 商品的輪播設定, 靠左, 縮小 */
+/* .slider-wrapper.product { */
+/* 讓輪播圖區域和商品詳情區域各佔一半的空間 */
+/* flex: 1; */
+/* 相對於父元素的絕對定位 */
+/* position: relative;  */
+/* 放置在左上位置 */
+/* top: 7vh; */
+/* left: 7vw;  */
+/* 縮放大小 */
+/* transform:scale(0.8); */
+/* 變更縮放點, 避免縮放過後多出不必要的空隙 */
+/* transform-origin: top left; */
+/* } */
+/* 加入偽元素, 套用漸變的顯示效果 */
+.slider-wrapper.product::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* 佔據底部1成的區域 */
+    height: 10%;
+    opacity: 0;
+    background: linear-gradient(to bottom, rgba(150, 150, 150, 0.5), rgba(50, 50, 50, 0));
+    transition: opacity 0.3s ease;
+}
+
+.slider-wrapper.product::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* 佔據底部1成的區域 */
+    height: 10%;
+    opacity: 0;
+    background: linear-gradient(to top, rgba(150, 150, 150, 0.5), rgba(50, 50, 50, 0));
+    transition: opacity 0.3s ease;
+}
+
+.slider-wrapper.product:hover::after {
+    opacity: 1;
+}
+
+.slider-wrapper.product:hover::before {
+    opacity: 1;
+}
+
+.slider.product {
+    /* 更改比例為直立1:1 */
+    aspect-ratio: 1 / 1;
+}
+
+/* 將圖片以原比例置中, 很醜, 但我也不知道要怎麼改*/
+.slider.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.red-dot {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    background-color: var(--jjjghu-highlight-opacity);
+    font-size: 12px;
+    text-align: center;
+    border-radius: 50%;
+    display: none;
+}
+
+/* 購物車詳細內容開始 */
+#cart-preview {
+    /* font-size: 1.1rem; */
+    position: absolute;
+    /* 設定最大上限, 避免超出頁面 */
+    max-height: 60vh;
+    /* 往下拓展 */
+    flex-direction: column;
+    top: 6vh;
+    right: -6vw;
+    /* using vw is a bad idea, I tried */
+    width: 330px;
+    background: var(--jjjghu-main);
+    padding: 1.5rem;
+    /* -webkit-transition: all 0.3s ease 0s; */
+    transition: all 0.3s ease 0s;
+    /* A 很大 */
+    z-index: 'A';
+    border-radius: 0.2rem;
+    /* -webkit-box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25); */
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* display : flex / none 切換, 使用 javascript 控制 */
+    display: none;
+}
+
+#product-list {
+    /* 填滿所有區域 */
+    flex-grow: 1;
+    /* 超出 y 軸顯示滑動條 */
+    overflow-y: auto;
+    /* 邊緣半透明白色漸層 */
+
+}
+
+.preview-image {
+    width: 20%;
+    height: auto;
+    margin-right: 10px;
+}
+
+.quantity {
+    width: 50px;
+}
+
+/* 商品詳細資訊結束 */
+/* 選取卡片的淡出顯示效果*/
+.card {
+    /* 動畫切換時間 */
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-Nmain);
+    /* padding:1rem 1rem 0 1rem; */
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    /* 陰影效果 */
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* 旋轉效果 */
+    transform: translateY(-0.5rem);
+    /* 邊框顏色 */
+    border: 1px solid var(--jjjghu-brown);
+}
+
+/* 購物車圖標開始 */
+/* 滑鼠移入時顯示 */
+.card:hover .btn.cart {
+
+    display: block;
+}
+
+/* 購物車圖標的顯示設定 */
+.btn.cart {
+    /* 减小padding 上下 左右 */
+    padding: 0.25rem 0.5rem;
+    /* 設定字體大小 */
+    font-size: 0.875rem;
+    /* 相對於父物件的絕對位置 */
+    position: absolute;
+    /* 設定靠上右 */
+    bottom: 12px;
+    right: 12px;
+    /* 預設為不顯示 */
+    display: none;
+    /* 半透明黑色背景 */
+    background-color: var(--jjjghu-highlight-opacity);
+    color: white;
+}
+
+.btn.cart:hover {
+    /*設定購物車圖標hover的時候顯示的樣貌*/
+    background-color: var(--jjjghu-brown);
+    color: var(--jjjghu-white);
+}
+
+/* 購物車圖標結束 */
+
+/* 切換主題按鈕設定 */
+.themeIcon {
+    position: fixed;
+    font-size: 2rem;
+    right: 2vw;
+    bottom: 2vh;
+    color: var(--jjjghu-Nmain);
+    background-color: var(--jjjghu-main);
+    /* 圖形邊框繪製 */
+    border: 2px solid var(--jjjghu-Nmain);
+    /* 邊框設定 */
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.themeIcon:hover {
+    color: var(--jjjghu-main);
+    background-color: var(--jjjghu-Nmain);
+    /* 顏色轉換時的動畫 */
+    transition: background-color 250ms ease, color 250ms ease;
+
+}
+
+.slider-nav.product {
+    /* 彈性顯示 */
+    display: flex;
+    /* 每個子物件之間的距離 */
+    column-gap: 0.5rem;
+    /* 位置繼承為 relative, 雖然上面寫absolute (相對於父元素的絕對位置)*/
+    position: absolute;
+    /* 和底部之間的距離 */
+    bottom: 0.5rem;
+    /* 置中對齊 */
+    left: 50%;
+    transform: translate(-50%);
+    /* 顯示在上層 */
+    z-index: 1;
+    /* 鼠標圖樣 */
+    cursor: pointer;
+}
+
+.slider-nav.product a {
+    /* 按鈕大小, 相對父物件的大小 */
+    width: 3rem;
+    height: 3rem;
+    /* 按鈕圓弧 */
+    border-radius: 0%;
+    /* 按鈕顏色 */
+    background-color: var(--jjjghu-main);
+    /* 透明度設定為 0.75 */
+    opacity: 0.75;
+    /* 轉換為Hover時的動畫表現 */
+    transition: opacity ease 250ms;
+}
+
+/* 商品輪播設定結束 */
+/* 自定義文本效果, 強制套用 */
+
+/* 邊緣線條, 用於 product 當中的詳細資料欄位 */
+.bold-hr {
+    border-bottom: 1px solid var(--jjjghu-Nmain);
+}
+
+/* 文字hover效果開始 */
+.text_effect {
+    color: var(--jjjghu-Nmain);
+}
+
+.text_effect:hover {
+    color: var(--jjjghu-highlight);
+}
+
+/* 文字hover效果結束 */
+/* 覆蓋 bootstrap 當中的按鈕設定 */
+.btn-primary {
+    /* 文字顏色設定 */
+    --bs-btn-color: var(--jjjghu-Nmain);
+    --bs-btn-bg: none;
+    --bs-btn-border-color: var(--jjjghu-Nmain);
+    --bs-btn-hover-color: var(--jjjghu-white);
+    --bs-btn-hover-bg: var(--jjjghu-highlight);
+    --bs-btn-hover-border-color: var(--jjjghu-highlight);
+    --bs-btn-focus-shadow-rgb: var(--jjjghu-highlight);
+    --bs-btn-active-color: var(--jjjghu-white);
+    --bs-btn-active-bg: var(--jjjghu-highlight);
+    --bs-btn-active-border-color: var(--jjjghu-highlight);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--jjjghu-white);
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+}
+
+.btn-success {
+    --bs-btn-color: var(--jjjghu-white);
+    --bs-btn-bg: var(--jjjghu-orange-opacity);
+    --bs-btn-border-color: var(--jjjghu-orange-opacity);
+    --bs-btn-hover-color: var(--jjjghu-white);
+    --bs-btn-hover-bg: var(--jjjghu-orange);
+    --bs-btn-hover-border-color: var(--jjjghu-orange);
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: var(--jjjghu-white);
+    --bs-btn-active-bg: var(--jjjghu-orange);
+    --bs-btn-active-border-color: var(--jjjghu-orange-opacity);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--jjjghu-white);
+    --bs-btn-disabled-bg: var(--jjjghu-orange-opacity);
+    --bs-btn-disabled-border-color: var(--jjjghu-orange-opacity);
+}
+
+.navbar {
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-white);
+}
+
+/* 登入介面開始 */
+.logincontainer {
+    display: flex;
+    /* 內容垂直排列 */
+    flex-direction: column;
+    /* 垂直居中 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    min-height: 100vh;
+}
+
+.wrapper {
+    background-color: rgb(34, 40, 49);
+    color: var(--jjjghu-highlight);
+    padding: 30px 40px;
+    border-radius: 0.5rem;
+}
+
+.wrapper h1 {
+    /* 文字大小 */
+    font-size: 36px;
+    /* 標題置中 */
+    text-align: center;
+}
+
+.wrapper .input-box {
+    position: relative;
+    /* 寬度佔滿父元素 */
+    width: 100%;
+    /* 高度 */
+    height: 50px;
+    /* background:rgb(57, 62, 70); */
+    /* 上下 左右 */
+    margin: 30px 0;
+}
+
+.input-box input {
+    /* 輸入框的長寬 */
+    width: 100%;
+    height: 100%;
+    /* 可看見背景 */
+    background: transparent;
+    /* 外框設定 */
+    border: none;
+    outline: none;
+    border: 2px solid var(--jjjghu-highlight);
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--jjjghu-white);
+    /* 將輸入內容對齊輸入框 */
+    /* 上右下左 */
+    padding: 20px 45px 20px 45px;
+}
+
+/* 驗證輸入的框框 */
+#password-check {
+    /* border: 2px solid yellowgreen; */
+    border: 2px solid var(--jjjghu-orange);
+}
+
+#check-icon {
+    /* color:yellowgreen; */
+    color: var(--jjjghu-orange);
+}
+
+.input-box input::placeholder {
+    /* 設定輸入文字placeholder的顏色 */
+    /* 斜體灰色 */
+    font-style: italic;
+    color: rgb(100, 100, 100);
+}
+
+.input-box .icon-left {
+    position: absolute;
+    /* 相對 input box 靠左 */
+    left: 15px;
+    /* 上下置中 */
+    top: 50%;
+    transform: translateY(-50%);
+    /* 字體大小 */
+    font-size: 20px;
+}
+
+.input-box .icon-right {
+    position: absolute;
+    /* 相對 input box 靠左 */
+    right: 20px;
+    /* 上下置中 */
+    top: 50%;
+    transform: translateY(-50%);
+    /* 字體大小 */
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    /* 文字大小 */
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label {
+    color: rgb(238, 238, 238);
+}
+
+.remember-forgot label input {
+    accent-color: rgb(238, 238, 238);
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: rgb(238, 238, 238);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 45px;
+    background-color: rgb(238, 238, 238);
+    border: none;
+    outline: none;
+    /* 40px */
+    border-radius: 0.3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    color: rgb(34, 40, 49);
+    font-weight: 600;
+}
+
+.wrapper .btn:active {
+    background-color: var(--jjjghu-highlight);
+    color: var(--jjjghu-white);
+}
+
+.wrapper .link-out {
+    color: var(--jjjghu-white);
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-out p a {
+    color: var(--jjjghu-white);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-out p a:hover {
+    text-decoration: underline;
+}
+
+/* 隱藏 Edge 的密碼顯示圖標 */
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+/* 隱藏 Chrome 的密碼顯示圖標 */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}
+
+/* 第一個form-step顯示為 block */
+.form-step:nth-child(1) {
+    display: none;
+}
+
+
+.form-step:nth-child(n) {
+    display: block;
+}
+
+
+/* 登入介面結束 */
+/* footer 設定 */
+footer {
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-Nmain);
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.footerIcon {
+    color: var(--jjjghu-Nmain);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.input-group input::placeholder {
+    font-style: italic;
+}
+
+.sub {
+    border: 1px solid var(--jjjghu-Nmain);
+    border-radius: 5px;
+    /* 設定邊框的圓角 */
+    padding: 10px;
+    /* 設定內邊距 */
+}
+
+/* 背景顏色設定 */
+.text-main {
+    color: var(--jjjghu-main);
+}
+
+.text-Nmain {
+    color: var(--jjjghu-Nmain);
+}
+
+.mt-10vh {
+    margin-top: 10vh !important;
+}
+
+.text-brown {
+    color: var(--jjjghu-brown) !important;
+}
+
+.text-black {
+    color: var(--jjjghu-main) !important;
+}
+
+.text-black2 {
+    color: var(--jjjghu-second) !important;
+}
+
+.text-white {
+    color: var(--jjjghu-white) !important;
+}
+
+.text-blue {
+    color: var(--jjjghu-highlight) !important;
+}
+
+.text-orange {
+    color: var(--jjjghu-orange) !important;
+}
+
+.text-green {
+    color: greenyellow !important;
+}
+
+.text-red {
+    color: rgba(255, 84, 84, 0.685) !important;
+}

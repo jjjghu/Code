@@ -1,0 +1,10 @@
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AddCircle.resources
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AddPicture.resources
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AddRectangle.resources
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AddTriangle.resources
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.Form1.resources
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.csproj.GenerateResource.cache
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AssemblyInfoInputs.cache
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.AssemblyInfo.cs
+D:\csharp\hw_8\obj\Debug\net8.0\hw_8.csproj.CoreCompileInputs.cache
