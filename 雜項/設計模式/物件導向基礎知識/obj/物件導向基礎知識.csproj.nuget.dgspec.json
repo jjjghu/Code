@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
         "packagesPath": "C:\\Users\\chiul\\.nuget\\packages\\",
         "outputPath": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\obj\\",
+=======
+    "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {}
+  },
+  "projects": {
+    "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
+        "projectName": "物件導向基礎知識",
+        "projectPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\obj\\",
+>>>>>>> b2400b83331c346a02a4fe3f62c733135d9e7899
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chiul\\AppData\\Roaming\\NuGet\\NuGet.Config",

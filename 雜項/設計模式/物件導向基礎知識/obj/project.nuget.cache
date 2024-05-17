@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "1t94djpjS5f7ge9LxVGAkTfn/VwsnOsynL3GfWHNFJUCPmKopowX7Kc6EKN1EMbhukFrAGY84MZxUQGbtX83xQ==",
   "success": true,
   "projectFilePath": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
+=======
+  "dgSpecHash": "aoSMyY4kXzVp6EkqxHguLpcRaeSGtajq9CAUK447k5j8mxpEfftqIaDE67EdwYwWawsyjOqckkfiYiu/K6xTeQ==",
+  "success": true,
+  "projectFilePath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
+>>>>>>> b2400b83331c346a02a4fe3f62c733135d9e7899
   "expectedPackageFiles": [],
   "logs": []
 }
