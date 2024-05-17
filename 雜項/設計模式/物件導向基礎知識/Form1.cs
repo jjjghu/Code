@@ -19,5 +19,13 @@ namespace 物件導向基礎知識
                 MessageBox.Show(item.Shout());
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MachineCat machineCat = new MachineCat("哆啦A夢");
+            MessageBox.Show(machineCat.ChangeThing("任意門"));
+            StoneMonkey stoneMonkey = new StoneMonkey("孫悟空");
+            MessageBox.Show(stoneMonkey.ChangeThing("一隻牛"));
+        }
     }
 }

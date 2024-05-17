@@ -8,13 +8,8 @@ namespace 物件導向基礎知識
 {
     internal class Cat:Animal
     {
-        public Cat():base() // 建構子
-        { }
-        public Cat(string name) : base(name) // 方法重載建構子
-        { }
-        protected override string getShoutSound() // 多型
-        {
-            return " 喵";
-        }
+        public Cat():base() { } // 建構子
+        public Cat(string name) : base(name) { } // 方法重載建構子
+        protected override string getShoutSound() { return " 喵"; } // 多型
     }
 }

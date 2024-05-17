@@ -11,18 +11,18 @@ namespace 物件導向基礎知識
     {
         // 設計模式, 範本方法
         protected string name = string.Empty; // 會繼承下去的變數
-        public Animal(string name) // 方法重載
-        {
-            this.name = name;
-        }
         public Animal() // 無參數建構子
         {
             this.name = "無名";
         }
+        public Animal(string name) // 方法重載
+        {
+            this.name = name;
+        }
         protected int shoutNum = 3; // 會繼承下去的變數
-        public int ShoutNum{   get { return shoutNum; } set {  shoutNum = value; }} // 屬性 
-        protected abstract string getShoutSound();
-        public string Shout()
+        public int ShoutNum{ get { return shoutNum; } set {  shoutNum = value; }} // 屬性 
+        protected abstract string getShoutSound(); // 抽象方法
+        public string Shout() // 一般方法
         {
             string result = string.Empty;
             for (int i = 0; i < shoutNum; ++i)
