@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = 物件導向基礎知識
-build_property.ProjectDir = D:\csharp\物件導向基礎知識\
+build_property.ProjectDir = D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

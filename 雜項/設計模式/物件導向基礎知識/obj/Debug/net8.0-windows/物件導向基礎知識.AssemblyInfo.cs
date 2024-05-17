@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("物件導向基礎知識")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e100146330f2684293d8e7593582c5748ea7e2c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("物件導向基礎知識")]
 [assembly: System.Reflection.AssemblyTitleAttribute("物件導向基礎知識")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,3 +14,20 @@ D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\refint\物件導向�
 D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.pdb
 D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.genruntimeconfig.cache
 D:\csharp\物件導向基礎知識\obj\Debug\net8.0-windows\ref\物件導向基礎知識.dll
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.exe
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.deps.json
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.runtimeconfig.json
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.dll
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\bin\Debug\net8.0-windows\物件導向基礎知識.pdb
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.Form1.resources
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.csproj.GenerateResource.cache
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.GeneratedMSBuildEditorConfig.editorconfig
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.AssemblyInfoInputs.cache
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.AssemblyInfo.cs
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.csproj.CoreCompileInputs.cache
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.sourcelink.json
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.dll
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\refint\物件導向基礎知識.dll
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.pdb
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\物件導向基礎知識.genruntimeconfig.cache
+D:\桌面\Github\Code\雜項\設計模式\物件導向基礎知識\obj\Debug\net8.0-windows\ref\物件導向基礎知識.dll
