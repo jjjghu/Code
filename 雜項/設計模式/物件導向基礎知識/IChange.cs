@@ -8,6 +8,6 @@ namespace 物件導向基礎知識
 {
     internal interface IChange // 變出東西的接口
     {
-
+        string ChangeThing(string thing); // 定義變出東西的方法
     }
 }
