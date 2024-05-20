@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.embeddedhtml": "html",
-        "xutility": "cpp",
-        "type_traits": "cpp"
-    }
-}
