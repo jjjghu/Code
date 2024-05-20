@@ -136,9 +136,10 @@ input[type="number"]::-webkit-outer-spin-button {
     /* start, center, end, nearest */
     scroll-snap-align: start;
     /* 設定圖最最小大小*/
-    min-width: 100%;
+    object-fit: contain;
     /* 動畫切換 */
     transition: transform 1s ease-in-out;
+
 }
 
 .slider-nav {
@@ -216,22 +217,6 @@ input[type="number"]::-webkit-outer-spin-button {
     right: 0.3rem;
 }
 
-/* 箭頭設定結束 */
-/* 輪播結束 */
-/* 商品的輪播設定, 靠左, 縮小 */
-/* .slider-wrapper.product { */
-/* 讓輪播圖區域和商品詳情區域各佔一半的空間 */
-/* flex: 1; */
-/* 相對於父元素的絕對定位 */
-/* position: relative;  */
-/* 放置在左上位置 */
-/* top: 7vh; */
-/* left: 7vw;  */
-/* 縮放大小 */
-/* transform:scale(0.8); */
-/* 變更縮放點, 避免縮放過後多出不必要的空隙 */
-/* transform-origin: top left; */
-/* } */
 /* 加入偽元素, 套用漸變的顯示效果 */
 .slider-wrapper.product::after {
     content: "";
@@ -271,6 +256,7 @@ input[type="number"]::-webkit-outer-spin-button {
     /* 更改比例為直立1:1 */
     aspect-ratio: 1 / 1;
 }
+
 
 /* 將圖片以原比例置中, 很醜, 但我也不知道要怎麼改*/
 .slider.product img {
@@ -345,6 +331,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--jjjghu-Nmain);
     /* padding:1rem 1rem 0 1rem; */
     transition: all 0.3s ease;
+    height: 300px;
 }
 
 .card:hover {
@@ -361,6 +348,19 @@ input[type="number"]::-webkit-outer-spin-button {
 .card:hover .btn.cart {
 
     display: block;
+}
+
+.card-img-top {
+    height: 200px;
+    /* 你可以根據需要調整這個值 */
+    object-fit: cover;
+}
+
+/* 避免文字過多導致卡片大小不一*/
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* 購物車圖標的顯示設定 */
