@@ -29,24 +29,38 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(352, 166);
+            button1.Location = new Point(274, 131);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(64, 57);
+            button1.Size = new Size(50, 45);
             button1.TabIndex = 0;
             button1.Text = "叫";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(274, 208);
+            button2.Name = "button2";
+            button2.Size = new Size(50, 41);
+            button2.TabIndex = 1;
+            button2.Text = "變";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(9F, 19F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(622, 355);
+            Controls.Add(button2);
             Controls.Add(button1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -55,5 +69,6 @@
         #endregion
 
         private Button button1;
+        private Button button2;
     }
 }
