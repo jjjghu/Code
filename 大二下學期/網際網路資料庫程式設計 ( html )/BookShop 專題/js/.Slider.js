@@ -1,13 +1,17 @@
+let autoPlayInterval = null; // 全域變數, 自動播放使用
 document.addEventListener('DOMContentLoaded', () => {
     // 主頁面輪播圖開始
     const slides = document.querySelectorAll('.slider img');
     const navLinks = document.querySelectorAll('.slider-nav a');
     let currentIndex = 0;
-    let autoPlayInterval = null;
 
     function showSlide(index) {
         // 確保slide當中不是空的
         if (slides.length > 0 && slides[index]) {
+            if (slides.length == 1) {
+                prevArrow.style.display = 'none';
+                nextArrow.style.display = 'none';
+            }
             let slideWidth = slides[index].clientWidth;
             document.querySelector('.slider').scrollLeft = slideWidth * index;
             updateNav(index);
@@ -21,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateNav(index) {
         navLinks.forEach((link, i) => {
             if (i === index) {
-                link.style.backgroundColor = 'rgb(0, 173, 181)';
-                link.style.border = '0.1rem solid rgb(0, 173, 181)';
+                link.style.backgroundColor = 'var(--jjjghu-highlight)';
+                link.style.border = '0.1rem solid var(--jjjghu-highlight-opacity)';
                 link.style.opacity = '1';
             }
             else {
@@ -71,15 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 開始自動播放, 設定微 3000ms 
     function startAutoPlay() {
-        // console.log('start auto play');
+        console.log('start auto play');
         autoPlayInterval = setInterval(goToNextSlide, 3000);
     }
 
     // 停止自動播放
     function stopAutoPlay() {
-        // console.log('stopAutoPlay');
+        console.log('stopAutoPlay');
         if (autoPlayInterval) {
             clearInterval(autoPlayInterval);
+            autoPlayInterval = null;  // 清除 autoPlayInterval
         }
     }
 

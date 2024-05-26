@@ -1,6 +1,13 @@
+/* 自訂義字體開始 */
+@font-face {
+    font-family: 'MiSans-Normal.ttf';
+    src: url('MiSans-Normal.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'MiSans-Normal.ttf', 'Microsoft JhengHei';
 }
 
 a {
@@ -9,6 +16,7 @@ a {
     cursor: pointer;
 }
 
+/* 色彩設定開始 */
 :root {
     /* 色彩設定 */
     --jjjghu-main: rgb(238, 238, 238);
@@ -17,12 +25,19 @@ a {
     --jjjghu-second: rgb(222, 221, 214);
     --jjjghu-highlight: rgb(0, 173, 181);
     --jjjghu-highlight-opacity: rgba(0, 173, 181, 0.5);
+    /* 卡片border顏色 */
+    --jjjghu-card-border: var(--jjjghu-grey);
+    --jjjghu-card-hover: var(--jjjghu-darkgrey);
+    /* 通用顏色 */
     --jjjghu-brown: rgb(185, 148, 112);
     --jjjghu-orange: rgb(211, 140, 70);
     --jjjghu-orange-opacity: rgba(211, 140, 70, 0.8);
     --jjjghu-white: rgb(238, 238, 238);
     --jjjghu-black: rgb(34, 40, 49);
     --jjjghu-black-opacity: rgba(34, 40, 49, 0.5);
+    --jjjghu-grey: rgb(160, 160, 160);
+    --jjjghu-darkgrey: rgb(90, 90, 90);
+    --jjjghu-red: rgb(218, 2, 2);
 }
 
 .dark-theme {
@@ -32,17 +47,40 @@ a {
     --jjjghu-Nmain: rgb(238, 238, 238);
     --jjjghu-second: rgb(57, 62, 70);
     --jjjghu-highlight: rgb(0, 173, 181);
+    --jjjghu-highlight-opacity: rgba(0, 173, 181, 0.5);
+    /* 卡片border顏色 */
+    --jjjghu-card-border: var(--jjjghu-darkgrey);
+    --jjjghu-card-hover: var(--jjjghu-grey);
+    /* 通用顏色 */
     --jjjghu-brown: rgb(185, 148, 112);
     --jjjghu-orange: rgb(211, 140, 70);
+    --jjjghu-orange-opacity: rgba(211, 140, 70, 0.8);
     --jjjghu-white: rgb(238, 238, 238);
     --jjjghu-black: rgb(34, 40, 49);
     --jjjghu-black-opacity: rgba(34, 40, 49, 0.5);
+    --jjjghu-grey: rgb(160, 160, 160);
+    --jjjghu-darkgrey: rgb(90, 90, 90);
+    --jjjghu-red: rgb(218, 2, 2);
 }
 
+/* 基礎設定開始 */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: var(--jjjghu-second);
     user-select: none;
     color: var(--jjjghu-Nmain);
+}
+
+/* 主業面設定開始 */
+main {
+    flex: 1 0 auto;
+}
+
+.navbar-toggler {
+    color: var(--jjjghu-grey);
+    background-color: var(--jjjghu-white);
 }
 
 /* 隱藏數字輸入框的上下調整箭頭 */
@@ -52,7 +90,11 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* 淡入淡出效果開頭 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+#title-navbar {
+    border-bottom: 2px solid var(--jjjghu-Nmain);
+}
+
+/* 淡入淡出效果開始 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 .nav-item.title-nav {
     position: relative;
     z-index: 9999;
@@ -86,7 +128,49 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--jjjghu-Nmain);
 }
 
-/* 淡入淡出效果結尾 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
+.form-control {
+    border: 1px solid var(--jjjghu-Nmain);
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-Nmain);
+}
+
+.form-control::placeholder {
+    color: var(--jjjghu-grey);
+}
+
+.form-control:focus {
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-Nmain);
+    /* 這裡是你想要設定的背景顏色 */
+    border-color: var(--jjjghu-highlight);
+    /* 這裡是你想要設定的邊框顏色 */
+}
+
+.dropdown-menu {
+    padding: 0px;
+}
+
+.dropdown-item {
+    color: var(--jjjghu-Nmain);
+    background-color: var(--jjjghu-main);
+}
+
+.table {
+    --bs-table-color: var(--jjjghu-Nmain);
+    --bs-table-striped-color: var(--jjjghu-Nmain);
+}
+
+.form-check-input:checked {
+    background-color: var(--jjjghu-red);
+    border: none;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* 淡入淡出效果結束 https://codepen.io/lmrynhpe-the-sans/pen/ExJPYBJ*/
 /* 輪播開始*/
 .slider-wrapper {
     /* 設定相對位置 */
@@ -94,7 +178,6 @@ input[type="number"]::-webkit-outer-spin-button {
     /* 設定最大寬度 */
     max-width: 50rem;
     /* 置中對齊, 上方空出空位 */
-    /* 更改為定義marginTop: mt-7vh */
     margin: 0 auto 0 auto;
 }
 
@@ -197,7 +280,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .prev-arrow i, .next-arrow i {
-    background-color: var(--jjjghu-highlight);
+    background-color: var(--jjjghu-highlight-opacity);
     border-radius: 50%;
 }
 
@@ -205,6 +288,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .slider-wrapper:hover .next-arrow {
     /* 被hover就顯示 */
     opacity: 1;
+}
+
+.slider-wrapper:hover .slider.product {
+    border-color: var(--jjjghu-grey);
 }
 
 .prev-arrow {
@@ -217,7 +304,7 @@ input[type="number"]::-webkit-outer-spin-button {
     right: 0.3rem;
 }
 
-/* 加入偽元素, 套用漸變的顯示效果 */
+/* 加入偽元素, 套用漸變的顯示效果開始 */
 .slider-wrapper.product::after {
     content: "";
     position: absolute;
@@ -255,6 +342,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .slider.product {
     /* 更改比例為直立1:1 */
     aspect-ratio: 1 / 1;
+    /* 加入邊框 */
+    border: 1px solid var(--jjjghu-darkgrey);
 }
 
 
@@ -304,23 +393,34 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
 }
 
+/* 避免首頁的 card height 300 影響 */
+.preview-product.shopping-cart {
+    height: auto;
+}
+
+
 #product-list {
     /* 填滿所有區域 */
     flex-grow: 1;
     /* 超出 y 軸顯示滑動條 */
     overflow-y: auto;
     /* 邊緣半透明白色漸層 */
-
 }
 
 .preview-image {
-    width: 20%;
+    min-width: 20%;
     height: auto;
     margin-right: 10px;
 }
 
 .quantity {
     width: 50px;
+}
+
+
+/* 搜尋框設定 */
+#search-box {
+    width: 20vw;
 }
 
 /* 商品詳細資訊結束 */
@@ -331,7 +431,9 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--jjjghu-Nmain);
     /* padding:1rem 1rem 0 1rem; */
     transition: all 0.3s ease;
+    /* Is there a better way to do it? */
     height: 300px;
+    border: 1px solid var(--jjjghu-card-border);
 }
 
 .card:hover {
@@ -340,20 +442,21 @@ input[type="number"]::-webkit-outer-spin-button {
     /* 旋轉效果 */
     transform: translateY(-0.5rem);
     /* 邊框顏色 */
-    border: 1px solid var(--jjjghu-brown);
+    border: 1px solid var(--jjjghu-card-hover);
 }
 
 /* 購物車圖標開始 */
 /* 滑鼠移入時顯示 */
 .card:hover .btn.cart {
-
     display: block;
 }
 
+/* 上方圖片顯示*/
 .card-img-top {
+    padding: 10px;
     height: 200px;
     /* 你可以根據需要調整這個值 */
-    object-fit: cover;
+    background-color: transparent;
 }
 
 /* 避免文字過多導致卡片大小不一*/
@@ -361,6 +464,13 @@ input[type="number"]::-webkit-outer-spin-button {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.clamp-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* 購物車圖標的顯示設定 */
@@ -389,7 +499,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* 購物車圖標結束 */
 
-/* 切換主題按鈕設定 */
+/* 切換主題按鈕設定開始 */
 .themeIcon {
     position: fixed;
     font-size: 2rem;
@@ -411,7 +521,22 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: var(--jjjghu-Nmain);
     /* 顏色轉換時的動畫 */
     transition: background-color 250ms ease, color 250ms ease;
+}
 
+.userProfile {
+    position: fixed;
+    font-size: 15px;
+    font-weight: 600;
+    left: 2vw;
+    bottom: 3.2vh;
+    font-style: normal;
+    color: var(--jjjghu-grey);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.userProfile:hover {
+    color: var(--jjjghu-Nmain);
 }
 
 .slider-nav.product {
@@ -451,7 +576,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* 邊緣線條, 用於 product 當中的詳細資料欄位 */
 .bold-hr {
-    border-bottom: 1px solid var(--jjjghu-Nmain);
+    border-bottom: 2px solid var(--jjjghu-Nmain);
 }
 
 /* 文字hover效果開始 */
@@ -463,8 +588,10 @@ input[type="number"]::-webkit-outer-spin-button {
     color: var(--jjjghu-highlight);
 }
 
+
+
 /* 文字hover效果結束 */
-/* 覆蓋 bootstrap 當中的按鈕設定 */
+/* 覆蓋 bootstrap 設定開始 */
 .btn-primary {
     /* 文字顏色設定 */
     --bs-btn-color: var(--jjjghu-Nmain);
@@ -503,6 +630,15 @@ input[type="number"]::-webkit-outer-spin-button {
 .navbar {
     background-color: var(--jjjghu-main);
     color: var(--jjjghu-white);
+}
+
+.modal-content {
+    background-color: var(--jjjghu-main);
+}
+
+.tab-content {
+    /* 允許userselect */
+    user-select: text;
 }
 
 /* 登入介面開始 */
@@ -677,18 +813,115 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     right: 0;
 }
 
-/* 第一個form-step顯示為 block */
-.form-step:nth-child(1) {
-    display: none;
-}
-
-
-.form-step:nth-child(n) {
-    display: block;
-}
-
-
 /* 登入介面結束 */
+/* 個人資料編輯開始 userProfile */
+.profile-info {
+    flex-grow: 1;
+}
+
+.scroll-box {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.btn-small-icon {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--jjjghu-main);
+    color: var(--jjjghu-Nmain);
+    border: 2px solid var(--jjjghu-grey);
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.card:hover #new-article {
+    color: var(--jjjghu-highlight);
+}
+
+#articleContent {
+    height: auto;
+    overflow: scroll;
+}
+
+
+#EditProfile p {
+    min-height: 25px;
+    margin: .25rem 0;
+}
+
+#EditProfile input::placeholder {
+    font-style: italic;
+}
+
+.bi-file-earmark-plus {
+    font-size: 10rem;
+}
+
+/* 個人資料編輯結束 userProfile */
+/* admin.php 頁面開始 */
+#AddUserForm .mb-3 p {
+    min-height: 25px;
+    margin: .25rem 0;
+}
+
+#EditUserForm .mb-3 p {
+    min-height: 25px;
+    margin: .25rem 0;
+}
+
+/* admin.php 頁面結束 */
+/* 留言區開始 */
+/* 圖片切成圓形 */
+
+
+.comment-section {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.comment-username {
+    font-weight: bold;
+
+}
+
+.comment-time {
+    font-size: 0.8rem;
+    color: var(--jjjghu-card-hover);
+}
+
+.comment-content {
+    /* 保持和圖片相同的左邊距 */
+    /* mb-3 ms-5 pb-2 */
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid grey;
+}
+
+.comment-image {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--jjjghu-main);
+    /* shadow */
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* border: 1px solid black; */
+    /* contain */
+    object-fit: contain;
+    object-position: center center;
+    /* overflow: hidden; */
+    /* display: block; */
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+/* 留言區結束 */
 /* footer 設定 */
 footer {
     background-color: var(--jjjghu-main);
@@ -725,10 +958,18 @@ footer {
     color: var(--jjjghu-Nmain);
 }
 
+/* 標題 fixed 10 vh, 因此要往下放 */
 .mt-10vh {
     margin-top: 10vh !important;
 }
 
+.dropdown-menu {
+    max-height: 200px;
+    /* scrollbar */
+    overflow-y: auto;
+}
+
+/* 背景顏色設定 */
 .text-brown {
     color: var(--jjjghu-brown) !important;
 }
@@ -757,6 +998,11 @@ footer {
     color: greenyellow !important;
 }
 
-.text-red {
-    color: rgba(255, 84, 84, 0.685) !important;
+.text-grey {
+    color: var(--jjjghu-darkgrey) !important;
+}
+
+.text-danger {
+    color: var(--jjjghu-red) !important;
+    /* color: rgba(255, 84, 84, 0.685) !important; */
 }
