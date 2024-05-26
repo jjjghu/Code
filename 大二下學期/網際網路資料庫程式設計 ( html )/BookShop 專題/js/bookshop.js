@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
     // 黑暗模式切換按鈕, 都在Loaded之後確認按紐存在, 再加入功能
     // toggle不知為何不能使用, 因此使用add remove 判斷做到相同的效果
     var themeIcon = document.getElementById('themeIcon');

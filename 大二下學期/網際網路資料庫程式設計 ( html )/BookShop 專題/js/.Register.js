@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 停用複製貼上
     var passwordBox = document.getElementById('password');
     var passwordCheck = document.getElementById('passwordCheck');
-    //
+
     if (passwordCheck) passwordCheck.style.border = '2px solid var(--jjjghu-orange)';
     [passwordBox, passwordCheck].forEach(function (element) {
         if (element) {
@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 $(document).ready(function () {
+    //自定義驗證方法
+    $.validator.addMethod("pattern", function (value, element, param) {
+        return this.optional(element) || param.test(value);
+    }, "格式不正確");
     var validateForm = function () {
         $("#RegisterForm").validate({
             onfocusout: false,
@@ -62,7 +66,8 @@ $(document).ready(function () {
                 username: {
                     required: true,
                     minlength: 4,
-                    maxlength: 16
+                    maxlength: 16,
+                    pattern: /^[a-zA-Z0-9]+$/
                 },
                 password: {
                     required: true,
@@ -78,13 +83,21 @@ $(document).ready(function () {
                 email: {
                     required: true,
                     email: true
+                },
+                phone:
+                {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10
                 }
             },
             messages: {
                 username: {
                     required: "請輸入使用者名稱",
                     minlength: "使用者名稱至少要4個字元",
-                    maxlength: "使用者名稱最多16個字元"
+                    maxlength: "使用者名稱最多16個字元",
+                    pattern: "使用者名稱只能包含英文和數字"
                 },
                 password: {
                     required: "請輸入密碼",
@@ -100,16 +113,27 @@ $(document).ready(function () {
                 email: {
                     required: "請輸入電子郵件",
                     email: "請輸入正確的電子郵件"
+                },
+                phone:
+                {
+                    required: "請輸入手機號碼",
+                    digits: "手機號碼為數字",
+                    minlength: "手機號碼為10個數字",
+                    maxlength: "手機號碼為10個數字"
                 }
             },
             errorPlacement: function (error, element) {
-                var errorId = element.attr("id") + "-err";  // 根据输入框的ID构造错误信息的ID
-                $('#' + errorId).html(error.text());  // 将错误信息插入到相应的<p>标签中
-            }
+                var errorId = element.attr("id") + "-err";  // 根據元素ID獲取錯誤信息的ID
+                $('#' + errorId).html(error.text());  // 顯示錯誤訊息到<p>當中
+            },
+            success: function (label, element) {
+                var successId = $(element).attr("id") + "-err";
+                $('#' + successId).html(" ");
+            },
         });
     };
     $('#submitButton').click(function (event) {
-        event.preventDefault();  // 阻止表單的預設提交行為
+        event.preventDefault();// 組織表單提交
         validateForm();  // 觸發表單驗證
         if ($("#RegisterForm").valid()) {  // 如果表單驗證通過，則提交表單
             $("#RegisterForm").submit();
