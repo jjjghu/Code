@@ -27,7 +27,7 @@
 
             if (message) {
                 // 顯示錯誤訊息
-                $("#message").html('message');
+                $("#message").html(message);
                 // 標註錯誤區域
                 $("#account").focus();
                 // return false 可以阻止表單送出
