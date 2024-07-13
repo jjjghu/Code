@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {}
-  },
-  "projects": {
-    "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
-        "projectName": "物件導向基礎知識",
-        "projectPath": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
-        "packagesPath": "C:\\Users\\chiul\\.nuget\\packages\\",
-        "outputPath": "D:\\桌面\\Github\\Code\\雜項\\設計模式\\物件導向基礎知識\\obj\\",
-=======
     "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj": {}
   },
   "projects": {
@@ -25,10 +12,13 @@
         "projectPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\物件導向基礎知識.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
         "outputPath": "D:\\Desktop\\Code\\雜項\\設計模式\\物件導向基礎知識\\obj\\",
->>>>>>> b2400b83331c346a02a4fe3f62c733135d9e7899
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\chiul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +67,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

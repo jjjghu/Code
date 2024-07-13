@@ -1,0 +1,16 @@
+D:\csharp\hw_15\bin\Debug\net8.0-windows\hw_15.exe
+D:\csharp\hw_15\bin\Debug\net8.0-windows\hw_15.deps.json
+D:\csharp\hw_15\bin\Debug\net8.0-windows\hw_15.runtimeconfig.json
+D:\csharp\hw_15\bin\Debug\net8.0-windows\hw_15.dll
+D:\csharp\hw_15\bin\Debug\net8.0-windows\hw_15.pdb
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.Form1.resources
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.csproj.GenerateResource.cache
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.AssemblyInfoInputs.cache
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.AssemblyInfo.cs
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.csproj.CoreCompileInputs.cache
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.dll
+D:\csharp\hw_15\obj\Debug\net8.0-windows\refint\hw_15.dll
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.pdb
+D:\csharp\hw_15\obj\Debug\net8.0-windows\hw_15.genruntimeconfig.cache
+D:\csharp\hw_15\obj\Debug\net8.0-windows\ref\hw_15.dll
