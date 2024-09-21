@@ -1,0 +1,16 @@
+D:\csharp\hw_10\bin\Debug\net8.0-windows\hw_10.exe
+D:\csharp\hw_10\bin\Debug\net8.0-windows\hw_10.deps.json
+D:\csharp\hw_10\bin\Debug\net8.0-windows\hw_10.runtimeconfig.json
+D:\csharp\hw_10\bin\Debug\net8.0-windows\hw_10.dll
+D:\csharp\hw_10\bin\Debug\net8.0-windows\hw_10.pdb
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.Form1.resources
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.csproj.GenerateResource.cache
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.AssemblyInfoInputs.cache
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.AssemblyInfo.cs
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.csproj.CoreCompileInputs.cache
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.dll
+D:\csharp\hw_10\obj\Debug\net8.0-windows\refint\hw_10.dll
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.pdb
+D:\csharp\hw_10\obj\Debug\net8.0-windows\hw_10.genruntimeconfig.cache
+D:\csharp\hw_10\obj\Debug\net8.0-windows\ref\hw_10.dll

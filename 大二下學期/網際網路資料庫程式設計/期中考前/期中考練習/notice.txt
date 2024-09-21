@@ -1,6 +1,0 @@
-<ol>
-    <li>最多只能填寫<span class="text-danger"> 2 </span>位推薦人資料，<span class="text-danger"><b>請務必確認所有資料都填寫正確再送出</b>。</span></li>
-    <li><span class="text-danger"><b>「寄發Email」</b>後，推薦人「姓名」、「服務單位」及「職稱」等欄位即不可再修改。</span></li>
-    <li><span class="text-danger"><b>「推薦人讀取」</b>後，推薦人「Email」欄位不可再修改。</span></li>
-    <li><span class="text-danger"><b>@hotmail.com信箱可能會無法正常收信，請避免使用。</span><
-</ol>
