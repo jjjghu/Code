@@ -23,5 +23,7 @@
 #### 大二下
 
 - [計算機組織](https://gjplieqszy7.sg.larksuite.com/docx/PWQldoMmZohzNgxD5xElGmusgIb?from=from_copylink)
-- [程式語言理論與實務](https://gjplieqszy7.sg.larksuite.com/docx/E63Ld4p8MoAmVUxhdt3lM0UDgSc?from=from_copylink)
+- [程式語言理論與實務 C#](https://gjplieqszy7.sg.larksuite.com/docx/E63Ld4p8MoAmVUxhdt3lM0UDgSc?from=from_copylink)
 - [網際網路資料庫程式設計](https://gjplieqszy7.sg.larksuite.com/docx/SuIldtlB6obr3kxxBfflT3rqgpd?from=from_copylink)
+- [電子學](https://gjplieqszy7.sg.larksuite.com/docx/SuIldtlB6obr3kxxBfflT3rqgpd?from=from_copylink)
+- [可程式邏輯設計](https://gjplieqszy7.sg.larksuite.com/docx/PTMbdNeOooLvaexqSH3ldd4VgAe)
