@@ -14,3 +14,20 @@ D:\csharp\hw_11\obj\Debug\net8.0-windows\refint\hw_11.dll
 D:\csharp\hw_11\obj\Debug\net8.0-windows\hw_11.pdb
 D:\csharp\hw_11\obj\Debug\net8.0-windows\hw_11.genruntimeconfig.cache
 D:\csharp\hw_11\obj\Debug\net8.0-windows\ref\hw_11.dll
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\bin\Debug\net8.0-windows\hw_11.exe
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\bin\Debug\net8.0-windows\hw_11.deps.json
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\bin\Debug\net8.0-windows\hw_11.runtimeconfig.json
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\bin\Debug\net8.0-windows\hw_11.dll
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\bin\Debug\net8.0-windows\hw_11.pdb
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.Form1.resources
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.csproj.GenerateResource.cache
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.AssemblyInfoInputs.cache
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.AssemblyInfo.cs
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.csproj.CoreCompileInputs.cache
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.sourcelink.json
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.dll
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\refint\hw_11.dll
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.pdb
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\hw_11.genruntimeconfig.cache
+D:\Desktop\GitHub\Code\大二下\程式語言理論與實務 (C#)\CSharp 專案\hw_11\obj\Debug\net8.0-windows\ref\hw_11.dll

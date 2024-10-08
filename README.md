@@ -3,7 +3,7 @@
 
 若不是我本人所擁有的資料，會特別額外註記
 若有可提供的資源，請寄信到以下信箱: chiuliyou@gmail.com
-課本都是從無名圖書 https://www.book456.info/ 上找來的 pdf 檔，有中有英、品質參差，可聊勝於無。
+課本通常只需要打書本名稱 + .pdf 都能找的到電子版。
 
 [網際網路資料庫程式設計期末專題](https://github.com/jjjghu/bookshop.git)
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\csharp\\hw_11\\hw_11.csproj": {}
+    "D:\\Desktop\\GitHub\\Code\\大二下\\程式語言理論與實務 (C#)\\CSharp 專案\\hw_11\\hw_11.csproj": {}
   },
   "projects": {
-    "D:\\csharp\\hw_11\\hw_11.csproj": {
+    "D:\\Desktop\\GitHub\\Code\\大二下\\程式語言理論與實務 (C#)\\CSharp 專案\\hw_11\\hw_11.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\csharp\\hw_11\\hw_11.csproj",
+        "projectUniqueName": "D:\\Desktop\\GitHub\\Code\\大二下\\程式語言理論與實務 (C#)\\CSharp 專案\\hw_11\\hw_11.csproj",
         "projectName": "hw_11",
-        "projectPath": "D:\\csharp\\hw_11\\hw_11.csproj",
+        "projectPath": "D:\\Desktop\\GitHub\\Code\\大二下\\程式語言理論與實務 (C#)\\CSharp 專案\\hw_11\\hw_11.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\csharp\\hw_11\\obj\\",
+        "outputPath": "D:\\Desktop\\GitHub\\Code\\大二下\\程式語言理論與實務 (C#)\\CSharp 專案\\hw_11\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
