@@ -29,3 +29,9 @@
 - [網際網路資料庫程式設計](https://gjplieqszy7.sg.larksuite.com/docx/SuIldtlB6obr3kxxBfflT3rqgpd?from=from_copylink)
 - [電子學](https://gjplieqszy7.sg.larksuite.com/docx/OaaZdtde7oXyEMxEnsZlWuOpgvb)
 - [可程式邏輯設計](https://gjplieqszy7.sg.larksuite.com/docx/PTMbdNeOooLvaexqSH3ldd4VgAe)
+
+#### 大三上
+- [計算機視覺](https://gjplieqszy7.sg.larksuite.com/docx/KZeFdSthzoTBV8xiHajl5VwtgPh)
+- [人工智慧](https://gjplieqszy7.sg.larksuite.com/docx/P0zddetjsoit5Txhy7TlPVRcgtd)
+- [演算法](https://gjplieqszy7.sg.larksuite.com/docx/F5oldIQsxoUehsxP6KylqghIgIe)
+- [作業系統](https://gjplieqszy7.sg.larksuite.com/docx/RUued571IoAU0oxpqnJlR6g4g8c)
