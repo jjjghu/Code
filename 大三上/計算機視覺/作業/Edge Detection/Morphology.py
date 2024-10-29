@@ -47,6 +47,7 @@ for i in range(images.__len__()):
     axs[i].imshow(images[i], cmap='gray')
     axs[i].set_title(labels[i])
 plt.show()
+
 # cv2.imwrite('erosion.png', erosion_image)
 # cv2.imwrite('dilation.png', dilation_image)
 # cv2.imwrite('opening.png', opening_image)

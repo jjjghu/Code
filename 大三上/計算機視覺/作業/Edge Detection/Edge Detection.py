@@ -11,6 +11,15 @@ def normalize(image):
     normalized_image = normalized_image.astype(np.uint8)
     return normalized_image
 
+def generate_prewitt_kernel(kSize):
+    if kSize % 2 == 0:
+        raise ValueError("Kernel size must be odd")
+    # kernel y = kernel x transpose
+    kernel_x = np.zeros((kSize, kSize), dtype=np.float32)
+    kernel_x[:, 0] = -1
+    kernel_x[:, -1] = 1 
+    return kernel_x, kernel_x.T
+
 def generate_sobel_kernel(kSize):
     if kSize % 2 == 0:
         raise ValueError("Kernel size must be odd")
@@ -23,6 +32,24 @@ def generate_sobel_kernel(kSize):
         kernel_x[i, -1] = 2
     kernel_y = kernel_x.T
     return kernel_x, kernel_y
+
+def prewitt(image, kSize=3):
+    kernel_x, kernel_y = generate_prewitt_kernel(kSize)
+    image = image.astype(np.float32)
+    pad = kSize // 2
+    padded_image = np.pad(image, pad, mode = 'reflect')
+    result_image = np.zeros_like(image)
+    # 套用 kernel_x, kernel_y
+    gradient_x = np.zeros_like(image)
+    gradient_y = np.zeros_like(image)
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            gradient_x[i, j] = np.sum(padded_image[i:i+kSize, j:j+kSize] * kernel_x)
+            gradient_y[i, j] = np.sum(padded_image[i:i+kSize, j:j+kSize] * kernel_y)
+    # 計算 magnitude
+    result_image = np.sqrt(gradient_x ** 2 + gradient_y ** 2)
+    result_image = normalize(result_image)
+    return result_image
 
 def sobel(image, kSize=3):
     kernel_x, kernel_y = generate_sobel_kernel(kSize)
@@ -104,16 +131,14 @@ def canny(image, kSize=3, weak=75, strong=255):
 image = cv2.imread("lena.bmp", cv2.IMREAD_GRAYSCALE)
 sobel_image = sobel(image, 3)
 canny_image = canny(image, kSize = 5, weak = 75, strong = 225)
+prewitt_image = prewitt(image, kSize = 5)
 
-images = [image, sobel_image, canny_image]
-labels = ['Original', 'Sobel', 'Canny']
-fig, axs = plt.subplots(1, 3, figsize=(10, 5))
+images = [image, prewitt_image, sobel_image, canny_image]
+labels = ['Original','Prewitt', 'Sobel', 'Canny']
+fig, axs = plt.subplots(1, 4, figsize=(10, 5))
 axs = axs.flatten()
 for i in range(images.__len__()):
     axs[i].axis('off')
     axs[i].imshow(images[i], cmap='gray')
     axs[i].set_title(labels[i])
 plt.show()
-
-# cv2.imwrite('sobel.png', sobel_image)
-# cv2.imwrite('canny.png', canny_image)
