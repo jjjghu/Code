@@ -157,8 +157,11 @@ def vector_median_filter(image, kernel_size):
         for j in range(W):
             neighborhood = padded_image[i:i + kernel_size, j:j + kernel_size]
             neighborhood_vectors = neighborhood.reshape(-1, C)
-            # 中間
-            filtered_image[i, j] = np.median(neighborhood_vectors, axis=0)
+            # 算每個向量到其他向量的距離總和
+            distances = np.sum(np.linalg.norm(neighborhood_vectors[:, None, :] - neighborhood_vectors[None, :, :], axis=2), axis=1)
+            # 找到距離總和最小的向量
+            min_index = np.argmin(distances)
+            filtered_image[i, j] = neighborhood_vectors[min_index]
 
     return filtered_image
 
