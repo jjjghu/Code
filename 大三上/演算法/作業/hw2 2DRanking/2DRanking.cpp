@@ -101,7 +101,7 @@ int main(void)
     double averageRank = totalRank / points.size();
     outputFile << "----------------------------------" << "\n";
     outputFile << "一共有 " << points.size() << " 個點" << "\n";
-    outputFile << "最小 Rank: " << mxRank << "\n";
+    outputFile << "最小 Rank: " << mnRank << "\n";
     outputFile << "最大 Rank: " << mxRank << "\n";
     outputFile << "平均 Rank: " << averageRank << "\n";
 

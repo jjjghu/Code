@@ -45,7 +45,7 @@ void insertionSort(vector<double> &nums)
 }
 int main(void)
 {
-    ifstream inputFile("D:\\Desktop\\test1.txt");
+    ifstream inputFile("D:\\test1.txt");
     if (!inputFile)
     {
         cerr << "打開輸入文件時出錯！\n";
@@ -68,7 +68,6 @@ int main(void)
     string choice;
     while (true)
     {
-        vector<double> temp = nums;
         cout << "\n請選擇一個選項：\n";
         cout << "1. 快速排序\n";
         cout << "2. 插入排序\n";
@@ -79,12 +78,12 @@ int main(void)
         if (choice == "1")
         {
             cout << "正在執行快速排序...\n";
-            quickSort(temp, 0, temp.size() - 1);
+            quickSort(nums, 0, nums.size() - 1);
         }
         else if (choice == "2")
         {
             cout << "正在執行插入排序...\n";
-            insertionSort(temp);
+            insertionSort(nums);
         }
         else if (choice == "3")
         {
@@ -99,9 +98,9 @@ int main(void)
             continue;
         }
 
-        for (int i = 0; i < temp.size(); ++i)
+        for (int i = 0; i < nums.size(); ++i)
         {
-            cout << fixed << setw(4) << setprecision(2) << temp[i] << " ";
+            cout << fixed << setw(4) << setprecision(2) << nums[i] << " ";
             if (i > 0 && !((i + 1) % 10))
             {
                 cout << "\n";
@@ -109,15 +108,15 @@ int main(void)
         }
         cout << "\n";
 
-        ofstream outputFile("D:\\Desktop\\output.txt");
+        ofstream outputFile("D:\\output.txt");
         if (!outputFile)
         {
             cerr << "打開輸出文件時出錯！\n";
             return 1;
         }
-        outputFile << "數字個數: " << temp.size() << "\n";
-        outputFile << "最大的數: " << temp.back() << "\n";
-        outputFile << "最小的數: " << temp.front() << "\n\n";
+        outputFile << "數字個數: " << nums.size() << "\n";
+        outputFile << "最大的數: " << nums.back() << "\n";
+        outputFile << "最小的數: " << nums.front() << "\n\n";
         outputFile.close();
     }
 
