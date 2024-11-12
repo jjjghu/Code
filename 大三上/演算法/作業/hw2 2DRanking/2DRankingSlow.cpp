@@ -56,38 +56,16 @@ bool cmpRank(const Point &a, const Point &b)
 }
 void findRanks(vector<Point> &points)
 {
-    if (points.size() <= 1)
+    int n = points.size();
+    for (int i = 0; i < n; ++i)
     {
-        return;
-    }
-    heapSort(points, cmpx);
-    int mid = points.size() / 2;
-    vector<Point> A(points.begin(), points.begin() + mid);
-    vector<Point> B(points.begin() + mid, points.end());
-
-    findRanks(A);
-    findRanks(B);
-
-    heapSort(A, cmpy);
-    heapSort(B, cmpy);
-
-    int aIndex = 0;
-    for (int i = 0; i < B.size(); i++)
-    {
-        while (aIndex < A.size() && A[aIndex].y < B[i].y)
+        for (int j = 0; j < n; ++j)
         {
-            ++aIndex;
+            if (points[i].x < points[j].x && points[i].y < points[i].y)
+            {
+                ++points[i].rank;
+            }
         }
-        B[i].rank += aIndex;
-    }
-
-    for (int i = 0; i < A.size(); i++)
-    {
-        points[i] = A[i];
-    }
-    for (int i = 0; i < B.size(); i++)
-    {
-        points[mid + i] = B[i];
     }
 }
 
