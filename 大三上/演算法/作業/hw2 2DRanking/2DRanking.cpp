@@ -62,6 +62,7 @@ void findRanks(vector<Point> &points)
     }
     heapSort(points, cmpx);
     int mid = points.size() / 2;
+
     vector<Point> A(points.begin(), points.begin() + mid);
     vector<Point> B(points.begin() + mid, points.end());
 
@@ -74,6 +75,10 @@ void findRanks(vector<Point> &points)
     int aIndex = 0;
     for (int i = 0; i < B.size(); i++)
     {
+        if (B[i].x == A.back().x)
+        {
+            continue;
+        }
         while (aIndex < A.size() && A[aIndex].y < B[i].y)
         {
             ++aIndex;
@@ -123,7 +128,7 @@ int main(int argc, char *argv[])
     int mnRank = INT_MAX;
     double totalRank = 0;
 
-    outputFile << fixed << setprecision(3);
+    outputFile << fixed << setprecision(2);
     outputFile << left << setw(10) << "X"
                << left << setw(10) << "Y"
                << left << setw(10) << "Rank" << "\n";
