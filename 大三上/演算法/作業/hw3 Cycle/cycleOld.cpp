@@ -1,139 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <fstream>
 #include <algorithm>
 #include <iomanip>
+#include <bitset>
+#include <map>
 #include <stdio.h>
 #include <stdlib.h>
 using namespace std;
 const int MAX_EDGES = 1000;
-const double EPSILON = 1e-10;
 struct WeightedCycle
 {
     int weight;
-    vector<int> nodes;
-    // cmp
-    bool operator<(const WeightedCycle &other) const
-    {
-        return (weight == other.weight) ? nodes[0] < other.nodes[0] : weight < other.weight;
-    }
+    vector<int> cycle;
 };
-class Solution
+struct Cycle
 {
-public:
-    vector<WeightedCycle> findMinimumCycleBasis(const vector<WeightedCycle> &allCycles, int nodeNum, int edgeNum)
-    {
-        vector<WeightedCycle> basis;
-        vector<WeightedCycle> sortedCycles = allCycles;
-        sort(sortedCycles.begin(), sortedCycles.end());
-        if (allCycles.size() <= 2)
-        {
-            return sortedCycles;
-        }
-        vector<vector<int>> matrix;
-        basis.push_back(sortedCycles[0]);
-        basis.push_back(sortedCycles[1]);
-        matrix.push_back(convertToMat(sortedCycles[0].nodes, nodeNum));
-        matrix.push_back(convertToMat(sortedCycles[1].nodes, nodeNum));
-        for (int i = 2; i < sortedCycles.size(); ++i)
-        {
-            bool isCyclebasis = false;
-            vector<int> newBasisMat = convertToMat(sortedCycles[i].nodes, nodeNum);
-            matrix.push_back(newBasisMat);
-            int rank = rankOfMatrix(matrix);
-            printMatrix(matrix);
-            if (rank == matrix.size())
-            {
-                isCyclebasis = true;
-                basis.push_back(sortedCycles[i]);
-                if (matrix.size() == edgeNum - nodeNum + 1)
-                {
-                    return basis;
-                }
-            }
-            if (!isCyclebasis)
-            {
-                matrix.pop_back();
-            }
-        }
-        return basis;
-    }
-
-private:
-    vector<int> convertToMat(const vector<int> &nodes, int nodeNum)
-    {
-        vector<int> vec(nodeNum, 0);
-        for (const int node : nodes)
-        {
-            vec[node] = 1;
-        }
-        return vec;
-    }
-    bool isZeroRow(const vector<int> &row)
-    {
-        for (int val : row)
-        {
-            if (val != 0)
-                return false;
-        }
-        return true;
-    }
-    void printMatrix(const vector<vector<int>> &matrix)
-    {
-        for (const auto &row : matrix)
-        {
-            for (int val : row)
-            {
-                cout << val << "\t";
-            }
-            cout << endl;
-        }
-    }
-    int rankOfMatrix(vector<vector<int>> &matrix)
-    {
-        int row = matrix.size();
-        int col = matrix[0].size();
-        int rank = 0;
-
-        vector<bool> usedRows(row, false);
-
-        for (int c = 0; c < col; c++)
-        {
-            int pivot_row = -1;
-
-            for (int r = 0; r < row; r++)
-            {
-                if (!usedRows[r] && matrix[r][c] == 1)
-                {
-                    pivot_row = r;
-                    break;
-                }
-            }
-
-            if (pivot_row != -1)
-            {
-                usedRows[pivot_row] = true;
-                rank++;
-
-                for (int r = 0; r < row; r++)
-                {
-                    if (r != pivot_row && matrix[r][c] == 1)
-                    {
-                        for (int j = c; j < col; j++)
-                        {
-                            matrix[r][j] ^= matrix[pivot_row][j];
-                        }
-                    }
-                }
-            }
-        }
-        return rank;
-    }
+    vector<int> nodes;
+    bitset<MAX_EDGES> edgeMask;
+    int weight;
 };
+vector<Cycle> findMinimumCycleBasis(const vector<WeightedCycle> &allCycles, int nodeNum, int edgenum);
 int main(int argc, char *argv[])
 {
-    cin.tie(nullptr);
-    ios::sync_with_stdio(false);
     if (argc != 2)
     {
         cout << "使用方式: " << argv[0] << " <檔案名稱>" << endl;
@@ -274,12 +164,12 @@ int main(int argc, char *argv[])
         }
         e = e + adde;
     }
-    /*-----------------------------------*/
-    Solution solution;
-    vector<WeightedCycle> result = solution.findMinimumCycleBasis(weightedCycles, nodeNum, edgenum);
+    sort(weightedCycles.begin(), weightedCycles.end(), [](const WeightedCycle &a, const WeightedCycle &b)
+         { return a.weight == b.weight ? a.cycle[0] < b.cycle[0] : a.weight < b.weight; });
     cout << "Minimum Cycle Basis:" << endl;
+    vector<Cycle> minCycleBasis = findMinimumCycleBasis(weightedCycles, nodeNum, edgenum);
     int allweight = 0;
-    for (const auto &cycle : result)
+    for (const auto &cycle : minCycleBasis)
     {
         allweight += cycle.weight;
         cout << "Weight: " << cycle.weight << " => ";
@@ -289,9 +179,98 @@ int main(int argc, char *argv[])
         }
         cout << endl;
     }
-    cout << "Number of cycles in basis: " << result.size() << endl;
+    cout << "Number of cycles in basis: " << minCycleBasis.size() << endl;
     cout << "Expected number of cycles: " << (edgenum - nodeNum + 1) << endl;
     cout << "All weight: " << allweight << endl;
     cout << cycle << " cycles" << endl;
     return 0;
+}
+vector<Cycle> findMinimumCycleBasis(const vector<WeightedCycle> &allCycles, int nodeNum, int edgenum)
+{
+    // 回傳結果
+    vector<Cycle> basis;
+    // 基底的邊
+    vector<bitset<MAX_EDGES>> basisMasks;
+    int targetSize = edgenum - nodeNum + 1;
+
+    // 用 index 代表邊,  {u, v} = index++;
+    map<pair<int, int>, int> edgeToIndex;
+    int edgeIndex = 0;
+
+    // allCycle 是 vector<weightedCycle>, 每個 weightedCycle 有一個 cycle 向量跟 weight
+    for (const auto &cycle : allCycles)
+    {
+        // 把每個 cycle 拆開來, 對每條邊加入一個編號, 讓每個 cycle 編出來的結果都相同
+        for (int i = 0; i < cycle.cycle.size(); ++i)
+        {
+            int u = cycle.cycle[i];
+            int v = cycle.cycle[(i + 1) % cycle.cycle.size()];
+            // 大的編在前面
+            if (u > v)
+                swap(u, v);
+            // 第一次遇到邊, 為它編號
+            if (edgeToIndex.find({u, v}) == edgeToIndex.end())
+            {
+                edgeToIndex[{u, v}] = edgeIndex++;
+            }
+        }
+    }
+
+    // 編號完畢, 第二次遍歷 allCycles, 找出 |E| - |V| + 1 個基底
+    for (const auto &weightedCycle : allCycles)
+    {
+        // 將 weightedCycle 轉換成 Cycle, 兩者不同在有多一個 mask
+        Cycle cycle;
+        cycle.nodes = weightedCycle.cycle;
+        cycle.weight = weightedCycle.weight;
+
+        // 設置 edgeMask
+        for (int i = 0; i < cycle.nodes.size(); ++i)
+        {
+            int u = cycle.nodes[i];
+            int v = cycle.nodes[(i + 1) % cycle.nodes.size()];
+            if (u > v)
+                swap(u, v);
+            // 找出邊的對應編號
+            int idx = edgeToIndex[{u, v}];
+            // 設定 mask
+            cycle.edgeMask.set(idx);
+        }
+
+        // 檢查線性獨立
+        bool linearDep = true;
+        for (const auto &basisMask : basisMasks)
+        {
+            // 假如 cycle 的 mask 能被組合出來, 就不是線性獨立的
+            if ((cycle.edgeMask & basisMask) == cycle.edgeMask)
+            {
+                linearDep = false;
+                break;
+            }
+        }
+
+        if (linearDep)
+        {
+            // 加入到基底當中
+            basis.push_back(cycle);
+            basisMasks.push_back(cycle.edgeMask);
+
+            for (int i = 0; i < basisMasks.size() - 1; ++i)
+            {
+                // and 之後的結果有 1
+                if ((basisMasks[i] & cycle.edgeMask).any())
+                {
+                    // 都有 1 就會因為 xor 削掉
+                    basisMasks[i] ^= cycle.edgeMask;
+                }
+            }
+
+            if (basis.size() == targetSize)
+            {
+                break;
+            }
+        }
+    }
+
+    return basis;
 }
