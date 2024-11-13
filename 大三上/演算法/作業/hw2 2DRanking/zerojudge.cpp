@@ -7,7 +7,8 @@ using namespace std;
 
 struct Point
 {
-    double x, y;
+    int id;
+    int x, y;
     int rank;
 };
 void heapify(vector<Point> &arr, int n, int i, bool (*comp)(const Point &, const Point &))
@@ -54,6 +55,11 @@ bool cmpRank(const Point &a, const Point &b)
 {
     return (a.rank != b.rank) ? a.rank < b.rank : a.x < b.x;
 }
+bool cmpid(const Point &a, const Point &b)
+{
+    return a.id < b.id;
+}
+
 void findRanks(vector<Point> &points)
 {
     if (points.size() <= 1)
@@ -102,58 +108,25 @@ void findRanks(vector<Point> &points)
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        cerr << "Usage: " << argv[0] << " <input_file>\n";
-        return 1;
-    }
-    ifstream inputFile(argv[1]);
-    if (!inputFile.is_open())
-    {
-        cerr << "打開輸入文件時出錯！\n";
-        return 1;
-    }
-
+    int n;
+    cin >> n;
     vector<Point> points;
     double x, y;
-    while (inputFile >> x >> y)
+    for (int i = 0; i < n; ++i)
     {
+        cin >> x >> y;
         Point temp;
+        temp.id = i;
         temp.x = x;
         temp.y = y;
         temp.rank = 0;
         points.push_back(temp);
     }
-
     findRanks(points);
-    heapSort(points, cmpRank);
-    ofstream outputFile("output.txt");
-    int mxRank = 0;
-    int mnRank = INT_MAX;
-    double totalRank = 0;
-
-    outputFile << fixed << setprecision(2);
-    outputFile << left << setw(10) << "X"
-               << left << setw(10) << "Y"
-               << left << setw(10) << "Rank" << "\n";
-    outputFile << "----------------------------------" << "\n";
-
-    for (const auto &point : points)
+    heapSort(points, cmpid);
+    for (int i = 0; i < points.size(); ++i)
     {
-        outputFile << left << setw(10) << point.x
-                   << left << setw(10) << point.y
-                   << left << setw(10) << point.rank << "\n";
-        totalRank += point.rank;
-        mnRank = min(mnRank, point.rank);
-        mxRank = max(mxRank, point.rank);
+        cout << points[i].rank << "\n";
     }
-
-    double averageRank = totalRank / points.size();
-    outputFile << "----------------------------------" << "\n";
-    outputFile << "一共有 " << points.size() << " 個點" << "\n";
-    outputFile << "最小 Rank: " << mnRank << "\n";
-    outputFile << "最大 Rank: " << mxRank << "\n";
-    outputFile << "平均 Rank: " << averageRank << "\n";
-
     return 0;
 }
