@@ -1,3 +1,5 @@
 .vscode/
 .cph/
 *.bin
+*.zip
+*.rar
