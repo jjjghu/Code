@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sstream>
 using namespace std;
 const int MAX_EDGES = 1000;
 const double EPSILON = 1e-10;
@@ -20,9 +21,16 @@ struct WeightedCycle
 };
 class Solution
 {
+private:
+    int nodeNum;
+    int edgeNum;
+
 public:
     vector<WeightedCycle> findMinimumCycleBasis(const vector<WeightedCycle> &allCycles, int nodeNum, int edgeNum)
     {
+        this->nodeNum = nodeNum;
+        this->edgeNum = edgeNum;
+
         vector<WeightedCycle> basis;
         vector<WeightedCycle> sortedCycles = allCycles;
         sort(sortedCycles.begin(), sortedCycles.end());
@@ -30,104 +38,87 @@ public:
         {
             return sortedCycles;
         }
-        vector<vector<int>> matrix;
+        vector<vector<int>> basisMat;
         basis.push_back(sortedCycles[0]);
         basis.push_back(sortedCycles[1]);
-        matrix.push_back(convertToMat(sortedCycles[0].nodes, nodeNum));
-        matrix.push_back(convertToMat(sortedCycles[1].nodes, nodeNum));
+        basisMat.push_back(convertToMat(sortedCycles[0].nodes));
+        basisMat.push_back(convertToMat(sortedCycles[1].nodes));
         for (int i = 2; i < sortedCycles.size(); ++i)
         {
-            bool isCyclebasis = false;
-            vector<int> newBasisMat = convertToMat(sortedCycles[i].nodes, nodeNum);
-            matrix.push_back(newBasisMat);
-            int rank = rankOfMatrix(matrix);
-            printMatrix(matrix);
-            if (rank == matrix.size())
+            vector<int> newCycle = convertToMat(sortedCycles[i].nodes);
+            if (!canFormTarget(newCycle, basisMat))
             {
-                isCyclebasis = true;
                 basis.push_back(sortedCycles[i]);
-                if (matrix.size() == edgeNum - nodeNum + 1)
+                basisMat.push_back(newCycle);
+                if (basisMat.size() == (edgeNum - nodeNum + 1))
                 {
-                    return basis;
+                    break;
                 }
-            }
-            if (!isCyclebasis)
-            {
-                matrix.pop_back();
             }
         }
         return basis;
     }
 
 private:
-    vector<int> convertToMat(const vector<int> &nodes, int nodeNum)
+    vector<int> convertToMat(const vector<int> &nodes)
     {
-        vector<int> vec(nodeNum, 0);
-        for (const int node : nodes)
+        vector<vector<int>> vec(this->edgeNum, vector<int>(this->edgeNum, 0));
+        for (int i = 1; i < nodes.size(); ++i)
         {
-            vec[node] = 1;
+            vec[nodes[i]][nodes[i - 1]] = 1;
+            vec[nodes[i - 1]][nodes[i]] = 1;
         }
-        return vec;
-    }
-    bool isZeroRow(const vector<int> &row)
-    {
-        for (int val : row)
+        vec[nodes[0]][nodes[nodes.size() - 1]] = 1;
+        vec[nodes[nodes.size() - 1]][nodes[0]] = 1;
+        vector<int> mat;
+        for (int i = 0; i < vec.size(); ++i)
         {
-            if (val != 0)
-                return false;
+            for (int j = 0; j < vec.size(); ++j)
+                mat.push_back(vec[i][j]);
         }
-        return true;
+        return mat;
     }
-    void printMatrix(const vector<vector<int>> &matrix)
+    bool canFormTarget(const vector<int> &target, const vector<vector<int>> &cycles)
     {
-        for (const auto &row : matrix)
+        // 展開所有的可能性 (span 出空間)
+        int n = target.size();
+        int numCycles = cycles.size();
+        // 使用靜態變數來保存組合結果
+        static vector<vector<int>> cachedCombined;
+        static int cachedNumCycles = -1;
+        // 當 cycles 內容變化時才重新計算 cachedCombined
+        if (numCycles != cachedNumCycles)
         {
-            for (int val : row)
+            // 擴展 cachedCombined 容量
+            int oldSize = cachedCombined.size();
+            cachedCombined.resize(1 << numCycles, vector<int>(n, 0)); // 擴展大小
+            // 計算新的 cycle 組合
+            for (int mask = oldSize; mask < (1 << numCycles); ++mask)
             {
-                cout << val << "\t";
-            }
-            cout << endl;
-        }
-    }
-    int rankOfMatrix(vector<vector<int>> &matrix)
-    {
-        int row = matrix.size();
-        int col = matrix[0].size();
-        int rank = 0;
-
-        vector<bool> usedRows(row, false);
-
-        for (int c = 0; c < col; c++)
-        {
-            int pivot_row = -1;
-
-            for (int r = 0; r < row; r++)
-            {
-                if (!usedRows[r] && matrix[r][c] == 1)
+                for (int i = 0; i < numCycles; ++i)
                 {
-                    pivot_row = r;
-                    break;
-                }
-            }
-
-            if (pivot_row != -1)
-            {
-                usedRows[pivot_row] = true;
-                rank++;
-
-                for (int r = 0; r < row; r++)
-                {
-                    if (r != pivot_row && matrix[r][c] == 1)
+                    if (mask & (1 << i))
                     {
-                        for (int j = c; j < col; j++)
+                        for (int j = 0; j < n; ++j)
                         {
-                            matrix[r][j] ^= matrix[pivot_row][j];
+                            // 對每位進行xor
+                            cachedCombined[mask][j] ^= cycles[i][j];
                         }
                     }
                 }
             }
+            // 更新 cachedNumCycles
+            cachedNumCycles = numCycles;
         }
-        return rank;
+        // 檢查是否有組合等於 target
+        for (const auto &combined : cachedCombined)
+        {
+            if (combined == target)
+            {
+                return true;
+            }
+        }
+        return false; // 無法合成目標
     }
 };
 int main(int argc, char *argv[])
@@ -146,20 +137,29 @@ int main(int argc, char *argv[])
         cout << "無法開啟檔案: " << argv[1] << "\n";
         return 1;
     }
-    int nodeNum, edgenum, cost, begin, end, i, j;
-    inFile >> nodeNum >> edgenum;
+    int nodeNum, edgeNum, cost, begin, end, i, j;
+    // inFile >> nodeNum >> edgeNum;
+    string line;
+    if (getline(inFile, line))
+    {
+        stringstream ss(line);
+        ss >> nodeNum;
+        cout << "nodeNum: " << nodeNum << endl;
+    }
     int A[nodeNum][nodeNum], Cost[nodeNum][nodeNum];
     for (i = 0; i < nodeNum; i++)
         for (j = 0; j < nodeNum; j++)
             A[i][j] = 0;
-    for (int i = 0; i < edgenum; ++i)
+    edgeNum = 0;
+    while (inFile >> begin >> end >> cost)
     {
-        inFile >> begin >> end >> cost;
         A[begin][end] = 1;
         A[end][begin] = 1;
         Cost[begin][end] = cost;
         Cost[end][begin] = cost;
+        ++edgeNum;
     }
+    cout << "EdgeNum: " << edgeNum << endl;
     inFile.close();
     int r, f;
     int k, c, pre, no;
@@ -276,7 +276,7 @@ int main(int argc, char *argv[])
     }
     /*-----------------------------------*/
     Solution solution;
-    vector<WeightedCycle> result = solution.findMinimumCycleBasis(weightedCycles, nodeNum, edgenum);
+    vector<WeightedCycle> result = solution.findMinimumCycleBasis(weightedCycles, nodeNum, edgeNum);
     cout << "Minimum Cycle Basis:" << endl;
     int allweight = 0;
     for (const auto &cycle : result)
@@ -290,7 +290,7 @@ int main(int argc, char *argv[])
         cout << endl;
     }
     cout << "Number of cycles in basis: " << result.size() << endl;
-    cout << "Expected number of cycles: " << (edgenum - nodeNum + 1) << endl;
+    cout << "Expected number of cycles: " << (edgeNum - nodeNum + 1) << endl;
     cout << "All weight: " << allweight << endl;
     cout << cycle << " cycles" << endl;
     return 0;
