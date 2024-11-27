@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include <sstream>
 using namespace std;
-const int MAX_EDGES = 1000;
-const double EPSILON = 1e-10;
 struct WeightedCycle
 {
     int weight;
@@ -16,7 +14,8 @@ struct WeightedCycle
     // cmp
     bool operator<(const WeightedCycle &other) const
     {
-        return (weight == other.weight) ? nodes[0] < other.nodes[0] : weight < other.weight;
+        return weight < other.weight;
+        // return (weight == other.weight) ? nodes[0] < other.nodes[0] : weight < other.weight;
     }
 };
 class Solution
@@ -33,7 +32,7 @@ public:
 
         vector<WeightedCycle> basis;
         vector<WeightedCycle> sortedCycles = allCycles;
-        sort(sortedCycles.begin(), sortedCycles.end());
+        stable_sort(sortedCycles.begin(), sortedCycles.end());
         if (allCycles.size() <= 2)
         {
             return sortedCycles;
@@ -70,6 +69,7 @@ private:
         }
         vec[nodes[0]][nodes[nodes.size() - 1]] = 1;
         vec[nodes[nodes.size() - 1]][nodes[0]] = 1;
+        // 展平
         vector<int> mat;
         for (int i = 0; i < vec.size(); ++i)
         {
@@ -78,14 +78,15 @@ private:
         }
         return mat;
     }
-    bool canFormTarget(const vector<int> &target, const vector<vector<int>> &cycles)
+    bool canFormTarget(const vector<int> &newCycle, const vector<vector<int>> &basisMat)
     {
-        // 展開所有的可能性 (span 出空間)
-        int n = target.size();
-        int numCycles = cycles.size();
+
         // 使用靜態變數來保存組合結果
         static vector<vector<int>> cachedCombined;
         static int cachedNumCycles = -1;
+        // 展開所有的可能性 (span 出空間)
+        int n = newCycle.size();
+        int numCycles = basisMat.size();
         // 當 cycles 內容變化時才重新計算 cachedCombined
         if (numCycles != cachedNumCycles)
         {
@@ -102,7 +103,7 @@ private:
                         for (int j = 0; j < n; ++j)
                         {
                             // 對每位進行xor
-                            cachedCombined[mask][j] ^= cycles[i][j];
+                            cachedCombined[mask][j] ^= basisMat[i][j];
                         }
                     }
                 }
@@ -113,7 +114,7 @@ private:
         // 檢查是否有組合等於 target
         for (const auto &combined : cachedCombined)
         {
-            if (combined == target)
+            if (combined == newCycle)
             {
                 return true;
             }
