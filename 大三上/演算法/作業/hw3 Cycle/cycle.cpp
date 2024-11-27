@@ -78,48 +78,91 @@ private:
         }
         return mat;
     }
+    // bool canFormTarget(const vector<int> &newCycle, const vector<vector<int>> &basisMat)
+    // {
+
+    //     // 使用靜態變數來保存組合結果
+    //     static vector<vector<int>> cachedCombined;
+    //     static int cachedNumCycles = -1;
+    //     // 展開所有的可能性 (span 出空間)
+    //     int n = newCycle.size();
+    //     int numCycles = basisMat.size();
+    //     // 當 cycles 內容變化時才重新計算 cachedCombined
+    //     if (numCycles != cachedNumCycles)
+    //     {
+    //         // 擴展 cachedCombined 容量
+    //         int oldSize = cachedCombined.size();
+    //         cachedCombined.resize(1 << numCycles, vector<int>(n, 0)); // 擴展大小
+    //         // 計算新的 cycle 組合
+    //         for (int mask = oldSize; mask < (1 << numCycles); ++mask)
+    //         {
+    //             for (int i = 0; i < numCycles; ++i)
+    //             {
+    //                 if (mask & (1 << i))
+    //                 {
+    //                     for (int j = 0; j < n; ++j)
+    //                     {
+    //                         // 對每位進行xor
+    //                         cachedCombined[mask][j] ^= basisMat[i][j];
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         // 更新 cachedNumCycles
+    //         cachedNumCycles = numCycles;
+    //     }
+    //     // 檢查是否有組合等於 target
+    //     for (const auto &combined : cachedCombined)
+    //     {
+    //         if (combined == newCycle)
+    //         {
+    //             return true;
+    //         }
+    //     }
+    //     return false; // 無法合成目標
+    // }
     bool canFormTarget(const vector<int> &newCycle, const vector<vector<int>> &basisMat)
     {
-
-        // 使用靜態變數來保存組合結果
-        static vector<vector<int>> cachedCombined;
-        static int cachedNumCycles = -1;
-        // 展開所有的可能性 (span 出空間)
+        // 複製一份 basisMat
+        vector<vector<int>> basis = basisMat;
         int n = newCycle.size();
-        int numCycles = basisMat.size();
-        // 當 cycles 內容變化時才重新計算 cachedCombined
-        if (numCycles != cachedNumCycles)
+
+        // 組合目標是 newCycle
+        vector<int> target = newCycle;
+
+        // 用高斯消去法看看能不能合出目標
+        for (int i = 0; i < basis.size(); ++i)
         {
-            // 擴展 cachedCombined 容量
-            int oldSize = cachedCombined.size();
-            cachedCombined.resize(1 << numCycles, vector<int>(n, 0)); // 擴展大小
-            // 計算新的 cycle 組合
-            for (int mask = oldSize; mask < (1 << numCycles); ++mask)
+            // 找到基底向量中的最高位 (leading bit), 也就是最前面的 1 
+            int leadIndex = -1;
+            for (int j = 0; j < n; ++j)
             {
-                for (int i = 0; i < numCycles; ++i)
+                if (basis[i][j] != 0)
                 {
-                    if (mask & (1 << i))
-                    {
-                        for (int j = 0; j < n; ++j)
-                        {
-                            // 對每位進行xor
-                            cachedCombined[mask][j] ^= basisMat[i][j];
-                        }
-                    }
+                    leadIndex = j;
+                    break;
                 }
             }
-            // 更新 cachedNumCycles
-            cachedNumCycles = numCycles;
-        }
-        // 檢查是否有組合等於 target
-        for (const auto &combined : cachedCombined)
-        {
-            if (combined == newCycle)
+
+            // 如果這個基底向量能夠影響組合目標, 組合目標 -= 基底向量
+            if (leadIndex != -1 && target[leadIndex] != 0)
             {
-                return true;
+                for (int j = leadIndex; j < n; ++j)
+                {
+                    target[j] ^= basis[i][j];
+                }
             }
         }
-        return false; // 無法合成目標
+
+        // 如果消去過後依舊有 1 存在, 表示不能被 span 出來
+        for (int val : target)
+        {
+            if (val != 0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 };
 int main(int argc, char *argv[])
