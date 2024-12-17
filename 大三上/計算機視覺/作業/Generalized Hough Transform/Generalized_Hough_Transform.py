@@ -74,7 +74,6 @@ def canny(image, kSize=3, weak=75, strong=255):
                 else:
                     result_image[i, j] = 0
     return result_image
-
 def create_r_table(image, kSize=3): 
     # r_table[角度] = [r1(dx, dy), r2, r3, ...]
     r_table = {} 
@@ -160,11 +159,13 @@ def display_result(image, accumulator, angle_step=1, box_size=(50, 50), ref='', 
     plt.savefig(f'result/{ref}, {tmp}.png')
     plt.show()
 
-
 def main():
-    references = ['ref','ref', 'ref', 'Time', 'Time', 'Time', 'ref', 'ref', 'ref', 'animal_well']
-    template = ['tea_0', 'tea_180', 'tea_45', 'Time_tmp', 'Time_tmp_0', 'Time_tmp_180', 'train_12', 'cup_64', 'bufferfly_3', 'animal']
-    angles = [360, 180, 45, 90, 90, 180, 10, 30, 3, 90]
+    references = ['ref', 'ref', 'Time']
+    template = ['tea_0', 'tea_45', 'Time_tmp_180']
+    angles = [360, 45, 180]
+    # references = ['ref','ref', 'ref', 'Time', 'Time', 'Time', 'ref', 'ref', 'ref', 'animal_well']
+    # template = ['tea_0', 'tea_180', 'tea_45', 'Time_tmp', 'Time_tmp_0', 'Time_tmp_180', 'train_12', 'cup_64', ''butterfly_3', 'animal']
+    # angles = [360, 180, 45, 90, 90, 180, 10, 30, 3, 90] # 會花很多時間跑最後兩個, 一個是因為角度小, 另一個是因為圖片大, 已經有結果存在資料夾裡面了
     for ref, tmp, angle_step in zip(references, template, angles):
         # 讀取處理後的圖片
         image = cv2.imread(f'images/{ref}.png', cv2.IMREAD_GRAYSCALE)
