@@ -343,7 +343,6 @@ int main(int argc, char *argv[])
     }
 
     vector<Solution> solutions;
-    // 傳入資料夾路徑
 
     // 傳入一堆檔案名稱
     for (int i = 1; i < argc; ++i)
