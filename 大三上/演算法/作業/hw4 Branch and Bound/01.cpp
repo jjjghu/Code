@@ -223,8 +223,9 @@ public:
             cout << "step:" << i << "\t" << visitPath[i];
         }
         Node::outputFormat = OutputFormat::COMPACT;
-        cout << "\nFind the BEST answer when step " << i << ": \n"
-             << resultNode;
+        cout << "\n(Branch and Bound answer) \nFind the BEST answer when step " << i << ": \n"
+             << "Max Profit : " << resultNode.upperBound << "\n"
+             << resultNode << "\n";
         // // debug 用
         // queue<Node> pq;
         // pq.push(root);
@@ -295,7 +296,8 @@ public:
             }
         }
 
-        cout << finalChoose << ", Max Profit: " << dp[M] << "(DP Answer)\n";
+        cout << "Max Profit : " << dp[M] << "\n"
+             << finalChoose << "\n(DP Answer)\n";
     }
 
     /*
