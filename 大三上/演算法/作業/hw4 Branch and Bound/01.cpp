@@ -174,6 +174,7 @@ public:
             inFile >> profit >> weight;
             products[i] = Product(profit, weight, i);
         }
+        // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈, 在 init() 當中有確保不會超出 product 範圍
         products[n - 1] = Product(0, INT_MAX, n - 1);
     }
     void solve()
@@ -185,7 +186,6 @@ public:
         int bestUpperBound = root.upperBound;
 
         vector<Node> visitPath;
-        // must initialize, 因為沒有建構子
 
         // 將根節點放入 queue 中
         priority_queue<Node, vector<Node>> pq;

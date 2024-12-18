@@ -133,7 +133,7 @@ private:
         // 用高斯消去法看看能不能合出目標
         for (int i = 0; i < basis.size(); ++i)
         {
-            // 找到基底向量中的最高位 (leading bit), 也就是最前面的 1 
+            // 找到基底向量中的最高位 (leading bit), 也就是最前面的 1
             int leadIndex = -1;
             for (int j = 0; j < n; ++j)
             {

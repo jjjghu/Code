@@ -155,5 +155,34 @@ int main(int argc, char *argv[])
     outputFile << "最大 Rank: " << mxRank << "\n";
     outputFile << "平均 Rank: " << averageRank << "\n";
 
+    // 上面是檔案輸出, 下面是 cout 輸出
+
+    mxRank = 0;
+    mnRank = INT_MAX;
+    totalRank = 0;
+
+    cout << fixed << setprecision(2);
+    cout << left << setw(10) << "X"
+         << left << setw(10) << "Y"
+         << left << setw(10) << "Rank" << "\n";
+    cout << "----------------------------------" << "\n";
+
+    for (const auto &point : points)
+    {
+        cout << left << setw(10) << point.x
+             << left << setw(10) << point.y
+             << left << setw(10) << point.rank << "\n";
+        totalRank += point.rank;
+        mnRank = min(mnRank, point.rank);
+        mxRank = max(mxRank, point.rank);
+    }
+
+    averageRank = totalRank / points.size();
+    cout << "----------------------------------" << "\n";
+    cout << "一共有 " << points.size() << " 個點" << "\n";
+    cout << "最小 Rank: " << mnRank << "\n";
+    cout << "最大 Rank: " << mxRank << "\n";
+    cout << "平均 Rank: " << averageRank << "\n";
+
     return 0;
 }
