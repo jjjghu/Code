@@ -95,10 +95,6 @@ private:
     friend class DynamicProgramming;
     int M, n, profit, weight;
     vector<Product> products; // profit weight
-    void init()
-    {
-        products.resize(n);
-    }
     bool findBound(Node &node)
     {
         // Greedy,    找出沒有 01 限制的最優解 (LowerBound)
@@ -168,14 +164,14 @@ public:
             return;
         }
         inFile >> M >> n;
-        init();
+        products.resize(n);
         for (int i = 0; i < n; ++i)
         {
             inFile >> profit >> weight;
             products[i] = Product(profit, weight, i);
         }
-        // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈, 在 init() 當中有確保不會超出 product 範圍
-        products[n - 1] = Product(0, INT_MAX, n - 1);
+        // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈, n - 1 是故意的
+        products.push_back(Product(0, INT_MAX, n - 1));
     }
     void solve()
     {
@@ -269,35 +265,34 @@ public:
         int n = solution.n; // 商品數量
         vector<Product> products = solution.products;
         vector<int> dp(M + 1, 0);
-        vector<vector<bool>> choose(n + 1, vector<bool>(M + 1, false));
-
-        for (int i = 1; i <= n; ++i)
+        vector<vector<bool>> choose(n, vector<bool>(M + 1, false)); // 記錄選擇情況
+        vector<bool> finalChoose(n, false);
+        for (int i = 0; i < n; ++i)
         {
-            for (int j = M; j >= products[i - 1].weight; --j)
+            for (int j = M; j >= products[i].weight; --j)
             {
-                int newValue = dp[j - products[i - 1].weight] + products[i - 1].profit;
-                if (newValue > dp[j])
+                if (dp[j] < dp[j - products[i].weight] + products[i].profit)
                 {
-                    dp[j] = newValue;
-                    choose[i][j] = true;
+                    dp[j] = dp[j - products[i].weight] + products[i].profit;
+                    choose[i][j] = true; // 記錄選擇當前商品
                 }
             }
         }
 
-        // 回溯找出選擇的物品
-        vector<bool> finalChoose(n, false);
-        int j = M;
-        for (int i = n; i > 0; --i)
+        // 還原選擇的商品
+        cout << "(DP Answer)\nMax Profit : " << dp[M] << "\n";
+        int remainingWeight = M;
+        for (int i = n - 1; i >= 0 && remainingWeight > 0; --i)
         {
-            if (choose[i][j])
+            if (choose[i][remainingWeight])
             {
-                finalChoose[i - 1] = true;
-                j -= products[i - 1].weight;
+                finalChoose[i] = true;
+                // cout << "Product " << i << " (Weight: " << products[i].weight
+                //      << ", Profit: " << products[i].profit << ")\n";
+                remainingWeight -= products[i].weight; // 更新剩餘重量
             }
         }
-
-        cout << "Max Profit : " << dp[M] << "\n"
-             << finalChoose << "\n(DP Answer)\n";
+        cout << finalChoose << "\n";
     }
 
     /*
@@ -330,6 +325,16 @@ public:
 OutputFormat Node::outputFormat = OutputFormat::DETAIL;
 int main(int argc, char *argv[])
 {
+    // input6 = 5963
+    // input7 = 5568
+
+    // char name[] = "input3.txt";
+    // char *filename = name;
+    // Solution solution;
+    // solution.readFile(filename);
+    // solution.solve();
+    // DynamicProgramming dp(solution);
+    // dp.solve();
     if (argc < 2)
     {
         // 使用方式
