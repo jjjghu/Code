@@ -75,7 +75,7 @@ def canny(image, kSize=3, weak=75, strong=255):
                     result_image[i, j] = 0
     return result_image
 def create_r_table(image, kSize=3): 
-    # r_table[角度] = [r1(dx, dy), r2, r3, ...]
+    # r_table[梯度] = [r1(dx, dy), r2, r3, ...]
     r_table = {} 
     
     center_point = (image.shape[0] // 2, image.shape[1] // 2)
@@ -90,7 +90,7 @@ def create_r_table(image, kSize=3):
                 theta = np.rad2deg(direction[i, j])
                 # 距離中心點的向量 (dx, dy)
                 r = [i - center_point[0], j - center_point[1]]
-                # 沒有對應的角度, 就初始化
+                # 沒有對應的梯度, 就初始化
                 if theta not in r_table:
                     r_table[theta] = []
                 r_table[theta].append(r)
@@ -104,25 +104,34 @@ def detect_object(image, r_table, kSize=3, angle_step=1):
 
     # 初始化投票機器, 
     # shape = (image.shape[0], image.shape[1], 360 // angle_step)
-    accumulator = np.zeros((*image.shape, len(range(0, 360, angle_step))), dtype=np.int32)
+    accumulator = np.zeros((*image.shape, len(range(0, 360, angle_step))), dtype=np.int32) 
+    
+    angles = np.deg2rad(np.arange(0, 360, angle_step))
+    COS = np.cos(angles)
+    SIN = np.sin(angles)
 
     for i in range(image.shape[0]):
         for j in range(image.shape[1]):
-            if image[i, j] > 0: # 邊緣點
+            if image[i, j] > 0:  # 邊緣點
                 theta = np.rad2deg(direction[i, j])
                 # 角度存在
                 if theta in r_table:
                     # 向量(dx, dy) 存在
                     for r in r_table[theta]:
                         # 投票時間! 
-                        for angle_idx, angle in enumerate(range(0, 360, angle_step)):
-                            angle = np.deg2rad(angle)
-                            # 考量到可能變換的角度, 轉整數
-                            x_c = int(i - r[0] * np.cos(angle) + r[1] * np.sin(angle))
-                            y_c = int(j - r[0] * np.sin(angle) - r[1] * np.cos(angle))
-                            # 想投票的目標經過轉換依舊在範圍內
-                            if 0 <= x_c < image.shape[0] and 0 <= y_c < image.shape[1]:
-                                accumulator[x_c, y_c, angle_idx] += 1
+                        x_c = i - r[0] * COS + r[1] * SIN
+                        y_c = j - r[0] * SIN - r[1] * COS
+                        x_c = np.round(x_c).astype(int)
+                        y_c = np.round(y_c).astype(int)
+                        
+                        # 篩選有效範圍的座標, 投該座標一票
+                        valid = (0 <= x_c) & (x_c < image.shape[0]) & (0 <= y_c) & (y_c < image.shape[1])
+                        x_c = x_c[valid]
+                        y_c = y_c[valid]
+                        angle_idxs = np.arange(0, len(angles))[valid]
+
+                        # 投票
+                        accumulator[x_c, y_c, angle_idxs] += 1
     return accumulator
 def display_result(image, accumulator, angle_step=1, box_size=(50, 50), ref='', tmp=''):
     # 找到得票數最多的候選位置
@@ -160,12 +169,12 @@ def display_result(image, accumulator, angle_step=1, box_size=(50, 50), ref='', 
     plt.show()
 
 def main():
-    references = ['ref', 'ref', 'Time']
-    template = ['tea_0', 'tea_45', 'Time_tmp_180']
-    angles = [360, 45, 180]
-    # references = ['ref','ref', 'ref', 'Time', 'Time', 'Time', 'ref', 'ref', 'ref', 'animal_well']
-    # template = ['tea_0', 'tea_180', 'tea_45', 'Time_tmp', 'Time_tmp_0', 'Time_tmp_180', 'train_12', 'cup_64', ''butterfly_3', 'animal']
-    # angles = [360, 180, 45, 90, 90, 180, 10, 30, 3, 90] # 會花很多時間跑最後兩個, 一個是因為角度小, 另一個是因為圖片大, 已經有結果存在資料夾裡面了
+    # references = ['ref','ref', 'ref', 'Time', 'Time', 'Time', 'ref', 'ref']
+    # template = ['tea_0', 'tea_180', 'tea_45', 'Time_tmp', 'Time_tmp_0', 'Time_tmp_180', 'train_12', 'cup_64']
+    # angles = [360, 180, 45, 90, 90, 180, 10, 30, 3, 90]
+    references = ['ref','ref', 'ref', 'Time', 'Time', 'Time']
+    template = ['tea_0', 'tea_180', 'tea_45', 'Time_tmp', 'Time_tmp_0', 'Time_tmp_180']
+    angles = [360, 180, 45, 90, 90, 180] # 'animal_well' takes forever, don't do it. 
     for ref, tmp, angle_step in zip(references, template, angles):
         # 讀取處理後的圖片
         image = cv2.imread(f'images/{ref}.png', cv2.IMREAD_GRAYSCALE)
