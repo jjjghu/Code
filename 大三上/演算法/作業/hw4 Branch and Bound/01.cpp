@@ -44,6 +44,7 @@ struct Node
     int lowerBound;
     int upperBound;
     int index;
+    bool feasible;
     vector<bool> choose;
     // 輸出格式
     static OutputFormat outputFormat;
@@ -53,12 +54,15 @@ struct Node
         this->upperBound = upperBound;
         this->index = index;
         this->choose = choose;
+        this->feasible = false;
     }
     // implement operator <, 用在 queue 上
     bool operator<(const Node &other) const
     {
         if (lowerBound != other.lowerBound)
             return lowerBound < other.lowerBound; // 讓 priority_queue 大的值優先處理
+        // if (index != other.index)
+        //     return index > other.index;
         return upperBound < other.upperBound;
     }
     // override print, using friend function to make it accessible by "cout << node"
@@ -67,13 +71,13 @@ struct Node
         if (Node::outputFormat == OutputFormat::DEBUG)
         {
             os << "index = " << node.index << " " << node.choose
-               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound << "\n";
+               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
             os << "deep = " << node.index << " " << node.choose
-               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound << "\n";
+               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
         }
         if (Node::outputFormat == OutputFormat::COMPACT)
         {
-            os << node.choose << ", LB=" << node.lowerBound << ", UB=" << node.upperBound << "\n";
+            os << node.choose << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
         }
         else if (Node::outputFormat == OutputFormat::DETAIL)
         {
@@ -84,8 +88,13 @@ struct Node
                 else
                     os << 'X';
             }
-            os << ", LB=" << node.lowerBound << ", UB=" << node.upperBound << "\n";
+            os << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
         }
+        if (!node.feasible)
+        {
+            os << " infeasible";
+        }
+        os << "\n";
         return os;
     }
 };
@@ -95,7 +104,7 @@ private:
     friend class DynamicProgramming;
     int M, n, profit, weight;
     vector<Product> products; // profit weight
-    bool findBound(Node &node)
+    void findBound(Node &node)
     {
         // Greedy,    找出沒有 01 限制的最優解 (LowerBound)
         // Greedy 01, 找出一個可行解 (UpperBound)
@@ -107,7 +116,7 @@ private:
         int totalProfit = 0;
         for (Product p : products)
         {
-            if (node.choose[p.index] == true)
+            if (p.index >= 0 && node.choose[p.index] == true)
             {
                 m -= p.weight;
                 totalProfit += p.profit;
@@ -116,12 +125,13 @@ private:
         if (m < 0)
         {
             // 因為強制設定為 true, 導致 infeasible
-            return false;
+            node.feasible = false;
+            return;
         }
         vector<Product> choosableProduct;
         for (Product p : products)
         {
-            if (node.index <= p.index)
+            if (node.index <= p.index || p.index == -1)
             {
                 choosableProduct.push_back(p);
             }
@@ -140,6 +150,13 @@ private:
             // 超出重量, 提前退出
             else
             {
+                if (p.index == -1)
+                {
+                    // 假如 choosableProduct 當中只有這個代表尾端的商品, 不更新 bound 會出錯
+                    node.upperBound = totalProfit;
+                    node.lowerBound = totalProfit;
+                    break;
+                }
                 // UpperBound
                 node.upperBound = totalProfit;
 
@@ -150,7 +167,8 @@ private:
                 break;
             }
         }
-        return true;
+        node.feasible = true;
+        return;
     }
 
 public:
@@ -170,13 +188,17 @@ public:
             inFile >> profit >> weight;
             products[i] = Product(profit, weight, i);
         }
-        // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈, n - 1 是故意的
-        products.push_back(Product(0, INT_MAX, n - 1));
+        // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈
+        products.push_back(Product(0, INT_MAX, -1));
     }
     void solve()
     {
         // 根節點
         // Node(lowerbound, upperbound, index, choose);
+        // Node testNode = Node(0, 0, 6, vector<bool>(n, false));
+        // testNode.choose[0] = true;
+        // testNode.choose[1] = true;
+        // cout << "feasible=" << findBound(testNode) << " " << testNode;
         Node root = Node(0, 0, 0, vector<bool>(n, false));
         findBound(root);
         int bestUpperBound = root.upperBound;
@@ -192,64 +214,40 @@ public:
             pq.pop(); // 必須要在這裡 pop, 避免後續 push 改變順序
             // cout << node;
             visitPath.push_back(node);
-            for (bool choice : {true, false})
+            if (node.index < n && node.feasible)
             {
-                Node newNode = node;
-                newNode.choose[newNode.index] = choice;
-                ++newNode.index;
-                bool feasible = findBound(newNode);
-
-                if (newNode.index < n && feasible && newNode.lowerBound >= bestUpperBound)
+                for (bool choice : {true, false})
                 {
-                    pq.push(newNode);
-                    bestUpperBound = max(bestUpperBound, newNode.upperBound);
+                    Node newNode = node;
+                    newNode.choose[newNode.index] = choice;
+                    ++newNode.index;
+                    findBound(newNode);
+                    if (newNode.lowerBound >= bestUpperBound)
+                    {
+                        pq.push(newNode);
+                        bestUpperBound = max(bestUpperBound, newNode.upperBound);
+                    }
                 }
             }
         }
         Node resultNode = root;
+        int resultStep;
         bool find = false;
-        int i;
-        for (i = 0; i < visitPath.size(); ++i)
+        for (int i = 0; i < visitPath.size(); ++i)
         {
-            if (!find && visitPath[i].upperBound == visitPath[i].lowerBound)
+            if (!find && visitPath[i].upperBound == bestUpperBound && visitPath[i].lowerBound == visitPath[i].upperBound)
             {
                 find = true;
                 resultNode = visitPath[i];
+                resultStep = i;
             }
             cout << "step:" << i << "\t" << visitPath[i];
         }
         Node::outputFormat = OutputFormat::COMPACT;
-        cout << "\n(Branch and Bound answer) \nFind the BEST answer when step " << i << ": \n"
+        cout << "\n(Branch and Bound answer) \nFind the BEST answer when step " << resultStep << ": \n"
              << "Max Profit : " << resultNode.upperBound << "\n"
              << resultNode << "\n";
-        // // debug 用
-        // queue<Node> pq;
-        // pq.push(root);
-        // int step = 0;
-        // while (!pq.empty())
-        // {
-        //     int size = pq.size();
-        //     cout << "\nstep: " << step++ << "\n";
-        //     for (int i = 0; i < size; ++i)
-        //     {
-        //         Node node = pq.front();
-        //         pq.pop(); // 必須要在這裡 pop, 避免後續 push 改變順序
-        //         cout << node;
-        //         for (bool choice : {true, false})
-        //         {
-        //             Node newNode = node;
-        //             newNode.choose[newNode.index] = choice;
-        //             ++newNode.index;
-        //             bool feasible = findBound(newNode);
-
-        //             if (newNode.index < n && feasible && newNode.lowerBound >= bestUpperBound)
-        //             {
-        //                 pq.push(newNode);
-        //                 bestUpperBound = max(bestUpperBound, newNode.upperBound);
-        //             }
-        //         }
-        //     }
-        // }
+        Node::outputFormat = OutputFormat::DETAIL;
     }
 };
 class DynamicProgramming
