@@ -1,8 +1,10 @@
+// 驗證答案, c147. 105北二5搬家規劃問題, zerojudge
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <fstream>
 #include <queue>
+#include <string>
+#include <sstream>
 using namespace std;
 
 ostream &operator<<(ostream &os, const vector<bool> &v)
@@ -33,12 +35,6 @@ struct Product
         return os;
     }
 };
-enum class OutputFormat
-{
-    DETAIL,
-    COMPACT,
-    DEBUG
-};
 struct Node
 {
     int lowerBound;
@@ -47,7 +43,6 @@ struct Node
     bool feasible;
     vector<bool> choose;
     // 輸出格式
-    static OutputFormat outputFormat;
     Node(int lowerBound, int upperBound, int index, vector<bool> choose)
     {
         this->lowerBound = lowerBound;
@@ -68,28 +63,15 @@ struct Node
     // override print, using friend function to make it accessible by "cout << node"
     friend ostream &operator<<(ostream &os, const Node &node)
     {
-        if (Node::outputFormat == OutputFormat::DEBUG)
+
+        for (int i = 0; i < node.choose.size(); ++i)
         {
-            os << "index = " << node.index << " " << node.choose
-               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
-            os << "deep = " << node.index << " " << node.choose
-               << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
+            if (i < node.index)
+                os << node.choose[i];
+            else
+                os << 'X';
         }
-        if (Node::outputFormat == OutputFormat::COMPACT)
-        {
-            os << node.choose << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
-        }
-        else if (Node::outputFormat == OutputFormat::DETAIL)
-        {
-            for (int i = 0; i < node.choose.size(); ++i)
-            {
-                if (i < node.index)
-                    os << node.choose[i];
-                else
-                    os << 'X';
-            }
-            os << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
-        }
+        os << ", LB=" << node.lowerBound << ", UB=" << node.upperBound;
         if (!node.feasible)
         {
             os << " infeasible";
@@ -172,24 +154,36 @@ private:
     }
 
 public:
-    void readFile(char *fileName)
+    void readFile()
     {
-        // read file
-        ifstream inFile(fileName);
-        if (!inFile.is_open())
+        // 讀檔案, 多用了一些空間, 但我懶得改
+        vector<int> weight, value;
+        string s;
+        stringstream ss;
+
+        getline(cin, s);
+        ss.clear();
+        ss.str(s);
+        while (ss >> s)
         {
-            cout << "無法開啟檔案: " << fileName << "\n";
-            return;
+            weight.push_back(stoi(s));
         }
-        inFile >> M >> n;
+        getline(cin, s);
+        ss.clear();
+        ss.str(s);
+        while (ss >> s)
+        {
+            value.push_back(stoi(s));
+        }
+        cin >> M;
+        n = weight.size();
         products.resize(n);
         for (int i = 0; i < n; ++i)
         {
-            inFile >> profit >> weight;
-            products[i] = Product(profit, weight, i);
+            products[i] = Product(value[i], weight[i], i);
         }
         // 在尾端加入一個獲利 0 的商品, 方便後續處理跳出迴圈
-        products.push_back(Product(0, INT_MAX, -1));
+        products.push_back(Product(0, 2147483647, -1));
     }
     void solve()
     {
@@ -226,25 +220,14 @@ public:
                 }
             }
         }
-        Node resultNode = root;
-        int resultStep;
-        bool find = false;
         for (int i = 0; i < visitPath.size(); ++i)
         {
-            cout << "step:" << i << "\t" << visitPath[i];
-            if (!find && visitPath[i].upperBound == bestUpperBound && visitPath[i].lowerBound == visitPath[i].upperBound)
+            if (visitPath[i].upperBound == bestUpperBound && visitPath[i].lowerBound == visitPath[i].upperBound)
             {
-                find = true;
-                resultNode = visitPath[i];
-                resultStep = i;
-                break;
+                cout << visitPath[i].lowerBound;
+                return;
             }
         }
-        Node::outputFormat = OutputFormat::COMPACT;
-        cout << "\n(Branch and Bound answer) \nFind the BEST answer when step " << resultStep << ": \n"
-             << "Max Profit : " << resultNode.upperBound << "\n"
-             << resultNode << "\n";
-        Node::outputFormat = OutputFormat::DETAIL;
     }
 };
 class DynamicProgramming
@@ -317,45 +300,12 @@ public:
     5. 判斷複雜度: O(n * mx)
     */
 };
-OutputFormat Node::outputFormat = OutputFormat::DETAIL;
-int main(int argc, char *argv[])
+int main(void)
 {
     // input1 ~ 7 = 17, 5, 10, 12, 15, 5963, 5568
-
-    // char name[] = "input3.txt";
-    // char *filename = name;
-    // Solution solution;
-    // solution.readFile(filename);
-    // solution.solve();
-    // DynamicProgramming dp(solution);
-    // dp.solve();
-    if (argc < 2)
-    {
-        // 使用方式
-        cout << "Usage: " << argv[0] << " <input_file_1> <input_file_2> ... <input_file_n>\n";
-        return 1;
-    }
-
-    vector<Solution> solutions;
-
-    // 傳入一堆檔案名稱
-    for (int i = 1; i < argc; ++i)
-    {
-        Solution solution;
-        solution.readFile(argv[i]);
-        solutions.push_back(solution);
-    }
-
-    // 驗證錯誤
-    for (auto &solution : solutions)
-    {
-        DynamicProgramming dp(solution);
-        solution.solve();
-        dp.solve();
-        cout << "Press Enter to continue...";
-        cin.ignore();
-    }
-
+    Solution solution;
+    solution.readFile();
+    solution.solve();
     return 0;
 }
 /*
