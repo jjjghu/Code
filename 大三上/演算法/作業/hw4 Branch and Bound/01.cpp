@@ -323,8 +323,7 @@ public:
 OutputFormat Node::outputFormat = OutputFormat::DETAIL;
 int main(int argc, char *argv[])
 {
-    // input6 = 5963
-    // input7 = 5568
+    // input1 ~ 7 = 17, 5, 10, 12, 15, 5963, 5568
 
     // char name[] = "input3.txt";
     // char *filename = name;
