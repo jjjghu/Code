@@ -10,7 +10,7 @@
 [網際網路資料庫程式設計期末專題](https://github.com/jjjghu/bookshop.git)
 
 ### 筆記連結
-大二筆記寫得特爛, 有用的是資料夾裡面的程式碼。
+大二筆記寫得**特爛**, 有用的是資料夾裡面的程式碼。
 大三筆記比較完整, 作為複習完全沒問題。
 #### 大二上
 微處理機技術有將所有作業都存好，放在 Github 上, 包含最後的專題。
@@ -30,7 +30,6 @@ C# 筆記可以用來看語法, 跟 MessageBox 裡面的一些參數
 - [程式語言理論與實務 C#](https://gjplieqszy7.sg.larksuite.com/docx/E63Ld4p8MoAmVUxhdt3lM0UDgSc?from=from_copylink)
 - [網際網路資料庫程式設計](https://gjplieqszy7.sg.larksuite.com/docx/SuIldtlB6obr3kxxBfflT3rqgpd?from=from_copylink)
 - [電子學](https://gjplieqszy7.sg.larksuite.com/docx/OaaZdtde7oXyEMxEnsZlWuOpgvb)
-- [可程式邏輯設計](https://gjplieqszy7.sg.larksuite.com/docx/PTMbdNeOooLvaexqSH3ldd4VgAe)
 
 #### 大三上
 
