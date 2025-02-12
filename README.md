@@ -10,6 +10,7 @@
 [網際網路資料庫程式設計期末專題](https://github.com/jjjghu/bookshop.git)
 
 ### 筆記連結
+[完整連結](https://gjplieqszy7.sg.larksuite.com/wiki/space/7415915803482030112?ccm_open_type=lark_wiki_spaceLink&open_tab_from=wiki_home)
 大二筆記寫得**特爛**, 有用的是資料夾裡面的程式碼。
 大三筆記比較完整, 作為複習完全沒問題。
 #### 大二上
