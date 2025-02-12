@@ -91,11 +91,11 @@ int main(void)
         -0.5f, 0.5f, 0.0f, // top left
         -0.5f, -0.5f, 0.0f,
         0.5f, 0.5f, 0.0f};
-    // unsigned int indices[] =
-    //{
-    //	0, 1, 3,
-    //	1, 2, 3
-    // };
+    unsigned int indices[] =
+    {
+    	0, 1, 3,
+    	1, 2, 3
+    };
 
     unsigned int VAO, VBO;
     glGenVertexArrays(1, &VAO);

@@ -47,11 +47,10 @@ int main(void)
 /*
 動態規劃五步法
 1. 構造問題: 把硬幣盡量平均分配
-2. 定義狀態: f(i) = 能不能湊出 i
+2. 定義狀態: dp(i) = 能不能用這堆硬幣湊出面額 i ?
 3. 求解小規模的簡單問題:
-    f(i) = true
-    其他 f(i) = false
+    f(0) = true, 其他為 false
 4. 狀態轉移方程式:
-   若 f(i) = true, 則 f(i + num) = true
+   若 f(i) = true, 則 f(i - num) = true
 5. 判斷複雜度: O(n * sum / 2)
 */
