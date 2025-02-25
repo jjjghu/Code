@@ -1,54 +1,42 @@
 #include <iostream>
+using namespace std;
 class A
 {
 public:
-    A()
+    A(int size) : size_(size)
     {
-        std::cout << "A() \n";
+        data_ = new int[size];
+        *data_ = size;
     }
-
-    ~A()
+    A() {}
+    A(A &a)
     {
-        std::cout << "~A() \n";
+        this->data_ = a.data_;
+        a.data_ = nullptr;
+        cout << "move " << endl;
     }
-
-    A(const A &a)
-    {
-        count_ = a.count_;
-        std::cout << "A copy \n";
-    }
-
-    A &operator=(const A &a)
-    {
-        count_ = a.count_;
-        std::cout << "A = \n";
-        return *this;
-    }
-
     A(A &&a)
     {
-        count_ = a.count_;
-        std::cout << "A move \n";
+        size_ = a.size_;
+        data_ = new int[size_];
+        *data_ = *a.data_;
+        cout << "copy " << endl;
     }
-
-    A &operator=(A &&a)
+    ~A()
     {
-        count_ = a.count_;
-        std::cout << "A move = \n";
-        return *this;
+        if (data_ != nullptr)
+        {
+            delete[] data_;
+        }
+        cout << "~A()\n";
     }
-
-    std::string count_;
+    int *data_;
+    int size_;
 };
-
 int main()
 {
-    A a; // A()
-    a.count_ = "12345";
-    A b = std::move(a);                 // A move
-    A c;                                // A()
-    c = std::move(b);                   // A move =
-    std::cout << a.count_ << std::endl; // 12345
-    std::cout << b.count_ << std::endl; // 12345
+    A a(10);
+    A b(a);
+    cout << *b.data_<<endl;
     return 0;
 }
