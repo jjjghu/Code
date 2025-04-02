@@ -268,7 +268,7 @@ class LabelFrameDemo:
         self.load_LoginFrame()
         
     def load_image(self):
-        self.image = PhotoImage(file="COMPLETE/Images/Cat.png")
+        self.image = PhotoImage(file="Images/Cat.png")
         self.image = self.image.subsample(4)
         self.labelImage = Label(self.window, image=self.image, text="這是一隻可愛的貓", compound=BOTTOM)
         self.labelImage.pack()
@@ -736,7 +736,7 @@ class PanedWindowDemo:
         
         self.rightFrame = LabelFrame(self.window, text="rightFrame", width=WIDTH)
         self.paned_window.add(self.rightFrame, weight=1)
-class NoteBookDemo():
+class NoteBookDemo:
     def __init__(self):
         self.window.title("NoteBook Demo")
         self.window.geometry('300x200')
@@ -760,7 +760,7 @@ class NoteBookDemo():
         
     def on_button_pressed(self):
         messagebox.showinfo("messagebox!", "HELLO!")    
-class ProgressBarDemo():
+class ProgressBarDemo:
     def __init__(self):
         self.window.title("Progressbar Demo")
         self.window.geometry('300x200')
@@ -788,7 +788,7 @@ class ProgressBarDemo():
     
     def on_resetProgressButton_pressed(self):
         self.progressbar['value'] = 0
-class MenuDemo():
+class MenuDemo:
     def __init__(self):
         self.window.title("Menu Demo")
         self.window.geometry('300x200')
@@ -942,5 +942,10 @@ if __name__ == "__main__":
     # menu_demo.set_container(demo_container)
     # demo_container.window.title("ProgressBar With Demo")
     # demo_container.start()
-    demo = MenuPart()
+    
+    # Calculator, VariableDemo, RepaymentCalculator, RadioButtonDemo, FlagsDemo
+    # LabelFrameDemo ShowInformation, ScaleDemo, SpinBoxDemo,
+    # MessageBoxDemo, EventAndBindDemo, CloseWindowDemo, ListboxDemo
+    # WidgetPractice, PanedWindowDemo, NoteBookDemo, ProgressBarDemo, MenuDemo
+    demo = ListboxDemo()
     demo.start()
