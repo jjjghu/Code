@@ -109,7 +109,7 @@ class Student():
         
         # option layout 
         option_frame = Frame(self.window)
-        Checkbutton(option_frame, text="降序", variable=self.sort_descending).grid(row = 0, column=0, padx=5) 
+        Checkbutton(option_frame, text="降序", variable=self.sort_descending, command=self.update_listbox).grid(row = 0, column=0, padx=5) 
         Radiobutton(option_frame, text="依姓名排列", variable=self.sort_reference, value=SortType.NAME.value, command=self.update_listbox).grid(row=0, column=1, padx=5)
         Radiobutton(option_frame, text="依成績排列", variable=self.sort_reference, value=SortType.GRADE.value, command=self.update_listbox).grid(row=0, column=2, padx=5)
         Checkbutton(option_frame, text="顯示刪除資訊", variable=self.show_deleted, command=self.update_listbox).grid(row=0, column=3, padx=5)
