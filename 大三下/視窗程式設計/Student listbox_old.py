@@ -105,8 +105,8 @@ class Student():
     def create_variable(self):
         self.student_data = StudentData()
         
-        self.nameVar = StringVar()
-        self.gradeVar = StringVar()
+        self.input_name_var = StringVar()
+        self.input_grade_var = StringVar()
         
         self.gradeThresholdVar = IntVar()
         self.gradeThresholdVar.set(0)
@@ -129,9 +129,9 @@ class Student():
         # input layout 
         input_frame = Frame(top_frame)
         Label(input_frame, text="姓名").grid(row=0, column=0, padx=(5, 5))
-        Entry(input_frame, textvariable=self.nameVar, width=30).grid(row=0,column=1)
+        Entry(input_frame, textvariable=self.input_name_var, width=30).grid(row=0,column=1)
         Label(input_frame, text="成績").grid(row=1, column=0, padx=(5, 5))
-        Entry(input_frame, textvariable=self.gradeVar, width=30).grid(row=1, column=1)    
+        Entry(input_frame, textvariable=self.input_grade_var, width=30).grid(row=1, column=1)    
         input_frame.grid(row=0, column=0)
 
         # 空白空間
@@ -176,8 +176,8 @@ class Student():
             yscrollcommand=y_scrollbar.set, 
             xscrollcommand= x_scrollbar.set
         )
-        self.treeview.heading("姓名", text="姓名", command= lambda: self.sort_reference.set(SortType.NAME.value))
-        self.treeview.heading("成績", text="成績", command= lambda: self.sort_reference.set(SortType.GRADE.value))
+        self.treeview.heading("姓名", text="▲姓名", command=self.sort_by_name)
+        self.treeview.heading("成績", text="成績", command=self.sort_by_grade)
         self.treeview.column("姓名",width=160, anchor=CENTER)
         self.treeview.column("成績",width=160, anchor=CENTER)
         
@@ -220,8 +220,8 @@ class Student():
 
     def on_addButton_pressed(self):
         if self.input_valid(): 
-            student_name = self.nameVar.get()
-            student_grade = int(self.gradeVar.get())
+            student_name = self.input_name_var.get()
+            student_grade = int(self.input_grade_var.get())
             if self.student_data.search_student(student_name) is None: 
                 self.student_data.add_student(student_name, student_grade)
                 self.update_treeview()
@@ -229,7 +229,7 @@ class Student():
                 messagebox.showwarning(title="錯誤訊息", message=f"學生 {student_name} 已存在!")
             
     def on_searchButton_pressed(self):
-        name = self.nameVar.get()
+        name = self.input_name_var.get()
         if not name:
             messagebox.showerror(title="錯誤訊息", message="請輸入學生姓名")
             return
@@ -242,7 +242,7 @@ class Student():
         self.update_treeview()
         
     def on_delButton_pressed(self):
-        name = self.nameVar.get()
+        name = self.input_name_var.get()
         if not name:
             messagebox.showerror(title="錯誤訊息", message="請輸入學生姓名")
             return
@@ -255,13 +255,13 @@ class Student():
         
     def on_updateButton_pressed(self):
         if self.input_valid():    
-            name = self.nameVar.get()
-            new_grade = int(self.gradeVar.get())
+            name = self.input_name_var.get()
+            new_grade = int(self.input_grade_var.get())
             if self.student_data.update_student(name, new_grade):
                 messagebox.showinfo(title="更新結果", message=f"學生 {name} 的成績已更新為 {new_grade}")
                 self.update_treeview()
-                self.nameVar.set("")
-                self.gradeVar.set("")
+                self.input_name_var.set("")
+                self.input_grade_var.set("")
             else:
                 messagebox.showwarning(title="更新結果", message=f"找不到學生 {name}")  
     def on_scale_changed(self, event):
@@ -271,11 +271,11 @@ class Student():
         column = self.treeview.identify_column(event.x)
         if column == "#1": 
             self.sort_reference.set(SortType.NAME.value)
-            self.sort_descending.set(not self.sort_descending.get())
+            self.reverse_sort_descending()
             self.update_treeview()
         elif column == "#2": 
             self.sort_reference.set(SortType.GRADE.value)
-            self.sort_descending.set(not self.sort_descending.get())
+            self.reverse_sort_descending()
             self.update_treeview()
             
     def on_heading_double_click(self, event):
@@ -284,9 +284,17 @@ class Student():
             student_info = self.treeview.item(selected_student)["values"]
             name = student_info[0]
             grade = student_info[1]
-            self.nameVar.set(name)
-            self.gradeVar.set(grade)
+            self.input_name_var.set(name)
+            self.input_grade_var.set(grade)
             
+    def sort_by_name(self):
+        self.sort_reference.set(SortType.NAME.value)
+        self.update_treeview()
+        
+    def sort_by_grade(self):
+        self.sort_reference.set(SortType.GRADE.value)
+        self.update_treeview()
+        
     def update_treeview(self):
         sorted_students = self.student_data.sort_students(
             self.sort_reference.get(), 
@@ -294,13 +302,26 @@ class Student():
             self.gradeThresholdVar.get(),
             self.show_deleted.get()
         )
+        
         self.treeview.delete(*self.treeview.get_children())
         for student in sorted_students:
             self.treeview.insert('', END, values=(student.name, student.grade))
+
+        icon = "▼" if self.sort_descending.get() == True else "▲"
+        if self.sort_reference.get() == SortType.GRADE.value: 
+            self.treeview.heading("姓名", text=f"姓名")
+            self.treeview.heading("成績", text=f"{icon}成績")
+        elif self.sort_reference.get() == SortType.NAME.value:
+            self.treeview.heading("姓名", text=f"{icon}姓名")
+            self.treeview.heading("成績", text=f"成績")
                     
+    def reverse_sort_descending(self):
+        self.sort_descending.set(not self.sort_descending.get())
+        # ▼▲
+        
     def input_valid(self): 
-        student_name = self.nameVar.get()
-        student_grade = self.gradeVar.get()
+        student_name = self.input_name_var.get()
+        student_grade = self.input_grade_var.get()
         if not student_name and not student_grade:         
             messagebox.showerror(title="錯誤訊息", message="請輸入學生資訊!")
             return False  
@@ -325,3 +346,5 @@ if __name__=="__main__":
 # 使用 treeview 
 # 將資料分離出來
 # 加入資料導入功能
+# 加入圖標
+# 效能問題暫不考慮
