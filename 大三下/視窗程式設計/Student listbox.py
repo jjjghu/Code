@@ -1,9 +1,6 @@
 from tkinter import *
 import tkinter.messagebox as messagebox
-from tkinter.ttk import Button, Radiobutton,Checkbutton, Label, Entry # 只是為了好看
-from tkinter.ttk import Treeview # 唯一用到的課外東西, 可使用 Listbox 替代 (如果嚴格要求不能用課外的話)
-
-# 讓程式碼好看些
+from tkinter.ttk import Button, Radiobutton, Checkbutton, Entry # 只是為了好看, 可去掉
 from enum import Enum
 from dataclasses import dataclass
 from typing import List
@@ -64,7 +61,7 @@ class StudentData:
 class Student():
     def __init__(self):
         self.window = Tk()
-        self.window.title("Studnet Management System")
+        self.window.title("Student Management System")
         self.window.geometry('')
         self.create_variable()
         self.create_widget()
@@ -113,40 +110,50 @@ class Student():
         # option layout 
         option_frame = Frame(self.window)
         Checkbutton(option_frame, text="降序", variable=self.sort_descending).grid(row = 0, column=0, padx=5) 
-        Radiobutton(option_frame, text="依姓名排列", variable=self.sort_reference, value=SortType.NAME.value, command=self.update_treeview).grid(row=0, column=1, padx=5)
-        Radiobutton(option_frame, text="依成績排列", variable=self.sort_reference, value=SortType.GRADE.value, command=self.update_treeview).grid(row=0, column=2, padx=5)
-        Checkbutton(option_frame, text="顯示刪除資訊", variable=self.show_deleted, command=self.update_treeview).grid(row=0, column=3, padx=5)
+        Radiobutton(option_frame, text="依姓名排列", variable=self.sort_reference, value=SortType.NAME.value, command=self.update_listbox).grid(row=0, column=1, padx=5)
+        Radiobutton(option_frame, text="依成績排列", variable=self.sort_reference, value=SortType.GRADE.value, command=self.update_listbox).grid(row=0, column=2, padx=5)
+        Checkbutton(option_frame, text="顯示刪除資訊", variable=self.show_deleted, command=self.update_listbox).grid(row=0, column=3, padx=5)
         option_frame.pack(pady=10)
         
-        # Treeview layout
+        # listbox layout
         database_frame = Frame(self.window)
+        
+        header_frame = Frame(database_frame)
+        name_header = Label(header_frame, text="姓名", width=19, relief=GROOVE, font=("Courier New", 12))
+        grade_header = Label(header_frame, text="成績", width=19, relief=GROOVE, font=("Courier New", 12))
+
+        name_header.pack(side=LEFT, padx=(0, 1))
+        grade_header.pack(side=LEFT)
+        
         y_scrollbar = Scrollbar(database_frame, orient=VERTICAL)
         x_scrollbar = Scrollbar(database_frame, orient=HORIZONTAL)
-    
-        self.treeview = Treeview(
-            database_frame, 
-            column=("姓名", "成績"), 
-            show="headings", 
-            yscrollcommand=y_scrollbar.set, 
-            xscrollcommand= x_scrollbar.set
+
+        self.listbox = Listbox(
+            database_frame,
+            width=40,
+            font=("Courier New", 12),
+            yscrollcommand=y_scrollbar.set,
+            xscrollcommand=x_scrollbar.set
         )
-        self.treeview.heading("姓名", text="姓名")
-        self.treeview.heading("成績", text="成績")
-        self.treeview.column("姓名",width=160, anchor=CENTER)
-        self.treeview.column("成績",width=160, anchor=CENTER)
+
+
+        y_scrollbar.pack(side=RIGHT, fill=Y)
+        x_scrollbar.pack(side=BOTTOM, fill=X)
         
-        y_scrollbar.pack(fill=Y, side=RIGHT)
-        x_scrollbar.pack(fill=X, side=BOTTOM)    
-        y_scrollbar.config(command=self.treeview.yview)
-        x_scrollbar.config(command=self.treeview.xview)
+        y_scrollbar.config(command=self.listbox.yview)
+        x_scrollbar.config(command=self.listbox.xview)
         
-        self.treeview.pack(expand=True, fill=BOTH)
-        database_frame.pack(expand=True, fill=BOTH)
+        header_frame.pack(fill=X)
+        self.listbox.pack(side=LEFT, expand=True, fill=BOTH)
+        database_frame.pack(expand=True, fill=BOTH, pady=10)
         
         # 測試資料
         for i in range(100):
-            self.student_data.add_student(str(100 - i), i)
-            self.treeview.insert('', END, values=(100 - i, i))
+            name = str(100 - i)
+            grade = i
+            self.student_data.add_student(name, grade)
+            display_text = f"{name:^19}-{grade:^19}"
+            self.listbox.insert(END, display_text)
             
         # Scale
         Scale(
@@ -166,7 +173,7 @@ class Student():
             student_grade = self.gradeVar.get()
             if self.student_data.search_student(student_name) is None: 
                 self.student_data.add_student(student_name, student_grade)
-                self.update_treeview()
+                self.update_listbox()
             else: 
                 messagebox.showwarning(title="錯誤訊息", message=f"學生 {student_name} 已存在!")
             
@@ -181,7 +188,7 @@ class Student():
             messagebox.showinfo(title="搜尋結果", message=f"{student_info.name} 的成績為 {student_info.grade}")           
         else: 
             messagebox.showwarning(title="搜尋結果", message=f"找不到學生 {name}")
-        self.update_treeview()
+        self.update_listbox()
     def on_delButton_pressed(self):
         name = self.nameVar.get()
         if not name:
@@ -190,7 +197,7 @@ class Student():
         
         if self.student_data.delete_student(name):
             messagebox.showinfo(title="刪除結果", message=f"已經將學生 {name} 資料刪除")
-            self.update_treeview()          
+            self.update_listbox()          
         else: 
             messagebox.showwarning(title="刪除結果", message=f"找不到學生 {name}")
         
@@ -201,24 +208,28 @@ class Student():
             new_grade = int(self.gradeVar.get())
             if self.student_data.update_student(name, new_grade):
                 messagebox.showinfo(title="更新結果", message=f"學生 {name} 的成績已更新為 {new_grade}")
-                self.update_treeview()
+                self.update_listbox()
                 self.nameVar.set("")
                 self.gradeVar.set("")
             else:
                 messagebox.showwarning(title="更新結果", message=f"找不到學生 {name}")  
     def on_scale_changed(self, event):
-        self.update_treeview()
+        self.update_listbox()
         
-    def update_treeview(self):
+    def update_listbox(self):
         sorted_students = self.student_data.sort_students(
-            self.sort_reference.get(), 
+            self.sort_reference.get(),
             self.sort_descending.get(),
             self.gradeThresholdVar.get(),
             self.show_deleted.get()
         )
-        self.treeview.delete(*self.treeview.get_children())
+        
+        self.listbox.delete(0, END)  # 清空 listbox
+        
         for student in sorted_students:
-            self.treeview.insert('', END, values=(student.name, student.grade))        
+            # 使用格式化字串
+            display_text = f"{student.name:^19}-{student.grade:^19}"
+            self.listbox.insert(END, display_text)       
     def input_valid(self): 
         student_name = self.nameVar.get()
         student_grade = self.gradeVar.get()
@@ -245,4 +256,3 @@ if __name__=="__main__":
     
 # 使用 treeview 
 # 將資料分離出來
-# 加入資料導入功能
