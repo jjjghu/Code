@@ -1,12 +1,13 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-import tkinter.messagebox as messagebox
 from tkinter.ttk import Button, Radiobutton, Checkbutton, Entry # 只是為了好看, 可去掉
 from enum import Enum
 from dataclasses import dataclass
 from typing import List
+import tkinter.messagebox as messagebox
 import subprocess
 import csv
+
 class SortType(Enum):
     NAME = "name"
     GRADE = "grade"
@@ -299,11 +300,11 @@ class Student():
             self.input_name_var.set(name)
             self.input_grade_var.set(grade)
 
-    def sort_by_name(self):
+    def on_sortbyName_pressed(self):
         self.sort_reference.set(SortType.NAME.value)
         self.update_listbox()
 
-    def sort_by_grade(self):
+    def on_sortbyGrade_pressed(self):
         self.sort_reference.set(SortType.GRADE.value)
         self.update_listbox()
         
@@ -358,5 +359,5 @@ if __name__=="__main__":
     student = Student()
     student.start()
     
-# 使用 treeview 
+# 使用 listbox
 # 將資料分離出來

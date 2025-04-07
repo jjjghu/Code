@@ -198,16 +198,18 @@ class Student():
             self.treeview.insert('', END, values=(1000 - i, i))
             
         # Scale
+        label_frame = LabelFrame(self.window, text="分數拉桿")
         Scale(
-            self.window, 
+            label_frame, 
             from_=0, 
             to_=100,
             troughcolor="gray", 
             tickinterval=50, 
             orient=HORIZONTAL,
             variable=self.gradeThresholdVar,
-            command= self.on_scale_changed
+            command= self.on_scale_changed,
         ).pack(fill=X)
+        label_frame.pack(fill=X)
         
     def on_importButton_pressed(self):
         file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
