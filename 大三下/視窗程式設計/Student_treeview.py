@@ -1,32 +1,77 @@
+from email import message
 from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
-import tkinter.messagebox as messagebox
-from tkinter.ttk import Button, Radiobutton, Checkbutton, Label, Entry # 只是為了好看
+from tkinter.font import BOLD
+from tkinter.ttk import Button, Radiobutton, Checkbutton, Label, Entry, Style # 只是為了好看
 from tkinter.ttk import Treeview # 唯一用到的課外東西, 可使用 Listbox 替代 (如果嚴格要求不能用課外的話)
+import tkinter.messagebox as messagebox
 import subprocess
 import csv
 
 # 讓程式碼好看些
 from enum import Enum
 from dataclasses import dataclass
-from typing import List
+from typing import List, Literal
 
-from numpy import tile
-    
+class MessageHandler:
+    def __init__(self):
+        self.use_messagebox = BooleanVar(value=False)
+        self.message_label = None
+        self.create_style()
+    def create_style(self):
+        self.warningStyle = Style()
+        self.warningStyle.configure(
+            "Warning.TLabel",
+            font=("Consolas", 10, BOLD),
+            foreground="#D49B54"
+        ) 
+
+        self.infoStyle = Style()
+        self.infoStyle.configure(
+            "Info.TLabel",
+            font=("Consolas", 10),
+            foreground="#1F7D53"
+        )
+
+        self.errorStyle = Style()
+        self.errorStyle.configure(
+            "Error.TLabel",
+            font=("Consolas", 10),
+            foreground="#A62C2C"
+        ) 
+    def show_message(self, title:str, message:str, message_type:Literal["error", "warning", "info"] = "info"):
+        if self.use_messagebox.get():
+            if message_type == "error":
+                messagebox.showerror(title=title, message=message)
+            elif message_type == "warning":
+                messagebox.showwarning(title=title, message=message)
+            else:
+                messagebox.showinfo(title=title, message=message)
+            self.message_label.config(text="訊息將顯示在這裡...")
+        else:
+            style_name = {
+                "error": "Error.TLabel",
+                "warning": "Warning.TLabel",
+                "info": "Info.TLabel"
+            }[message_type]
+
+            self.message_label.config(
+                text=f"[{title}] {message}",
+                style=style_name
+            )
 class SortType(Enum):
     NAME = "name"
     GRADE = "grade"
-    
 @dataclass
 class StudentInfo: 
     name: str
     grade: int
-    is_deleted : bool = False
-    
+    is_deleted : bool = False   
 class StudentData:
-    def __init__(self):
+    def __init__(self, handler : MessageHandler):
         self.students: List[StudentInfo] = []
-
+        self.message_handler = handler
+        
     def load_data(self, file_path: str) -> bool:
         try:
             with open(file_path, mode='r', newline='', encoding='utf-8') as file:
@@ -35,10 +80,13 @@ class StudentData:
                     if row:
                         name, grade = row
                         self.add_student(name, int(grade))
+            self.message_handler.show_message(title="匯入成功", message=f"檔案 {file_path} 匯入成功!", message_type="info")
             return True
         except FileNotFoundError:
-            print(f"檔案 {file_path} 不存在，無法載入資料。")
+            self.message_handler.show_message(title="錯誤訊息", message=f"檔案 {file_path} 不存在，無法載入資料。", message_type="error")
             return False
+        except ValueError: 
+            self.message_handler.show_message(title="錯誤訊息", message=f"檔案 {file_path} 資料有誤，無法載入資料。", message_type="error")
     def save_data(self, file_path : str) -> bool:
         try:
             with open(file_path, mode='w', newline='', encoding='utf-8') as file:
@@ -46,13 +94,12 @@ class StudentData:
                 for student in self.students:
                     if not student.is_deleted:
                         writer.writerow([student.name, student.grade])
-            
-            messagebox.showinfo(title="存檔成功", message=f"資料已成功儲存至 {file_path}")
+            self.message_handler.show_message(title="存檔成功", message=f"資料已成功儲存至 {file_path}", message_type="info")
             return True
         except Exception as e:
-            messagebox.showerror(title="存檔失敗", message=f"儲存資料時發生錯誤: {e}")
+            self.message_handler.show_message(title="存檔失敗", message=f"儲存資料時發生錯誤: {e}", message_type="error")
             return False
-        
+
     def add_student(self, name:str, grade:int):
         student = StudentInfo(name, grade)
         self.students.append(student)
@@ -90,35 +137,36 @@ class StudentData:
             return sorted(students, key=lambda x: x.name, reverse=descending)
         elif sort_type == SortType.GRADE.value:
             return sorted(students, key=lambda x: x.grade, reverse=descending) 
-           
+                            
 class Student():
     def __init__(self):
         self.window = Tk()
-        self.window.title("Studnet Management System")
+        self.window.title("Student Management System")
         self.window.geometry('')
         self.create_variable()
+        self.create_protocolBinding()
         self.create_widget()
         
     def start(self):
         self.window.mainloop()
         
     def create_variable(self):
-        self.student_data = StudentData()
+        self.message_handler = MessageHandler()
+        self.student_data = StudentData(self.message_handler)
         
         self.input_name_var = StringVar()
-        self.input_grade_var = StringVar()
+        self.input_grade_var = StringVar()        
         
-        self.gradeThresholdVar = IntVar()
-        self.gradeThresholdVar.set(0)
+        self.gradeThresholdVar = IntVar(value=0)
+        self.show_deleted = BooleanVar(value=False)
         
-        self.show_deleted = BooleanVar()
-        self.show_deleted.set(False)
+        self.sort_reference = StringVar(value=SortType.NAME.value)
+        self.sort_descending = BooleanVar(value=False)
         
-        self.sort_reference = StringVar()
-        self.sort_reference.set(SortType.NAME.value)
+        self.minesweeper_process = None
         
-        self.sort_descending = BooleanVar()
-        self.sort_descending.set(False)
+    def create_protocolBinding(self):
+        self.window.protocol("WM_DELETE_WINDOW", self.on_close)
         
     def create_widget(self):
         self.window.config(padx=20, pady=20)
@@ -140,8 +188,8 @@ class Student():
 
         # file layout
         file_frame = Frame(top_frame)
-        Button(file_frame, text="匯入", command=self.on_importButton_pressed).pack(fill=X, pady=(0, 5))
-        Button(file_frame, text="匯出", command=self.on_exportButton_pressed).pack(fill=X)
+        Button(file_frame, cursor="hand2", text="匯入", command=self.on_importButton_pressed).pack(fill=X, pady=(0, 5))
+        Button(file_frame, cursor="hand2", text="匯出", command=self.on_exportButton_pressed).pack(fill=X)
         file_frame.grid(row=0, column=2, sticky="ne",padx=(0, 5))
 
         top_frame.pack(fill=X)
@@ -149,19 +197,21 @@ class Student():
         
         # button layout 
         button_frame = Frame(self.window)
-        Button(button_frame, text="新增", command=self.on_addButton_pressed).grid(row = 0, column=0, padx=5)
-        Button(button_frame, text="搜尋", command=self.on_searchButton_pressed).grid(row = 0, column=1, padx=5)
-        Button(button_frame, text="刪除", command=self.on_delButton_pressed).grid(row = 0, column=2, padx=5)
-        Button(button_frame, text="更新", command=self.on_updateButton_pressed).grid(row=0, column=3, padx=5)
+        Button(button_frame, text="新增", cursor="hand2", command=self.on_addButton_pressed).grid(row = 0, column=0, padx=5)
+        Button(button_frame, text="搜尋", cursor="hand2", command=self.on_searchButton_pressed).grid(row = 0, column=1, padx=5)
+        Button(button_frame, text="刪除", cursor="hand2", command=self.on_delButton_pressed).grid(row = 0, column=2, padx=5)
+        updateButton = Button(button_frame, text="更新", cursor="hand2", command=self.on_updateButton_pressed)
+        updateButton.grid(row=0, column=3, padx=5)
+        updateButton.bind("<Double-2>", self.on_gameButton_pressed)
         button_frame.pack(pady=10)
         
         
         # option layout 
         option_frame = Frame(self.window)
-        Checkbutton(option_frame, text="降序", variable=self.sort_descending, command=self.update_treeview).grid(row = 0, column=0, padx=5) 
-        Radiobutton(option_frame, text="依姓名排列", variable=self.sort_reference, value=SortType.NAME.value, command=self.update_treeview).grid(row=0, column=1, padx=5)
-        Radiobutton(option_frame, text="依成績排列", variable=self.sort_reference, value=SortType.GRADE.value, command=self.update_treeview).grid(row=0, column=2, padx=5)
-        Checkbutton(option_frame, text="顯示刪除資訊", variable=self.show_deleted, command=self.update_treeview).grid(row=0, column=3, padx=5)
+        Checkbutton(option_frame, cursor="hand2", text="降序", variable=self.sort_descending, command=self.update_database).grid(row = 0, column=0, padx=5) 
+        Radiobutton(option_frame, cursor="hand2", text="依姓名排列", variable=self.sort_reference, value=SortType.NAME.value, command=self.update_database).grid(row=0, column=1, padx=5)
+        Radiobutton(option_frame, cursor="hand2", text="依成績排列", variable=self.sort_reference, value=SortType.GRADE.value, command=self.update_database).grid(row=0, column=2, padx=5)
+        Checkbutton(option_frame, cursor="hand2", text="顯示刪除資訊", variable=self.show_deleted, command=self.update_database).grid(row=0, column=3, padx=5)
         option_frame.pack(pady=10)
         
         # Treeview layout
@@ -176,8 +226,8 @@ class Student():
             yscrollcommand=y_scrollbar.set, 
             xscrollcommand= x_scrollbar.set
         )
-        self.treeview.heading("姓名", text="▲姓名", command=self.sort_by_name)
-        self.treeview.heading("成績", text="成績", command=self.sort_by_grade)
+        self.treeview.heading("姓名", text="▲姓名", command=self.on_sortbyName_pressed)
+        self.treeview.heading("成績", text="成績", command=self.on_sortbyGrade_pressed)
         self.treeview.column("姓名",width=160, anchor=CENTER)
         self.treeview.column("成績",width=160, anchor=CENTER)
         
@@ -193,9 +243,9 @@ class Student():
         database_frame.pack(expand=True, fill=BOTH)
         
         # 測試資料
-        for i in range(1000):
-            self.student_data.add_student(str(1000 - i), i)
-            self.treeview.insert('', END, values=(1000 - i, i))
+        for i in range(100):
+            self.student_data.add_student(str(100 - i), i)
+            self.treeview.insert('', END, values=(100 - i, i))
             
         # Scale
         label_frame = LabelFrame(self.window, text="分數拉桿")
@@ -203,7 +253,8 @@ class Student():
             label_frame, 
             from_=0, 
             to_=100,
-            troughcolor="gray", 
+            troughcolor="gray",
+            cursor="hand2", 
             tickinterval=50, 
             orient=HORIZONTAL,
             variable=self.gradeThresholdVar,
@@ -211,10 +262,44 @@ class Student():
         ).pack(fill=X)
         label_frame.pack(fill=X)
         
+        # 輸出訊息
+        message_frame = LabelFrame(self.window, text="訊息控制")
+        Checkbutton(
+            message_frame, 
+            text="使用對話框顯示訊息",
+            cursor="hand2", 
+            variable=self.message_handler.use_messagebox
+        ).pack(side=TOP, fill=X, pady=(0,5))
+        
+        canvas = Canvas(message_frame, height=50)
+        scrollbar = Scrollbar(message_frame, orient=HORIZONTAL, command=canvas.xview)
+        canvas.config(xscrollcommand=scrollbar.set)
+
+        scrollable_frame = Frame(canvas)
+
+        self.message_handler.message_label = Label(
+            scrollable_frame, 
+            text="訊息將顯示在這裡...",
+            justify=LEFT,
+        )
+        self.message_handler.message_label.pack(fill=BOTH, expand=True, pady=(0,5))
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+        scrollbar.pack(side="bottom", fill="x")
+        canvas.pack(side=LEFT, fill=X, expand=True)
+        
+        scrollable_frame.update_idletasks()
+        bbox = canvas.bbox("all")
+        if bbox:
+            canvas.config(height=bbox[3] - bbox[1])
+        canvas.config(scrollregion=bbox)        
+        scrollable_frame.bind("<Configure>", lambda event: canvas.config(scrollregion=canvas.bbox("all")))
+        message_frame.pack(fill=X, pady=10)
+        
     def on_importButton_pressed(self):
         file_path = askopenfilename(filetypes=[("CSV files", "*.csv")])
         if self.student_data.load_data(file_path): 
-            self.update_treeview()
+            self.update_database()
         
     def on_exportButton_pressed(self):
         file_path = asksaveasfilename(defaultextension=".csv", filetypes=[("CSV files", "*.csv")])
@@ -226,59 +311,58 @@ class Student():
             student_grade = int(self.input_grade_var.get())
             if self.student_data.search_student(student_name) is None: 
                 self.student_data.add_student(student_name, student_grade)
-                self.update_treeview()
+                self.update_database()
+                self.message_handler.show_message(title="更新成功", message=f"成功新增學生 {student_name}, 成績 {student_grade}", message_type="info")
             else: 
-                messagebox.showwarning(title="錯誤訊息", message=f"學生 {student_name} 已存在!")
+                self.message_handler.show_message(title="錯誤訊息", message=f"學生 {student_name} 已存在!", message_type="warning")
             
     def on_searchButton_pressed(self):
         name = self.input_name_var.get()
         if not name:
-            messagebox.showerror(title="錯誤訊息", message="請輸入學生姓名")
+            self.message_handler.show_message(title="錯誤訊息", message="請輸入學生姓名", message_type="warning")
             return
         
         student_info = self.student_data.search_student(name)
         if student_info:
-            messagebox.showinfo(title="搜尋結果", message=f"{student_info.name} 的成績為 {student_info.grade}")           
-        else: 
-            messagebox.showwarning(title="搜尋結果", message=f"找不到學生 {name}")
-        self.update_treeview()
+            self.message_handler.show_message(title="搜尋結果", message=f"{student_info.name} 的成績為 {student_info.grade}")           
+        else:             
+            self.message_handler.show_message(title="搜尋結果", message=f"找不到學生 {name}", message_type="warning")
+        self.update_database()
         
     def on_delButton_pressed(self):
         name = self.input_name_var.get()
         if not name:
-            messagebox.showerror(title="錯誤訊息", message="請輸入學生姓名")
+            self.message_handler.show_message(title="錯誤訊息", message="請輸入學生姓名", message_type="error")
             return
         
         if self.student_data.delete_student(name):
-            messagebox.showinfo(title="刪除結果", message=f"已經將學生 {name} 資料刪除")
-            self.update_treeview()          
+            self.message_handler.show_message(title="刪除結果", message=f"已經將學生 {name} 資料刪除", message_type="info")
+            self.update_database()          
         else: 
-            messagebox.showwarning(title="刪除結果", message=f"找不到學生 {name}")
+            self.message_handler.show_message(title="刪除結果", message=f"找不到學生 {name}", message_type="warning")
         
     def on_updateButton_pressed(self):
         if self.input_valid():    
             name = self.input_name_var.get()
             new_grade = int(self.input_grade_var.get())
             if self.student_data.update_student(name, new_grade):
-                messagebox.showinfo(title="更新結果", message=f"學生 {name} 的成績已更新為 {new_grade}")
-                self.update_treeview()
-                self.input_name_var.set("")
-                self.input_grade_var.set("")
+                self.message_handler.show_message(title="更新結果", message=f"學生 {name} 的成績已更新為 {new_grade}", message_type="info")
+                self.update_database()
             else:
-                messagebox.showwarning(title="更新結果", message=f"找不到學生 {name}")  
+                self.message_handler.show_message(title="更新結果", message=f"找不到學生 {name}", message_type="warning")  
     def on_scale_changed(self, event):
-        self.update_treeview()
+        self.update_database()
     
     def on_heading_right_click(self, event):
         column = self.treeview.identify_column(event.x)
         if column == "#1": 
             self.sort_reference.set(SortType.NAME.value)
             self.reverse_sort_descending()
-            self.update_treeview()
+            self.update_database()
         elif column == "#2": 
             self.sort_reference.set(SortType.GRADE.value)
             self.reverse_sort_descending()
-            self.update_treeview()
+            self.update_database()
             
     def on_heading_double_click(self, event):
         selected_student = self.treeview.identify_row(event.y)
@@ -289,14 +373,24 @@ class Student():
             self.input_name_var.set(name)
             self.input_grade_var.set(grade)
             
-    def sort_by_name(self):
+    def on_sortbyName_pressed(self):
         self.sort_reference.set(SortType.NAME.value)
-        self.update_treeview()
+        self.update_database()
         
-    def sort_by_grade(self):
+    def on_sortbyGrade_pressed(self):
         self.sort_reference.set(SortType.GRADE.value)
-        self.update_treeview()
-    def update_treeview(self):
+        self.update_database()
+
+    def on_gameButton_pressed(self, e):
+        if self.minesweeper_process is None or self.minesweeper_process.poll() is not None:
+            self.minesweeper_process = subprocess.Popen(["python", "minesweeper.py"])
+            
+    def on_close(self): 
+        if self.minesweeper_process is not None: 
+            self.minesweeper_process.terminate()
+        self.window.destroy()
+        
+    def update_database(self):
         sorted_students = self.student_data.sort_students(
             self.sort_reference.get(), 
             self.sort_descending.get(),
@@ -323,19 +417,19 @@ class Student():
         student_name = self.input_name_var.get()
         student_grade = self.input_grade_var.get()
         if not student_name and not student_grade:         
-            messagebox.showerror(title="錯誤訊息", message="請輸入學生資訊!")
+            self.message_handler.show_message(title="錯誤訊息", message="請輸入學生資訊!", message_type="error")
             return False  
         elif not student_grade: 
-            messagebox.showerror(title="錯誤訊息", message="請輸入學生成績!")    
+            self.message_handler.show_message(title="錯誤訊息", message="請輸入學生成績!", message_type="error") 
             return False
         elif not student_name: 
-            messagebox.showerror(title="錯誤訊息", message="請輸入學生姓名!")    
+            self.message_handler.show_message(title="錯誤訊息", message="請輸入學生姓名!", message_type="error") 
             return False
         elif not student_grade.isdigit():
-            messagebox.showerror(title="錯誤訊息", message="成績應為正整數!")
+            self.message_handler.show_message(title="錯誤訊息", message="成績應為正整數!", message_type="error")
             return False
         elif int(student_grade) > 100 or int(student_grade) < 0:
-            messagebox.showerror(title="錯誤訊息", message="成績應為0 ~ 100 之間的正整數!")
+            self.message_handler.show_message(title="錯誤訊息", message="成績應為0 ~ 100 之間的正整數!", message_type="error")
             return False
         return True
     
