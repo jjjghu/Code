@@ -52,7 +52,9 @@ class MultiplayerGameBoard:
             self.player_board.place_mines(first_r, first_c)
             self.player_board.calculate_numbers()
         else:
-            self.opponent_board.place_mines(first_r, first_c)
+            # Mirror the column for opponent board
+            mirrored_c = self.width - 1 - first_c
+            self.opponent_board.place_mines(first_r, mirrored_c)
             self.opponent_board.calculate_numbers()
     
     def calculate_numbers(self, is_player):
@@ -67,7 +69,10 @@ class MultiplayerGameBoard:
         if is_player:
             return self.player_board.get_cell(r, c)
         else:
-            return self.opponent_board.get_cell(r, c)
+            # For opponent board, we need to mirror the column to correctly map
+            # player A's left side to player B's right side
+            mirrored_c = self.width - 1 - c
+            return self.opponent_board.get_cell(r, mirrored_c)
     
     def is_valid_position(self, r, c):
         """Check if a position is valid on the board"""
@@ -78,7 +83,9 @@ class MultiplayerGameBoard:
         if is_player:
             return self.player_board.count_flags_around(r, c)
         else:
-            return self.opponent_board.count_flags_around(r, c)
+            # Mirror the column for opponent board
+            mirrored_c = self.width - 1 - c
+            return self.opponent_board.count_flags_around(r, mirrored_c)
     
     def add_penalty(self, is_player):
         """增加時間懲罰"""
@@ -116,12 +123,18 @@ class MultiplayerGameBoard:
     
     def flood_fill(self, is_player, r, c):
         """炫酷的塌陷"""
-        board = self.player_board if is_player else self.opponent_board
+        if is_player:
+            board = self.player_board
+            actual_c = c
+        else:
+            board = self.opponent_board
+            # Mirror the column for opponent board
+            actual_c = self.width - 1 - c
         
-        if not board.is_valid_position(r, c):
+        if not board.is_valid_position(r, actual_c):
             return
             
-        cell = board.get_cell(r, c)
+        cell = board.get_cell(r, actual_c)
         if cell.revealed or cell.flagged:
             return
             
@@ -133,10 +146,10 @@ class MultiplayerGameBoard:
                         continue
                     nr = r + dr
                     nc = c + dc
-                    if board.is_valid_position(nr, nc):
-                        neighbor = board.get_cell(nr, nc)
-                        if not neighbor.revealed and not neighbor.is_mine():
-                            self.flood_fill(is_player, nr, nc)
+                    if board.is_valid_position(nr, self.width - 1 - nc if not is_player else nc):
+                        # We need to pass the original coordinates to flood_fill
+                        # because it will handle the mirroring internally
+                        self.flood_fill(is_player, nr, nc)
     
     def get_serializable_state(self, is_player):
         """將資料轉換為序列化的數據, 用於網路通訊"""

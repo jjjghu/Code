@@ -293,6 +293,11 @@ class MineSweeperMultiplayer:
         self.join_button.config(state=NORMAL)
         self.disconnect_button.config(state=DISABLED)
         
+        # Stop the game and reset
+        self.is_game_over = True
+        self.game_status.set("連接已中斷")
+        self.game_started = False
+        
         # Reset the game
         self.new_game()
     
@@ -301,6 +306,20 @@ class MineSweeperMultiplayer:
         message_type = message["type"]
         data = message["data"]
         
+        # Handle disconnection message from NetworkManager
+        if message_type == "disconnected":
+            self.connected = False
+            self.connection_status.set("連接已中斷")
+            self.host_button.config(state=NORMAL)
+            self.join_button.config(state=NORMAL)
+            self.disconnect_button.config(state=DISABLED)
+            
+            # Stop the game
+            self.is_game_over = True
+            self.game_status.set("連接已中斷")
+            self.game_started = False
+            return
+            
         if message_type == NetworkMessage.PLAYER_READY:
             # Other player is ready, start the game
             if self.is_host:
@@ -371,10 +390,8 @@ class MineSweeperMultiplayer:
             self.update_board()
             
             # Only check win condition if the game has started
-            if self.game_started:
-                # Check if opponent won
-                if self.gameBoard.check_win_condition(False):
-                    self.game_over(False)
+            # Note: We don't check win condition here because this is the opponent's move
+            # The opponent will check their own win condition and notify us if they win
         
         elif message_type == NetworkMessage.CELL_FLAG:
             # Opponent flagged a cell

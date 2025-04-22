@@ -82,6 +82,12 @@ class NetworkManager:
                 msg_len_bytes = self.connection.recv(4)
                 if not msg_len_bytes:
                     self.connected = False
+                    # Notify the callback about disconnection
+                    if self.callback:
+                        self.callback({
+                            "type": "disconnected",
+                            "data": {"reason": "Connection closed by peer"}
+                        })
                     break
                 
                 msg_len = int.from_bytes(msg_len_bytes, byteorder='big')
@@ -93,6 +99,12 @@ class NetworkManager:
                     chunk = self.connection.recv(min(4096, msg_len - bytes_received))
                     if not chunk:
                         self.connected = False
+                        # Notify the callback about disconnection
+                        if self.callback:
+                            self.callback({
+                                "type": "disconnected",
+                                "data": {"reason": "Connection closed during data transfer"}
+                            })
                         break
                     chunks.append(chunk)
                     bytes_received += len(chunk)
@@ -109,6 +121,12 @@ class NetworkManager:
             except Exception as e:
                 print(f"接收訊息時發生錯誤: {e}")
                 self.connected = False
+                # Notify the callback about disconnection with error
+                if self.callback:
+                    self.callback({
+                        "type": "disconnected",
+                        "data": {"reason": f"Error: {str(e)}"}
+                    })
                 break
         
         print("關閉連接")
