@@ -146,10 +146,14 @@ class MultiplayerGameBoard:
                         continue
                     nr = r + dr
                     nc = c + dc
-                    if board.is_valid_position(nr, self.width - 1 - nc if not is_player else nc):
-                        # We need to pass the original coordinates to flood_fill
-                        # because it will handle the mirroring internally
-                        self.flood_fill(is_player, nr, nc)
+                    # For opponent board, we need to check if the mirrored position is valid
+                    if is_player:
+                        if board.is_valid_position(nr, nc):
+                            self.flood_fill(is_player, nr, nc)
+                    else:
+                        # For opponent board, we need to mirror the column
+                        if board.is_valid_position(nr, self.width - 1 - nc):
+                            self.flood_fill(is_player, nr, nc)
     
     def get_serializable_state(self, is_player):
         """將資料轉換為序列化的數據, 用於網路通訊"""

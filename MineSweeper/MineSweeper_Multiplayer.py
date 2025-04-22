@@ -125,8 +125,6 @@ class MineSweeperMultiplayer:
         for r in range(self.gameBoard.height):
             row_buttons = []
             for c in range(self.gameBoard.width):
-                # Mirror the column for opponent board display
-                mirrored_c = self.gameBoard.width - 1 - c
                 btn = Button(
                     self.opponent_board_frame,
                     image=self.tile_images["TileUnknown"],
@@ -135,7 +133,7 @@ class MineSweeperMultiplayer:
                     highlightthickness=0,
                     state=DISABLED  # Opponent board is view-only
                 )
-                btn.grid(row=r, column=mirrored_c, padx=0, pady=0)
+                btn.grid(row=r, column=c, padx=0, pady=0)
                 row_buttons.append(btn)
             self.opponent_buttons.append(row_buttons)
         
@@ -371,7 +369,7 @@ class MineSweeperMultiplayer:
                             "opponent_board": self.gameBoard.get_serializable_state(False)
                         })
             
-            # Process the cell reveal
+            # Process the cell reveal on the opponent's board (right side)
             cell = self.gameBoard.get_cell(False, r, c)
             
             if cell.is_mine():
@@ -398,7 +396,7 @@ class MineSweeperMultiplayer:
             # The opponent will check their own win condition and notify us if they win
         
         elif message_type == NetworkMessage.CELL_FLAG:
-            # Opponent flagged a cell
+            # Opponent flagged a cell on their board (our right side)
             r = data["row"]
             c = data["col"]
             flagged = data["flagged"]
