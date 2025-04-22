@@ -125,6 +125,8 @@ class MineSweeperMultiplayer:
         for r in range(self.gameBoard.height):
             row_buttons = []
             for c in range(self.gameBoard.width):
+                # Mirror the column for opponent board display
+                mirrored_c = self.gameBoard.width - 1 - c
                 btn = Button(
                     self.opponent_board_frame,
                     image=self.tile_images["TileUnknown"],
@@ -133,7 +135,7 @@ class MineSweeperMultiplayer:
                     highlightthickness=0,
                     state=DISABLED  # Opponent board is view-only
                 )
-                btn.grid(row=r, column=c, padx=0, pady=0)
+                btn.grid(row=r, column=mirrored_c, padx=0, pady=0)
                 row_buttons.append(btn)
             self.opponent_buttons.append(row_buttons)
         
@@ -373,15 +375,17 @@ class MineSweeperMultiplayer:
             cell = self.gameBoard.get_cell(False, r, c)
             
             if cell.is_mine():
-                cell.exploded = True
-                cell.revealed = True
-                self.gameBoard.add_penalty(False)
-                
-                # Send mine hit notification
-                if self.connected:
-                    self.network.send_message(NetworkMessage.MINE_HIT, {
-                        "is_player": False
-                    })
+                # Only add penalty if this mine wasn't already revealed
+                if not cell.revealed:
+                    cell.exploded = True
+                    cell.revealed = True
+                    self.gameBoard.add_penalty(False)
+                    
+                    # Send mine hit notification
+                    if self.connected:
+                        self.network.send_message(NetworkMessage.MINE_HIT, {
+                            "is_player": False
+                        })
             elif cell.is_number():
                 cell.revealed = True
             elif cell.is_empty():
@@ -497,17 +501,19 @@ class MineSweeperMultiplayer:
         
         # Reveal the cell
         if cell.is_mine():
-            cell.exploded = True
-            cell.revealed = True
-            self.gameBoard.add_penalty(True)
-            
-            # Notify opponent
-            if self.connected:
-                self.network.send_message(NetworkMessage.MINE_HIT, {
-                    "is_player": True
-                })
+            # Only add penalty if this mine wasn't already revealed
+            if not cell.revealed:
+                cell.exploded = True
+                cell.revealed = True
+                self.gameBoard.add_penalty(True)
                 
-            self.game_status.set("你踩到地雷！+10秒")
+                # Notify opponent
+                if self.connected:
+                    self.network.send_message(NetworkMessage.MINE_HIT, {
+                        "is_player": True
+                    })
+                    
+                self.game_status.set("你踩到地雷！+10秒")
         elif cell.is_number():
             cell.revealed = True
         elif cell.is_empty():
@@ -620,16 +626,18 @@ class MineSweeperMultiplayer:
                     neighbor = self.gameBoard.get_cell(True, nr, nc)
                     if not neighbor.flagged and not neighbor.revealed:
                         if neighbor.is_mine():
-                            neighbor.exploded = True
-                            neighbor.revealed = True
-                            exploded = True
-                            self.gameBoard.add_penalty(True)
-                            
-                            # Notify opponent
-                            if self.connected:
-                                self.network.send_message(NetworkMessage.MINE_HIT, {
-                                    "is_player": True
-                                })
+                            # Only add penalty if this mine wasn't already revealed
+                            if not neighbor.revealed:
+                                neighbor.exploded = True
+                                neighbor.revealed = True
+                                exploded = True
+                                self.gameBoard.add_penalty(True)
+                                
+                                # Notify opponent
+                                if self.connected:
+                                    self.network.send_message(NetworkMessage.MINE_HIT, {
+                                        "is_player": True
+                                    })
                         elif neighbor.is_number():
                             neighbor.revealed = True
                         else:  # empty
