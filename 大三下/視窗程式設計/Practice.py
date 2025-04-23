@@ -2,7 +2,8 @@ from tkinter import *
 from tkinter.ttk import Combobox, Notebook, Style, Progressbar, Button as ttk_Button, Treeview
 import tkinter.colorchooser as colorchooser
 import tkinter.messagebox as messagebox
-from BaseDemo import BaseDemo, DemoContainer
+from BaseDemo import BaseDemo
+from tkinter.colorchooser import askcolor
 class Calculator:
     def __init__(self):
         self.window = Tk()
@@ -964,6 +965,155 @@ class TreeViewDemo:
                 tree.insert("", "end", values=(cities[i], roads[i]), tags=("oddrow",))
             
         tree.pack(padx=20, pady=20)
+class CanvasDemo:
+    def __init__(self):
+        self.window = Tk()
+        self.window.title("Canvas Demo")
+        self.create_variable()
+        self.create_widget()
+    
+    def start(self):
+        self.window.mainloop()
+        
+    def create_variable(self):
+        self.bindVar = BooleanVar(value=False)
+        self.color_var = StringVar(value="black")
+        self.color_var_1 = StringVar(value="black")
+        self.color_var_2 = StringVar(value="blue")
+        self.color_var_3 = StringVar(value="red")
+        self.color_var_4 = StringVar(value="yellow")
+        self.color_var_5 = StringVar(value="green")
+        
+    def create_widget(self):
+        # 滑鼠位置
+        self.textLabel = Label(self.window, text="Mouse location - x:NULL, y:NULL")
+        self.textLabel.pack()
+
+        # 勾選
+        self.checkbox = Checkbutton(self.window, text="bind move", variable=self.bindVar, command=self.bind_move)
+        self.checkbox.pack()
+
+        self.canvas = Canvas(self.window, width=400, height=400, bg="#DDDDDD")
+        self.canvas.pack()
+
+        self.canvas.bind("<Button-1>", self.on_press)
+        self.canvas.bind("<B1-Motion>", self.on_drag)
+        
+        # 顏色選擇器
+        colorchooser_frame = Frame(self.window)
+        colorchooser_frame.pack(pady=5)
+        for i in range(1, 6):
+            color_var = getattr(self, f'color_var_{i}')
+            btn = Button(colorchooser_frame, 
+                        width=2,
+                        bg=color_var.get(),
+                        activebackground=color_var.get(),
+                        relief=RAISED,
+                        command=lambda cv=color_var: self.change_color(cv.get()))
+            
+            # 使用 lambda 來保存當前迴圈的 color_var
+            btn.bind("<Double-Button-1>", lambda event, cv=color_var: (
+                cv.set(colorchooser.askcolor()[1] or cv.get()),
+                self.color_var.set(cv.get()),
+                event.widget.configure(bg=cv.get(), activebackground=cv.get(), relief=RAISED),
+            ))
+            
+            btn.pack(side=LEFT, padx=5)
+        
+        # btn = Button(colorchooser_frame, width=2, 
+        #              bg=self.color_var_5.get(), 
+        #              activebackground=self.color_var_5.get(),
+        #              relief=RAISED,
+        #              command=lambda: self.change_color(self.color_var_5.get()))
+        # btn.bind("<Double-Button-1>", lambda event: (
+        #     self.color_var_5.set(colorchooser.askcolor()[1]),
+        #     self.color_var.set(self.color_var_5.get()), 
+        #     event.widget.configure(bg=self.color_var_5.get(), activebackground=self.color_var_5.get())
+        # ))
+        # btn.pack(side=LEFT,padx=5)
+        
+
+    def move(self, event):
+        self.textLabel.config(text="Move - x:{}, y:{}".format(event.x, event.y))
+        
+    def bind_move(self):
+        if self.bindVar.get() == True:
+            print("bind move")
+            self.window.bind("<Motion>", self.move)
+            
+        else:
+            print("unbind move")
+            self.window.unbind("<Motion>")
+            
+    def change_color(self, color):
+        self.color_var.set(color)
+            
+    def on_press(self, event):
+        # 開始畫線
+        self.start_x = event.x
+        self.start_y = event.y
+    
+    def on_drag(self, event):
+        # 畫線
+        self.canvas.create_line(self.start_x, self.start_y, event.x, event.y, fill=self.color_var.get(), width=2)
+        self.start_x = event.x
+        self.start_y = event.y
+    
+    def on_release(self, event):
+        # 結束畫線
+        self.canvas.create_line(self.start_x, self.start_y, event.x, event.y, fill=self.color_var.get(), width=2)
+        self.start_x = None
+        self.start_y = None
+class SpinningCircleDemo:
+    def __init__(self):
+        self.window = Tk()
+        self.window.title("Spinning Circle Demo")
+        self.create_variable()
+        self.create_widget()
+        
+    def start(self):
+        self.window.mainloop()
+        
+    def create_variable(self):
+        self.step_var = IntVar(value=5)
+        self.dir_var = IntVar(value=1)
+        self.freq_var = IntVar(value=50)
+        
+    def create_widget(self):
+        self.canvas = Canvas(self.window, width=400, height=400)
+        self.canvas.pack()
+
+        self.arcs = []
+        self.current_angle = 0
+        for i in range(3):
+            arc = self.canvas.create_arc(
+                100, 100, 300, 300, 
+                start=i*120, 
+                extent=60,
+                fill="green", 
+                outline="black"
+            )
+            self.arcs.append(arc)
+        self.rotate_circle()
+        Button(self.window, text="逆行!", command=lambda: self.dir_var.set(-1 * self.dir_var.get())).pack(pady=5)
+        self.step_scale = Scale(self.window, from_=1, to=20, orient=HORIZONTAL, variable=self.step_var)
+        self.step_scale.pack(pady=5)
+        
+        self.frq_scale = Scale(self.window, from_=1, to=20, orient=HORIZONTAL, variable=self.freq_var)
+        self.frq_scale.pack(pady=5)
+        
+    def rotate_circle(self):
+        self.current_angle += self.step_var.get() * self.dir_var.get()  # 每次增加 5 度
+        if self.current_angle >= 360:
+            self.current_angle = 0
+            
+        # 更新每個扇形的起始角度
+        for i, arc in enumerate(self.arcs):
+            start_angle = (i * 120 + self.current_angle) % 360
+            self.canvas.itemconfig(arc, start=start_angle)
+        
+        self.window.after(self.freq_var.get(), self.rotate_circle)  # 每 50 毫秒更新一次   
+        
 
 if __name__ == "__main__":
     # demo_container = DemoContainer()
@@ -979,5 +1129,5 @@ if __name__ == "__main__":
     # LabelFrameDemo ShowInformation, ScaleDemo, SpinBoxDemo,
     # MessageBoxDemo, EventAndBindDemo, CloseWindowDemo, ListboxDemo
     # WidgetPractice, PanedWindowDemo, NoteBookDemo, ProgressBarDemo, MenuDemo
-    demo = TreeViewDemo()
+    demo = SpinningCircleDemo()
     demo.start()
