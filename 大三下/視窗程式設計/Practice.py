@@ -1,8 +1,7 @@
 from tkinter import *
-from tkinter.ttk import Combobox, Notebook, Style, Progressbar, Button as ttk_Button
+from tkinter.ttk import Combobox, Notebook, Style, Progressbar, Button as ttk_Button, Treeview
 import tkinter.colorchooser as colorchooser
 import tkinter.messagebox as messagebox
-
 from BaseDemo import BaseDemo, DemoContainer
 class Calculator:
     def __init__(self):
@@ -933,6 +932,39 @@ class ProgressBarPart(BaseDemo):
 
     def change_mode(self, mode):
         self.progressbar.configure(mode=mode)
+class TreeViewDemo:
+    def __init__(self):
+        self.window:Tk = Tk()
+        self.window.title("TreeView")
+        self.window.geometry("")
+        self.create_widget()
+    
+    def start(self):
+        self.window.mainloop()
+        
+    def create_widget(self):
+        cities = ["台北", "台中", "台南"]
+        roads = ["中正街", "中華路", "中山路"]
+        tree = Treeview(self.window, columns=("cities", "roads"), show="headings")
+        
+        tree.heading("cities", text="城市")
+        tree.heading("roads", text="道路")
+        
+        tree.column("cities", width=150, anchor="center")
+        tree.column("roads", width=150, anchor="center")
+                
+        
+        tree.tag_configure("evenrow", background="lightgrey")
+        tree.tag_configure("oddrow", background="white")
+        
+        for i in range(len(cities)):
+            if i % 2 == 0:
+                tree.insert("", "end", values=(cities[i], roads[i]), tags=("evenrow",))
+            else:
+                tree.insert("", "end", values=(cities[i], roads[i]), tags=("oddrow",))
+            
+        tree.pack(padx=20, pady=20)
+
 if __name__ == "__main__":
     # demo_container = DemoContainer()
     
@@ -947,5 +979,5 @@ if __name__ == "__main__":
     # LabelFrameDemo ShowInformation, ScaleDemo, SpinBoxDemo,
     # MessageBoxDemo, EventAndBindDemo, CloseWindowDemo, ListboxDemo
     # WidgetPractice, PanedWindowDemo, NoteBookDemo, ProgressBarDemo, MenuDemo
-    demo = ListboxDemo()
+    demo = TreeViewDemo()
     demo.start()
