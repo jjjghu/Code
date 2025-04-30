@@ -38,3 +38,6 @@ C# 筆記可以用來看語法, 跟 MessageBox 裡面的一些參數
 - [人工智慧](https://gjplieqszy7.sg.larksuite.com/docx/P0zddetjsoit5Txhy7TlPVRcgtd)
 - [演算法](https://gjplieqszy7.sg.larksuite.com/docx/F5oldIQsxoUehsxP6KylqghIgIe)
 - [作業系統](https://gjplieqszy7.sg.larksuite.com/docx/RUued571IoAU0oxpqnJlR6g4g8c)
+
+#### 大三下
+- [機率論](https://gjplieqszy7.sg.larksuite.com/wiki/ZjxjwZgwbiNH99k5ktllHDhtgjY?from=from_copylink)
