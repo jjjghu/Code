@@ -11,6 +11,7 @@ void solve(vector<int>& nums, int x)
     {
         // 係數 * 冪次
         res += nums[i] * (n - i);
+        // 最後一項以外，都 * x
         if(i < n - 1){
             res *= x;
         }
