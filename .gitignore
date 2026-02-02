@@ -1,4 +1,4 @@
 .vscode/
 .cph/
-*.bin
+*.binz
 __pycache__/
