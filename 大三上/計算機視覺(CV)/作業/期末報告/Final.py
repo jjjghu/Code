@@ -271,9 +271,11 @@ def main():
     # 重設眼睛大小比例
     def reset_eye():
         ret, frame = cap.read()
-        frame = cv2.flip(frame, 1)
-        blink_detector.reset_eye(frame)
+        if ret: 
+            frame = cv2.flip(frame, 1)
+            blink_detector.reset_eye(frame)
     reset_eye()
+
     # 啟動偵測邊緣的線程 daemon代表當主程式強制結束時，此線程也會一併被強制結束
     edge_thread = threading.Thread(target=blink_detector.detect_edge, daemon=True)
     edge_thread.start()
@@ -285,6 +287,9 @@ def main():
 
     cv2.createTrackbar("Threshold", "Settings", int(blink_detector.rate * 100), 100, 
                        lambda val: blink_detector.update_rate(val))
+
+    cv2.namedWindow('Eye Blink Detection', cv2.WND_PROP_TOPMOST | cv2.WINDOW_NORMAL | cv2.WND_PROP_ASPECT_RATIO)  
+    cv2.setWindowProperty('Eye Blink Detection', cv2.WND_PROP_TOPMOST, 1)
     # cv2.createButton("Reset Eye", reset_eye, None, cv2.QT_PUSH_BUTTON, 0)
     # 指令順序和編碼
     order = []
@@ -343,8 +348,6 @@ def main():
             order_string = order_string + order_mapping[s] + ","
         cv2.putText(frame, order_string, (10, 110), 
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)  
-        cv2.namedWindow('Eye Blink Detection', cv2.WND_PROP_TOPMOST | cv2.WINDOW_NORMAL | cv2.WND_PROP_ASPECT_RATIO)  
-        cv2.setWindowProperty('Eye Blink Detection', cv2.WND_PROP_TOPMOST, 1)
         cv2.imshow('Eye Blink Detection', frame)
         
         # 按 'q' 結束
