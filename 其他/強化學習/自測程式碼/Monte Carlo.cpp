@@ -17,46 +17,56 @@ private:
 
     vector<vector<double>> grid;
     
-    int MX = 2e6; // 大數
+    int MX = 1e6; // 大數
     static const int MXStep = 100; // 每次亂走最多 100 步
+    int path[MXStep][2]; // 紀錄每次經過的步數
+    int rewards[MXStep]; // 紀錄每步獲得的獎勵
 
-    void wondering(int x, int y) {        
-        for(int step = 0; step < MXStep; step++) {
+    int wondering(int x, int y) {
+        // 亂走階段
+        int step; 
+        for(step = 0; step < MXStep; step++) {
             int action = rand() % 4;
             int nx = x + dx[action];
             int ny = y + dy[action];
-            
-            double reward;
-            double nextValue; 
+            path[step][0] = nx;
+            path[step][1] = ny;
             if(nx < 0 || nx >= n || ny < 0 || ny >= n) {
                 // 撞到牆壁，越界扣十分，結束。
-                reward = -10;
-                grid[x][y] += learningRate * (reward - grid[x][y]);
+                rewards[step] -= 10; 
                 break;
             }
             if(nx == targetX && ny == targetY) {
-                grid[x][y] = 100; // 抵達終點，獲得大獎
+                rewards[step] = 100; break; // 抵達終點，獲得大獎
             }
             else {
-                reward = -1;
-                nextValue = grid[nx][ny];
-                grid[x][y] += learningRate * (reward + gamma * nextValue - grid[x][y]); // 正常走路，消耗步數。
+                rewards[step] = -1; // 正常走路，消耗步數。
             }
             x = nx; 
             y = ny;
+        }
+        return step;
+    }
+    void updateValue(int step) {
+        // 更新階段，將行經的狀態的價值更新。
+        double G = 0;
+        for(int s = step - 1; s >= 0; s--) {
+            G = rewards[s] + G * gamma;
+            int px = path[s][0]; // path 不會越界
+            int py = path[s][1];
+            if(px < 0 || px >= n || py < 0 || py >= n) continue;
+            grid[px][py] += learningRate *(G - grid[px][py]);
         }
     }
 public:
     Solution() : grid(n, vector<double>(n, 0.0)) {
         srand(time(NULL));
     }
-    void TDL() {
+    void QLearning() {
         // 總共採樣 MX 次
         for(int i = 0; i < MX; i++) {
-            wondering(startX, startY);
-            // if(i % (MX / 10) == 0) {
-            //     cout << i << endl; 
-            // }
+            int step = wondering(startX, startY);
+            updateValue(step);
         }
     }
     void printResult() {
@@ -86,6 +96,6 @@ public:
 };
 int main(void) {
     Solution sol;
-    sol.TDL();
+    sol.QLearning();
     sol.printResult();
 }

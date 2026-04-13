@@ -1,0 +1,12 @@
+[project]
+name = "cartpole"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gymnasium[classic-control]>=1.2.3",
+    "numpy>=2.4.3",
+    "pygame>=2.6.1",
+    "torch>=2.11.0",
+]

@@ -14,59 +14,66 @@ private:
     
     double learningRate = 0.1; // 學習率
     double gamma = 0.9; // 折扣因子
+    double epsilon = 0.1; // 10% 的時間亂走
 
     vector<vector<double>> grid;
     
     int MX = 1e6; // 大數
-    static const int MXStep = 100; // 每次亂走最多 100 步
-    int path[MXStep][2]; // 紀錄每次經過的步數
-    int rewards[MXStep]; // 紀錄每步獲得的獎勵
+    static const int MXStep = 10; // 每次亂走最多 10 步，驗證收斂速度的快慢
 
-    int wondering(int x, int y) {
-        // 亂走階段
-        int step; 
-        for(step = 0; step < MXStep; step++) {
-            int action = rand() % 4;
+    bool isOutOfBound(int x, int y) { 
+        return x < 0 || x >= n || y < 0 || y >= n;
+    }
+    int epsilonGreedy(int x, int y) {
+        if((rand() % 100) < (epsilon * 100)) {
+            return rand() % 4;
+        }
+        int bestAction = rand() % 4; // 隨機一個，避免四個方向都無法選擇
+        double mxVal = -1e18;
+        for(int i = 0; i < 4; i++) { // 嘗試四個方向，找出最佳的行動
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(isOutOfBound(nx, ny)) continue; // 出界，不該選
+            if(grid[nx][ny] > mxVal) {
+                mxVal = grid[nx][ny];
+                bestAction = i;
+            }
+        }
+        return bestAction;
+    }
+    void wondering(int x, int y) {        
+        for(int step = 0; step < MXStep; step++) {
+            int action = epsilonGreedy(x, y);
             int nx = x + dx[action];
             int ny = y + dy[action];
-            path[step][0] = nx;
-            path[step][1] = ny;
-            if(nx < 0 || nx >= n || ny < 0 || ny >= n) {
+            double reward;
+            double nextValue; 
+            if(isOutOfBound(nx, ny)) {
                 // 撞到牆壁，越界扣十分，結束。
-                rewards[step] -= 10; 
+                reward = -10;
+                grid[x][y] += learningRate * (reward - grid[x][y]);
                 break;
             }
             if(nx == targetX && ny == targetY) {
-                rewards[step] = 100; break; // 抵達終點，獲得大獎
+                grid[x][y] = 100; // 抵達終點，獲得大獎
             }
             else {
-                rewards[step] = -1; // 正常走路，消耗步數。
+                reward = -1;
+                nextValue = grid[nx][ny];
+                grid[x][y] += learningRate * (reward + gamma * nextValue - grid[x][y]); // 正常走路，消耗步數。
             }
             x = nx; 
             y = ny;
-        }
-        return step;
-    }
-    void updateValue(int step) {
-        // 更新階段，將行經的狀態的價值更新。
-        double G = 0;
-        for(int s = step - 1; s >= 0; s--) {
-            G = rewards[s] + G * gamma;
-            int px = path[s][0]; // path 不會越界
-            int py = path[s][1];
-            if(px < 0 || px >= n || py < 0 || py >= n) continue;
-            grid[px][py] += learningRate *(G - grid[px][py]);
         }
     }
 public:
     Solution() : grid(n, vector<double>(n, 0.0)) {
         srand(time(NULL));
     }
-    void TDL() {
+    void QLearning() {
         // 總共採樣 MX 次
         for(int i = 0; i < MX; i++) {
-            int step = wondering(startX, startY);
-            updateValue(step);
+            wondering(startX, startY);
         }
     }
     void printResult() {
@@ -96,6 +103,6 @@ public:
 };
 int main(void) {
     Solution sol;
-    sol.TDL();
+    sol.QLearning();
     sol.printResult();
 }
