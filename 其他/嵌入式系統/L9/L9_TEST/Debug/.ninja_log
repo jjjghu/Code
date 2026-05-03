@@ -1,0 +1,26 @@
+# ninja log v5
+0	252	7983937541065374	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+18	83	7983937989722940	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+85	162	7983937990542682	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.d90	888c0e6475c3a776
+2	78	7983938127364449	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+79	165	7983938128263347	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.d90	888c0e6475c3a776
+2	78	7983938279123697	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+87	167	7983938280035840	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.d90	888c0e6475c3a776
+2	70	7983938986400725	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+71	149	7983938987220172	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.d90	888c0e6475c3a776
+0	188	7983940623730772	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+189	294	7983940624833621	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.hex	dda73c7fc1264a63
+2	169	7983949248609641	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+171	266	7983949249692552	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.hex	dda73c7fc1264a63
+2	89	7983950163484536	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+90	175	7983950164392585	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/TEST_LED.hex	dda73c7fc1264a63
+1	177	7983950573545535	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+178	281	7983950574614586	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/main.hex	4fdcc42fe47663d5
+3	81	7983951923976105	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+82	192	7983951925113525	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/main.hex	91aaee271c9b3609
+2	84	7983952399277725	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+86	176	7983952400235354	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/main.hex	91aaee271c9b3609
+2	177	7983953692774836	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+180	260	7983953693641304	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/main.hex	91aaee271c9b3609
+1	77	7983955561119852	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Obj/main.r90	66cddd278748c8e2
+78	159	7983955561971371	D:/Desktop/GitHub/Code/其他/嵌入式系統/作業三/TEST/Debug/Exe/main.hex	91aaee271c9b3609

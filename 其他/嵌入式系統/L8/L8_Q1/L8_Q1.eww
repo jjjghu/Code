@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspace>
+    <project>
+        <path>$WS_DIR$\..\..\hw5\hw5_TEST.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\..\..\作業四\Q1\Q1.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\..\..\作業四\Q2\Q2.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\W3_Q1.ewp</path>
+    </project>
+    <batchBuild />
+</workspace>
