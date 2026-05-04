@@ -10,61 +10,62 @@
 #define DIN_PORT PORTB
 #define Set_DIN_High() DIN_PORT |= (1 << DIN)
 #define Set_DIN_Low() DIN_PORT &= ~(1 << DIN)
-#define wrZeroToDin()                    \
-    Set_DIN_High();                      \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    Set_DIN_Low();                       \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               
-#define wrOneToDIN() Set_DIN_High(); \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    Set_DIN_Low();                       \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
-    NOP();                               \
+#define wrZeroToDin() \
+    Set_DIN_High();   \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    Set_DIN_Low();    \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
+    NOP();            \
     NOP();
-    
+#define wrOneToDIN() \
+    Set_DIN_High();  \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    Set_DIN_Low();   \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();           \
+    NOP();
+
 #define updateRGBLED() \
     Set_DIN_Low();     \
     Delay_100us()
-      
+
 #define Init_RGBLED()        \
     DIN_PORT &= ~(1 << DIN); \
     DIN_DIR |= (1 << DIN)
 
-#define setRed() setPixelColor(20, 0, 0)
-#define setGreen() setPixelColor(0, 20, 0)
+#define setRed() setPixelColor(20, 0, 0);
+#define setGreen() setPixelColor(0, 20, 0);
 #define setDarkGreen() setPixelColor(1, 20, 1);
 #define setOrange() setPixelColor(20, 5, 0);
 #define setPurple() setPixelColor(20, 0, 20);
 #define setCyan() setPixelColor(0, 20, 20);
 #define clearPixelColor() setPixelColor(0, 0, 0);
-      
+
 void setPixelColor(uint8_t r, uint8_t g, uint8_t b)
 {
     uint32_t val = ((uint32_t)g << 24) + ((uint32_t)r << 16) + ((uint32_t)b << 8);
