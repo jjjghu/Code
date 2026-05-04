@@ -1,15 +1,15 @@
-"D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\main.c"
+"D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\main.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\Debug\BrowseInfo\main.pbi.dep
+D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\Debug\BrowseInfo\main.pbi.dep
 -o
-D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\Debug\BrowseInfo\main.pbi
+D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\Debug\BrowseInfo\main.pbi
 -I
-D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1
+D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\avr\inc
 -I

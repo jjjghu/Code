@@ -4472,6 +4472,20 @@
     "scope": null
   },
   {
+    "ID": "c:@F@display7SEG",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void display7SEG(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "17",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "display7SEG",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:main.c@459@macro@S1_PRESSED",
     "What": "MacroDef",
     "defdec": "Def",
@@ -4599,6 +4613,34 @@
   },
   {
     "ID": "c:main.c@333@F@display7SEG@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "16",
+      "line": "19",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@337@F@display7SEG@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "16",
+      "line": "19",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@337@F@display7SEG@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
@@ -5332,6 +5374,146 @@
     "display": "int main(void)",
     "location": {
       "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
       "line": "45",
       "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
     },
@@ -5536,6 +5718,48 @@
     "scope": null
   },
   {
+    "ID": "c:main.c@739@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "46",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@743@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "46",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@739@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "46",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@main",
     "What": "Function",
     "defdec": "Def",
@@ -5630,6 +5854,48 @@
       "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
     },
     "name": "counter",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@763@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@759@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@763@F@main@delayCounter",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "delayCounter",
+    "location": {
+      "column": "7",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "delayCounter",
     "origin": "project_file",
     "scope": null
   },
@@ -5742,6 +6008,48 @@
       "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
     },
     "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@760@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@763@F@main@delayCounter",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "delayCounter",
+    "location": {
+      "column": "12",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "delayCounter",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "main",
     "origin": "project_file",
     "scope": null
   },
@@ -6012,6 +6320,20 @@
     "scope": null
   },
   {
+    "ID": "c:main.c@780@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:main.c@812@F@main@mode",
     "What": "Variable",
     "defdec": "Def",
@@ -6064,6 +6386,34 @@
       "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
     },
     "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@793@F@main@rgbLedCounter",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "rgbLedCounter",
+    "location": {
+      "column": "11",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "rgbLedCounter",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@788@F@main@rgbLedCounter",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "rgbLedCounter",
+    "location": {
+      "column": "11",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "rgbLedCounter",
     "origin": "project_file",
     "scope": null
   },
@@ -6153,6 +6503,34 @@
   },
   {
     "ID": "c:main.c@837@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "49",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@823@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "49",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@818@F@main@mode",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode",
@@ -6264,6 +6642,20 @@
     "scope": null
   },
   {
+    "ID": "c:main.c@915@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "7",
+      "line": "52",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@Init_Routine",
     "What": "Function",
     "defdec": "Def",
@@ -6348,6 +6740,20 @@
     "scope": null
   },
   {
+    "ID": "c:main.c@934@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "53",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:main.c@966@F@main@mode",
     "What": "Variable",
     "defdec": "Def",
@@ -6377,6 +6783,20 @@
   },
   {
     "ID": "c:main.c@938@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "54",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@957@F@main@mode",
     "What": "Variable",
     "defdec": "Def",
     "display": "mode",
@@ -37057,6 +37477,2036 @@
     },
     "name": "INIT_ALL_BTN",
     "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:delay.h@26@macro@_DELAY_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_DELAY_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\delay.h"
+    },
+    "name": "_DELAY_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:delay.h@69@macro@F_CPU",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "F_CPU",
+    "location": {
+      "column": "9",
+      "line": "4",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\delay.h"
+    },
+    "name": "F_CPU",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:delay.h@89@macro@Delay_1us",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Delay_1us",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\delay.h"
+    },
+    "name": "Delay_1us",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:delay.h@149@macro@Delay_1ms",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Delay_1ms",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\delay.h"
+    },
+    "name": "Delay_1ms",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:delay.h@209@macro@Delay_10ms",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Delay_10ms",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\delay.h"
+    },
+    "name": "Delay_10ms",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "7",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@displayDigit",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void displayDigit(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "9",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "displayDigit",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@147@F@main@state",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "state",
+    "location": {
+      "column": "8",
+      "line": "9",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "state",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@displayDigit",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void displayDigit(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "10",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "displayDigit",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@204@F@displayDigit@temp",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "temp",
+    "location": {
+      "column": "11",
+      "line": "11",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "temp",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@226@F@displayDigit@temp",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "temp",
+    "location": {
+      "column": "11",
+      "line": "12",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "temp",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@display7SEG",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void display7SEG(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "17",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "display7SEG",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@display7SEG",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void display7SEG(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "18",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "display7SEG",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@337@F@display7SEG@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "16",
+      "line": "19",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@337@F@display7SEG@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "16",
+      "line": "19",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@359@F@display7SEG@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "16",
+      "line": "20",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Init_Routine",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Init_Routine(void)",
+    "location": {
+      "column": "6",
+      "line": "36",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "Init_Routine",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Init_Routine",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Init_Routine(void)",
+    "location": {
+      "column": "6",
+      "line": "37",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "Init_Routine",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "43",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "44",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@739@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "46",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@743@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "46",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@765@F@main@mode",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "mode",
+    "location": {
+      "column": "11",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "mode",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@760@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@764@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "47",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@780@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@784@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@786@F@main@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "11",
+      "line": "48",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "val",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@806@F@main@totalDelay",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "totalDelay",
+    "location": {
+      "column": "7",
+      "line": "49",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "totalDelay",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@main",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "int main(void)",
+    "location": {
+      "column": "5",
+      "line": "128",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "main",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:main.c@2613@F@main@state",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "state",
+    "location": {
+      "column": "8",
+      "line": "130",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\main.c"
+    },
+    "name": "state",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@27@macro@_BUTTON_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_BUTTON_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "_BUTTON_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@46@macro@BTN_PIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "BTN_PIN",
+    "location": {
+      "column": "9",
+      "line": "3",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "BTN_PIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@68@macro@S1_PIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S1_PIN",
+    "location": {
+      "column": "9",
+      "line": "4",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S1_PIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@86@macro@S2_PIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S2_PIN",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S2_PIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@104@macro@S3_PIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S3_PIN",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S3_PIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@122@macro@S1_Pressed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S1_Pressed",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S1_Pressed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@171@macro@S2_Pressed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S2_Pressed",
+    "location": {
+      "column": "9",
+      "line": "8",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S2_Pressed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@220@macro@S3_Pressed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "S3_Pressed",
+    "location": {
+      "column": "9",
+      "line": "9",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "S3_Pressed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:button.h@269@macro@INIT_ALL_BTN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "INIT_ALL_BTN",
+    "location": {
+      "column": "9",
+      "line": "10",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\button.h"
+    },
+    "name": "INIT_ALL_BTN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@33@macro@_7SEG_DISPLAY_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_7SEG_DISPLAY_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "_7SEG_DISPLAY_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@99@macro@DIG1",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG1",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG1",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@115@macro@DIG2",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG2",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG2",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@131@macro@DIG3",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG3",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG3",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@147@macro@DIG4",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG4",
+    "location": {
+      "column": "9",
+      "line": "8",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG4",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@163@macro@DIG_DIR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG_DIR",
+    "location": {
+      "column": "9",
+      "line": "9",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG_DIR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@185@macro@DIG_PORT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIG_PORT",
+    "location": {
+      "column": "9",
+      "line": "10",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DIG_PORT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@209@macro@DECODER_A",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_A",
+    "location": {
+      "column": "9",
+      "line": "11",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_A",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@230@macro@DECODER_B",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_B",
+    "location": {
+      "column": "9",
+      "line": "12",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_B",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@251@macro@DECODER_C",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_C",
+    "location": {
+      "column": "9",
+      "line": "13",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_C",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@272@macro@DECODER_D",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_D",
+    "location": {
+      "column": "9",
+      "line": "14",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_D",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@293@macro@DECODER_DIR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_DIR",
+    "location": {
+      "column": "9",
+      "line": "15",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_DIR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@319@macro@DECODER_PORT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DECODER_PORT",
+    "location": {
+      "column": "9",
+      "line": "16",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DECODER_PORT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@347@macro@DP",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DP",
+    "location": {
+      "column": "9",
+      "line": "17",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DP",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@361@macro@DP_DIR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DP_DIR",
+    "location": {
+      "column": "9",
+      "line": "18",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DP_DIR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@382@macro@DP_PORT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DP_PORT",
+    "location": {
+      "column": "9",
+      "line": "19",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "DP_PORT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@405@macro@Init_7SEG",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Init_7SEG",
+    "location": {
+      "column": "9",
+      "line": "20",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Init_7SEG",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1066@macro@Set_DIG4_High",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG4_High",
+    "location": {
+      "column": "9",
+      "line": "27",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG4_High",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1113@macro@Set_DIG4_Low",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG4_Low",
+    "location": {
+      "column": "9",
+      "line": "28",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG4_Low",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1161@macro@Set_DIG3_High",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG3_High",
+    "location": {
+      "column": "9",
+      "line": "29",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG3_High",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1208@macro@Set_DIG3_Low",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG3_Low",
+    "location": {
+      "column": "9",
+      "line": "30",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG3_Low",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1256@macro@Set_DIG2_High",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG2_High",
+    "location": {
+      "column": "9",
+      "line": "31",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG2_High",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1303@macro@Set_DIG2_Low",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG2_Low",
+    "location": {
+      "column": "9",
+      "line": "32",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG2_Low",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1351@macro@Set_DIG1_High",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG1_High",
+    "location": {
+      "column": "9",
+      "line": "33",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG1_High",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:seven_segment_display.h@1398@macro@Set_DIG1_Low",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIG1_Low",
+    "location": {
+      "column": "9",
+      "line": "34",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "Set_DIG1_Low",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@displayDigit",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void displayDigit(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "35",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "displayDigit",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@displayDigit",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void displayDigit(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "35",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\seven_segment_display.h"
+    },
+    "name": "displayDigit",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@28@macro@_WS2812B_H",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_WS2812B_H",
+    "location": {
+      "column": "9",
+      "line": "2",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "_WS2812B_H",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@114@macro@NOP",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "NOP",
+    "location": {
+      "column": "9",
+      "line": "6",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "NOP",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@146@macro@Delay_100us",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Delay_100us",
+    "location": {
+      "column": "9",
+      "line": "7",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "Delay_100us",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@218@macro@DIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIN",
+    "location": {
+      "column": "9",
+      "line": "8",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "DIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@233@macro@DIN_DIR",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIN_DIR",
+    "location": {
+      "column": "9",
+      "line": "9",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "DIN_DIR",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@255@macro@DIN_PORT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "DIN_PORT",
+    "location": {
+      "column": "9",
+      "line": "10",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "DIN_PORT",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@279@macro@Set_DIN_High",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIN_High",
+    "location": {
+      "column": "9",
+      "line": "11",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "Set_DIN_High",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@326@macro@Set_DIN_Low",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Set_DIN_Low",
+    "location": {
+      "column": "9",
+      "line": "12",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "Set_DIN_Low",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@373@macro@wrZeroToDin",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "wrZeroToDin",
+    "location": {
+      "column": "9",
+      "line": "13",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "wrZeroToDin",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@835@macro@wrOneToDIN",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "wrOneToDIN",
+    "location": {
+      "column": "9",
+      "line": "32",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "wrOneToDIN",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1305@macro@updateRGBLED",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "updateRGBLED",
+    "location": {
+      "column": "9",
+      "line": "53",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "updateRGBLED",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1378@macro@Init_RGBLED",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "Init_RGBLED",
+    "location": {
+      "column": "9",
+      "line": "57",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "Init_RGBLED",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1471@macro@setRed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setRed",
+    "location": {
+      "column": "9",
+      "line": "61",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setRed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1471@macro@setRed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setRed",
+    "location": {
+      "column": "9",
+      "line": "61",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setRed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1471@macro@setRed",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setRed",
+    "location": {
+      "column": "9",
+      "line": "61",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setRed",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1513@macro@setGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setGreen",
+    "location": {
+      "column": "9",
+      "line": "62",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1514@macro@setGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setGreen",
+    "location": {
+      "column": "9",
+      "line": "62",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1557@macro@setDarkGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setDarkGreen",
+    "location": {
+      "column": "9",
+      "line": "63",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setDarkGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1559@macro@setDarkGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setDarkGreen",
+    "location": {
+      "column": "9",
+      "line": "63",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setDarkGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1606@macro@setOrange",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setOrange",
+    "location": {
+      "column": "9",
+      "line": "64",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setOrange",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1608@macro@setOrange",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setOrange",
+    "location": {
+      "column": "9",
+      "line": "64",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setOrange",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1652@macro@setPurple",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setPurple",
+    "location": {
+      "column": "9",
+      "line": "65",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPurple",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1654@macro@setPurple",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setPurple",
+    "location": {
+      "column": "9",
+      "line": "65",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPurple",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1588@macro@setGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setGreen",
+    "location": {
+      "column": "9",
+      "line": "65",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1699@macro@setCyan",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setCyan",
+    "location": {
+      "column": "9",
+      "line": "66",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setCyan",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1701@macro@setCyan",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setCyan",
+    "location": {
+      "column": "9",
+      "line": "66",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setCyan",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1632@macro@setDarkGreen",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setDarkGreen",
+    "location": {
+      "column": "9",
+      "line": "66",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setDarkGreen",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1744@macro@clearPixelColor",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "clearPixelColor",
+    "location": {
+      "column": "9",
+      "line": "67",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "clearPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1746@macro@clearPixelColor",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "clearPixelColor",
+    "location": {
+      "column": "9",
+      "line": "67",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "clearPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1681@macro@setOrange",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setOrange",
+    "location": {
+      "column": "9",
+      "line": "67",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setOrange",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1727@macro@setPurple",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setPurple",
+    "location": {
+      "column": "9",
+      "line": "68",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPurple",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@setPixelColor",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void setPixelColor(uint8_t, uint8_t, uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "69",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@setPixelColor",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void setPixelColor(uint8_t, uint8_t, uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "69",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1774@macro@setCyan",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "setCyan",
+    "location": {
+      "column": "9",
+      "line": "69",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setCyan",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1819@macro@clearPixelColor",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "clearPixelColor",
+    "location": {
+      "column": "9",
+      "line": "70",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "clearPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1849@F@setPixelColor@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "14",
+      "line": "71",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "val",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1851@F@setPixelColor@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "14",
+      "line": "71",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "val",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@setPixelColor",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void setPixelColor(uint8_t, uint8_t, uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "72",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "setPixelColor",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1938@F@setPixelColor@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "18",
+      "line": "72",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "i",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1940@F@setPixelColor@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "18",
+      "line": "72",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "i",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@1924@F@setPixelColor@val",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "val",
+    "location": {
+      "column": "14",
+      "line": "74",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "val",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:ws8212b.h@2013@F@setPixelColor@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "18",
+      "line": "75",
+      "path": "D:\\Desktop\\GitHub\\Code\\\u5176\u4ed6\\\u5d4c\u5165\u5f0f\u7cfb\u7d71\\L10_\u4e03\u6bb5\u986f\u793a\u5668\\L10_Q1\\ws8212b.h"
+    },
+    "name": "i",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@96@macro@_STDBOOL",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "_STDBOOL",
+    "location": {
+      "column": "9",
+      "line": "5",
+      "path": "C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\avr\\inc\\dlib\\c\\stdbool.h"
+    },
+    "name": "_STDBOOL",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@200@macro@bool",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "bool",
+    "location": {
+      "column": "11",
+      "line": "13",
+      "path": "C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\avr\\inc\\dlib\\c\\stdbool.h"
+    },
+    "name": "bool",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@225@macro@true",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "true",
+    "location": {
+      "column": "11",
+      "line": "14",
+      "path": "C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\avr\\inc\\dlib\\c\\stdbool.h"
+    },
+    "name": "true",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@246@macro@false",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "false",
+    "location": {
+      "column": "11",
+      "line": "15",
+      "path": "C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\avr\\inc\\dlib\\c\\stdbool.h"
+    },
+    "name": "false",
+    "origin": "system_include",
+    "scope": null
+  },
+  {
+    "ID": "c:stdbool.h@275@macro@__bool_true_false_are_defined",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "__bool_true_false_are_defined",
+    "location": {
+      "column": "9",
+      "line": "18",
+      "path": "C:\\Program Files\\IAR Systems\\Embedded Workbench 9.1\\avr\\inc\\dlib\\c\\stdbool.h"
+    },
+    "name": "__bool_true_false_are_defined",
+    "origin": "system_include",
     "scope": null
   }
 ]

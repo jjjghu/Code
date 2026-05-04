@@ -5,42 +5,43 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\Debug\Exe\main.hex</file>
-            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom328p.inc</file>
-            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
-            <file>$TOOLKIT_DIR$\inc\iom328p.h</file>
-            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
-            <file>$PROJ_DIR$\button.h</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\delay.h</file>
-            <file>$PROJ_DIR$\ws8212b.h</file>
-            <file>$PROJ_DIR$\seven_segment_display.h</file>
-            <file>$PROJ_DIR$\gled.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
-            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-            <file>$PROJ_DIR$\Debug\List\main.map</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Config_Normal.h</file>
             <file>$TOOLKIT_DIR$\src\template\cfgm328p.xcl</file>
             <file>$TOOLKIT_DIR$\src\template\cfg3soim.xcl</file>
+            <file>$PROJ_DIR$\Debug\List\main.map</file>
+            <file>$PROJ_DIR$\Debug\Exe\main.hex</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdbool.h</file>
             <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-3s-ec_mul-sf-n.r90</file>
+            <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+            <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+            <file>$PROJ_DIR$\ws8212b.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+            <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\iom328p.h</file>
+            <file>$PROJ_DIR$\delay.h</file>
+            <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom328p.inc</file>
+            <file>$PROJ_DIR$\button.h</file>
+            <file>$PROJ_DIR$\seven_segment_display.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+            <file>$PROJ_DIR$\gled.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
             <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Config_Normal.h</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\Debug\Exe\main.hex</name>
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 15</file>
+                    <file> 2</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 19 20 12 21</file>
+                    <file> 0 1 18 5</file>
                 </tool>
             </inputs>
         </file>
@@ -49,13 +50,13 @@
             <outputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 12</file>
+                    <file> 18</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCAVR</name>
-                    <file> 4 3 2 1 5 17 13 22 18 16 14 8 6 10 9</file>
+                    <file> 10 13 6 15 21 19 12 22 23 9 4 7 14 16 17 8</file>
                 </tool>
             </inputs>
         </file>
@@ -64,7 +65,7 @@
             <outputs>
                 <tool>
                     <name>XLINK</name>
-                    <file> 0 15</file>
+                    <file> 3 2</file>
                 </tool>
             </outputs>
         </file>

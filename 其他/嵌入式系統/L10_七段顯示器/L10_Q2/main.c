@@ -16,9 +16,9 @@ void displayDigit(uint8_t val)
 
 void display7SEG(int val)
 {
-  for (uint8_t i = 0; i < 2; i++)
+  for (uint8_t i = 0; i < 4; i++)
   {
-    PORTC |= (1 << DIG3) | (1 << DIG4);
+    PORTC |= (1 << DIG1) | (1 << DIG2) | (1 << DIG3) | (1 << DIG4);
     switch (i)
     {
     case 0:
@@ -51,7 +51,6 @@ int main(void)
   // display 0123 on the 7-segment display
   int val = 9990;
   int totalDelay = 0;
-  uint8_t mode = 0;
   display7SEG(val);
   Delay_10ms(1);
   for (;;)
@@ -64,9 +63,10 @@ int main(void)
       totalDelay = 4;
       setBlue();
       while (S1_Pressed())
-      { // 自旋，依舊需要計算 delay
-        Delay_1ms(1);
-        if (++totalDelay == 100)
+      { // ���������f��ҪӋ�� delay
+        display7SEG(val);
+        totalDelay += 4;
+        if (++totalDelay >= 100)
         {
           clearPixelColor();
         }
@@ -83,20 +83,19 @@ int main(void)
       setOrange();
       while (S2_Pressed())
       {
-        Delay_1ms();
-        if (++totalDelay == 100)
+        display7SEG(val);
+        totalDelay += 4;
+        if (totalDelay >= 100)
         {
           clearPixelColor();
         }
       }
     }
-    else
+    display7SEG(val);
+    totalDelay += 4;
+    if (totalDelay >= 100)
     {
-      Delay_1ms(1);
-      if (++totalDelay == 100)
-      {
-        clearPixelColor();
-      }
+      clearPixelColor();
     }
   }
   return 0;

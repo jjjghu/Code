@@ -58,8 +58,8 @@
     DIN_PORT &= ~(1 << DIN); \
     DIN_DIR |= (1 << DIN)
 
-#define setRed() setPixelColor(20, 0, 0)
-#define setGreen() setPixelColor(0, 20, 0)
+#define setRed() setPixelColor(20, 0, 0);
+#define setGreen() setPixelColor(0, 20, 0);
 #define setDarkGreen() setPixelColor(1, 20, 1);
 #define setOrange() setPixelColor(20, 5, 0);
 #define setPurple() setPixelColor(20, 0, 20);
@@ -81,6 +81,5 @@ void setPixelColor(uint8_t r, uint8_t g, uint8_t b)
         }
         val <<= 0x01;
     }
-    updateRGBLED();
 }
 #endif

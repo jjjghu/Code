@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\settings\L10_Q1.Debug.general.xcl" --backend -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\settings\L10_Q1.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\settings\L10_Q1.Debug.general.xcl" --backend -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\settings\L10_Q1.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\settings\L10_Q1.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10\L10_Q1\settings\L10_Q1.Debug.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\settings\L10_Q1.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Desktop\GitHub\Code\其他\嵌入式系統\L10_七段顯示器\L10_Q1\settings\L10_Q1.Debug.driver.xcl" 
 }
