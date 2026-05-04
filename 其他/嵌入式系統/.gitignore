@@ -1,0 +1,27 @@
+# IAR Embedded Workbench generated files
+*.dep
+*.ewd
+*.ewt
+*.eww
+*.bak
+*.tmp
+*~
+*.swp
+
+# Build directories
+Debug/
+settings/
+
+# Output and build artifacts
+*.out
+*.hex
+*.map
+*.log
+*.a51
+*.o
+*.obj
+
+# OS and editor files
+Thumbs.db
+Desktop.ini
+.DS_Store
